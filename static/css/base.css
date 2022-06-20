@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Odibee+Sans&family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+html {
+    height: 100%;
+}
+
+body {
+    background: url('/media/background_image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    color: #555;
+    font-family: 'Roboto';
+}
+
+/* Social Links */
+
+.social {
+    padding: 0 0.5rem;
+}
+
+.social a i {
+    width: 30px;
+    height: 30px;
+    padding: 6px 1px;
+    font-size: 16px;
+    line-height: 16px;
+    border-radius: 50%;
+    text-align: center;
+    color: #fff;
+    background: #133510;
+    border: 1px outset transparent;
+}
+
+.social a i:hover {
+    border: 1px solid #fff;
+}
+
