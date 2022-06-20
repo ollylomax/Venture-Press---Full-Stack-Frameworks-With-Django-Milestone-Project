@@ -15,8 +15,8 @@
     {% for service in services %}
     
         <div class="col-sm-12 col-md-6 col-lg-4">
-            <div class="card">
-                <img class="card-img-top" src="/media/{{ service.image }}" alt="Card image cap">
+            <div class="card"><a href="{% url 'service_detail' service.id %}">
+                <img class="card-img-top" src="/media/{{ service.image }}" alt="Card image cap"></a>
                 <div class="card-body">
                     <h5 class="card-title">{{ service.name }}</h5>
                     <p class="card-text">{{ service.description}}</p>
@@ -24,7 +24,7 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">£{{ service.price }} per printed unit</li>
                     <li class="list-group-item">{{ service.paper_size }} (other sizes available)</li>
-                    <li class="list-group-item">Vestibulum at eros</li>
+                    <li class="list-group-item">More Information</li>
                 </ul>
                 <div class="card-body">
                     <a href="#" class="card-link">Customise Order</a>

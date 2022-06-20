@@ -24,6 +24,9 @@ class Service(models.Model):
         ('A4', 'A4'),
         ('A5', 'A5'),
         ('A6', 'A6'),
+        ('DL', 'DL'),
+        ('85x55', '85x55'),
+        ('90x60', '90x60'),
     ]
 
     category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
@@ -33,7 +36,7 @@ class Service(models.Model):
     price = models.DecimalField(max_digits=6, decimal_places=2)
     image = models.ImageField(null=True, blank=True)
     paper_size = models.CharField(
-        max_length=2,
+        max_length=5,
         choices=PAPER_SIZE_CHOICES,
         default='A4',
     )
