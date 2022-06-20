@@ -5,11 +5,19 @@ html {
 }
 
 body {
-    background: url('/media/background_image.jpg') no-repeat center center fixed;
+    background: url('/media/background-image.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
     color: #555;
     font-family: 'Roboto';
+}
+
+.navbar {
+    background-color: #001087 !important;
+}
+
+.navbar-brand {
+    font-weight: 700;
 }
 
 /* Social Links */
