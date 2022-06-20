@@ -4,7 +4,7 @@ from .models import Service
 # Create your views here.
 
 
-def services(request):
+def all_services(request):
     """ Route for all services, including sorting and search queries """
 
     services = Service.objects.all()
@@ -14,3 +14,4 @@ def services(request):
     }
 
     return render(request, 'services/services.html', context)
+
