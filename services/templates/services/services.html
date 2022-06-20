@@ -11,6 +11,13 @@
 
 {% block content %}
 <div class="container">
+    <!-- Indexing Results -->
+    <p class="text-center">
+        {% if query %}
+            <span class="small"><a href="{% url 'services' %}">Back to Services</a> | </span>
+            Your search returned {{ services|length }} Result{% if services|length > 1 %}s{% endif %} for <strong>"{{ query }}"</strong>
+        {% endif %}
+    </p>
     <div class="row">
     {% for service in services %}
     
