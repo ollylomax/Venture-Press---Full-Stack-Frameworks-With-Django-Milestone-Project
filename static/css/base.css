@@ -12,12 +12,31 @@ body {
     font-family: 'Roboto';
 }
 
+header {
+    padding: 0 !important;
+}
+
 .navbar {
     background-color: #001087 !important;
+    height: 72px;
+    padding: 0 20px;
 }
 
 .navbar-brand {
     font-weight: 700;
+}
+
+.navbar-collapse {
+    flex-grow: 0;
+}
+
+.nav-index,
+.nav-item {
+    padding: 0 5px;
+}
+
+.nav-link {
+    padding: 0 8px;
 }
 
 /* Social Links */
@@ -44,5 +63,25 @@ body {
 }
 
 .container {
-        padding-top: 164px;
+        padding: 100px 0;
+    }
+
+    .btt-button {
+        border: 0 !important;
+        margin: 0 auto;
+        position: fixed;
+        height: 30px;
+        width: 100%;
+        bottom: 70px;
+        z-index: 999;
+        background-color: black;
+    }
+    
+    .btt-link {
+        cursor: pointer;
+    }
+
+    footer {
+        background-color: #001087 !important;
+        height: 72px;
     }
