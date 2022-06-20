@@ -12,6 +12,19 @@ body {
     font-family: 'Roboto';
 }
 
+.overlay {
+	height: 100%;
+	width: 100%;
+	top: 0;
+	left: 0;
+	position: fixed;
+	background: url('/media/overlay-image.jpg') no-repeat center center fixed;
+    background-size: cover;
+    height: 100vh;
+    color: #555;
+	z-index: -1;
+}
+
 header {
     padding: 0 !important;
 }
@@ -37,6 +50,10 @@ header {
 
 .nav-link {
     padding: 0 8px;
+}
+
+.dd-icon {
+    padding-right: 15px;
 }
 
 /* Social Links */

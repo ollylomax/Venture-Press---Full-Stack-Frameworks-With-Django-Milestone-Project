@@ -16,7 +16,9 @@
     <p class="text-center">
         {% if query %}
             <span class="small"><a href="{% url 'services' %}">Back to Services</a> | </span>
-            Your search returned {{ services|length }} Result{% if services|length > 1 %}s{% endif %} for <strong>"{{ query }}"</strong>
+            Your search returned {{ services|length }} Result{% if services|length > 1 or services|length == 0 %}s{% endif %} for <strong>"{{ query }}"</strong>
+        {% elif categories %}
+        Filtered by <strong>"{{ categories.0 }}"</strong>'
         {% endif %}
     </p>
     <div class="row">
@@ -24,7 +26,12 @@
     
         <div class="col-sm-12 col-md-6 col-lg-4">
             <div class="card"><a href="{% url 'service_detail' service.id %}">
-                <img class="card-img-top" src="/media/{{ service.image }}" alt="Card image cap"></a>
+                {% if service.image %}
+                    <img class="card-img-top" src="/media/{{ service.image }}" alt="{{ service.name }}">
+                        {% else %}
+                    <img class="card-img-top" src="/media/placeholder.jpg" alt="{{ service.name }}">
+                    {% endif %}
+                </a>
                 <div class="card-body">
                     <h5 class="card-title">{{ service.name }}</h5>
                     <p class="card-text">{{ service.description}}</p>
@@ -32,7 +39,7 @@
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">£{{ service.price }} per printed unit</li>
                     <li class="list-group-item">{{ service.paper_size }} (other sizes available)</li>
-                    <li class="list-group-item">More Information</li>
+                    <li class="list-group-item">{{ service.category.friendly_name }}</li>
                 </ul>
                 <div class="card-body">
                     <a href="#" class="card-link">Customise Order</a>

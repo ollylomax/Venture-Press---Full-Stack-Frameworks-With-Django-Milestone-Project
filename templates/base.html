@@ -44,7 +44,7 @@
 
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
-                <a class="text-white navbar-brand" href="#">Venture Press</a>
+                <a class="text-white navbar-brand" href="{% url 'home' %}">Venture Press</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -67,19 +67,19 @@
                         </form>
                         <li class="nav-item">
                                 <div class="text-center text-white"><i class="fa-solid fa-house-crack"></i></div>
-                            <a class="text-white nav-link active" aria-current="page" href="#">Home</a>
+                            <a class="text-white nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                         </li>
                         <li class="nav-item dropdown">
-                                <div class="text-center text-white"><i class="fa-solid fa-scroll"></i></div>
+                                <div class="text-center text-white"><i class="dd-icon fa-solid fa-scroll"></i></div>
                             <a class="text-white nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Print Services
                             </a>
                             <ul class="dropdown-menu text-white" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="#">Stationery</a></li>
-                                <li><a class="dropdown-item" href="#">Advertising</a></li>
-                                <li><a class="dropdown-item" href="#">Textiles</a></li>
-                                <li><a class="dropdown-item" href="#">All Services</a></li>
+                                <li><a class="dropdown-item" href="{% url 'services' %}?category=stationery">Stationery</a></li>
+                                <li><a class="dropdown-item" href="{% url 'services' %}?category=advertising">Advertising</a></li>
+                                <li><a class="dropdown-item" href="{% url 'services' %}?category=textiles">Textiles</a></li>
+                                <li><a class="dropdown-item" href="{% url 'services' %}">All Services</a></li>
                             </ul>
                         </li>
                         <li class="nav-item">
@@ -93,7 +93,7 @@
                             <a class="text-white nav-link" href="#">Login</a>
                         </li>
                         <li class="nav-item dropdown">
-                                <div class="text-center text-white"><i class="fa-solid fa-user"></i></div>
+                                <div class="text-center text-white"><i class="dd-icon fa-solid fa-user"></i></div>
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
                                 Account
