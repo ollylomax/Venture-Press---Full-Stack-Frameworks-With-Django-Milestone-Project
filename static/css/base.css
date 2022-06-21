@@ -79,6 +79,13 @@ header {
     border: 1px solid #fff;
 }
 
+/* Tables */
+
+th,
+td {
+    text-align: center;
+}
+
 .container {
         padding: 100px 0;
     }
@@ -101,4 +108,28 @@ header {
     footer {
         background-color: #001087 !important;
         height: 72px;
+    }
+
+    .message-container {
+        position: fixed;
+        bottom: 85px;
+        right: 15px;
+        z-index: 99999999999;
+    }
+
+    .toast-header {
+        background-color: #001087 !important;
+    }
+
+    .toast > button {
+        text-align: right;
+        float:right;
+    }
+    
+    .custom-toast {
+        overflow: visible;
+    }
+    
+    .toast-capper {
+        height: 2px;
     }
