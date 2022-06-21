@@ -9,6 +9,8 @@ def cart_contents(request):
     cart_items = []
     total = 0
     service_count = 0
+    delivery = 0
+    delivery_dearth = 0
 
     cart = request.session.get('cart', {})
 
@@ -22,12 +24,13 @@ def cart_contents(request):
             'service': service,
         })
 
-    if total < settings.DELIVERY_THRESHOLD:
-        delivery = (total + settings.DELIVERY_CHARGE) * Decimal(settings.DELIVERY_PERCENT / 100)
-        delivery_dearth = settings.DELIVERY_THRESHOLD - total
-    else:
-        delivery = 0
-        delivery_dearth = 0
+    if cart_items:
+        if total < settings.DELIVERY_THRESHOLD:
+            delivery = total * Decimal(settings.DELIVERY_PERCENT / 100) + settings.DELIVERY_CHARGE
+            delivery_dearth = settings.DELIVERY_THRESHOLD - total
+        else:
+            delivery = 0
+            delivery_dearth = 0
     
     grand_total = delivery + total
     

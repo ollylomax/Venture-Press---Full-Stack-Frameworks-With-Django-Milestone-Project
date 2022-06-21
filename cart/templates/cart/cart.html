@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load cart_utils %}
 
 {% block page_header %}
     <div class="container header-container">
@@ -22,8 +23,112 @@
 
         <div class="row">
             <div class="col">
-                {% if bag_items %}
-                    <div class="table-responsive rounded"></div>
+                {% if cart_items %}
+                <div class="table-responsive rounded">
+                    <table class="table table-sm table-borderless">
+                        <thead class="text-black">
+                            <tr>
+                                <th scope="col">Product Info</th>
+                                <th scope="col"></th>
+                                <th scope="col">Size</th>
+                                <th scope="col">Per Unit Price</th>
+                                <th scope="col">Quantity</th>
+                                <th scope="col">Price</th>
+                            </tr>
+                        </thead>
+
+                        {% for item in cart_items %}
+                            <tr>
+                                {% if item.service.image %}
+                                <td class="p-3 w-25">
+                                    <img class="img-fluid rounded" src="/media/{{ item.service.image }}">
+                                </td>
+                                {% else %}
+                                <td class="p-3 w-25">
+                                    <img class="img-fluid rounded" src="/media/placeholder.jpg">
+                                </td>
+                                {% endif %}
+                                <td class="py-3">
+                                    <p class="my-0"><strong>{{ item.service.name }}</strong></p>
+                                    <p class="my-0 small text-muted">SKU: {{ item.service.sku|upper }}</p>
+                                </td>
+                                <td class="py-3">
+                                    <p class="my-0">{{ item.service.paper_size }}</p>
+                                </td>
+                                <td class="py-3">
+                                    <p class="my-0">£{{ item.service.price }}</p>
+                                </td>
+                                <td class="py-3 w-25">
+                                    <form class="form update-form" method="POST" action="{% url 'quantity_amend' item.item_id %}">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <button class="decrement-qty btn btn-sm btn-black rounded-0" 
+                                                        data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
+                                                        <span>
+                                                            <i class="fas fa-minus fa-sm"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                                <input class="form-control form-control-sm qty_input" type="number"
+                                                    name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                                    data-item_id="{{ item.item_id }}"
+                                                    id="id_qty_{{ item.item_id }}">
+                                                <div class="input-group-append">
+                                                    <button class="increment-qty btn btn-sm btn-black rounded-0"
+                                                        data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
+                                                        <span>
+                                                            <i class="fas fa-plus fa-sm"></i>
+                                                        </span>
+                                                    </button>
+                                                </div>
+                                                {% if item.product.has_sizes %}
+                                                    <input type="hidden" name="product_size" value="{{ item.size }}">
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </form>
+                                    <a class="update-link text-info"><small>Update</small></a>
+                                    <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><small>Remove</small></a>
+                                    <button type="button" class="update-link btn btn-sm btn-primary">Update</button>
+                                    <button type="button" class="btn btn-sm btn-danger">Remove</button>
+                                </td>
+                                <td class="py-3">
+                                    <p class="my-0">£{{ item.service.price | calculate_sub:item.quantity }}</p>
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        <tr>
+                            <td colspan="5" class="pt-5 text-right">
+                                <h6><strong>Cart Total: £{{ total|floatformat:2 }}</strong></h6>
+                                <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
+                                <h4 class="mt-4"><strong>Grand Total: £{{ grand_total|floatformat:2 }}</strong></h4>
+                                {% if delivery_dearth > 0 %}
+                                    <p class="mb-1 text-danger">
+                                        You could get free delivery by spending just <strong>£{{ delivery_dearth }}</strong> more!
+                                    </p>
+                                    {% endif %}
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="5" class="text-right">
+                                    <a href="{% url 'services' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                                        <span class="icon">
+                                            <i class="fas fa-chevron-left"></i>
+                                        </span>
+                                        <span class="text-uppercase">Back To Services</span>
+                                    </a>
+                                    <a href="" class="btn btn-black rounded-0 btn-lg">
+                                        <span class="text-uppercase">Checkout Now</span>
+                                        <span class="icon">
+                                            <i class="fas fa-chevron-right"></i>
+                                        </span>
+                                    </a>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 {% else %}
                     <p class="mb-5">Nothing in your cart.</p>
                     <a href="{% url 'services' %}" class="btn">
@@ -33,4 +138,32 @@
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block postjs %}
+{{ block.super }}
+{% include 'services/includes/quantity_incdec.html' %}
+
+<script type="text/javascript">
+    // Update quantity on click
+    $('.update-link').click(function(e) {
+        var form = $(this).prev('.update-form');
+        form.submit();
+    })
+
+    // Remove item and reload on click
+    $('.remove-item').click(function(e) {
+        var csrfToken = "{{ csrf_token }}";
+        var itemId = $(this).attr('id').split('remove_')[1];
+        var url = `/cart/delete/${itemId}/`;
+        var data = {'csrfmiddlewaretoken': csrfToken};
+
+$.post(url, data)
+ .done(function() {
+     location.reload();
+ });
+    })
+
+</script>
+
 {% endblock %}
