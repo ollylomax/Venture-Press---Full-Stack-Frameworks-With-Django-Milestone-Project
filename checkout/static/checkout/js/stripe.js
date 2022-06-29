@@ -28,7 +28,7 @@ var style = {
 var card = elements.create('card', {style: style});
 card.mount('#card-element');
 
-// Handle realtime validation errors on the card element
+// Realtime validation handler for errors in card input
 card.addEventListener('change', function (event) {
     var errorDiv = document.getElementById('card-errors');
     if (event.error) {
@@ -44,13 +44,16 @@ card.addEventListener('change', function (event) {
     }
 });
 
-// Handle form submit
+// Form submission handler
 var form = document.getElementById('payment-form');
 
 form.addEventListener('submit', function(ev) {
     ev.preventDefault();
     card.update({ 'disabled': true});
     $('#submit-button').attr('disabled', true);
+    // Offset opacities of payment form and card processing overlay
+    $('#payment-form').fadeToggle(100);
+    $('#card-processing').fadeToggle(100);
     stripe.confirmCardPayment(clientSecret, {
         payment_method: {
             card: card,
@@ -64,6 +67,9 @@ form.addEventListener('submit', function(ev) {
                 </span>
                 <span>${result.error.message}</span>`;
             $(errorDiv).html(html);
+            // Offset opacities of payment form and card processing overlay
+            $('#payment-form').fadeToggle(100);
+            $('#card-processing').fadeToggle(100);
             card.update({ 'disabled': false});
             $('#submit-button').attr('disabled', false);
         } else {
