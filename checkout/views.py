@@ -3,9 +3,9 @@ from django.contrib import messages
 from django.conf import settings
 
 from .forms import OrderForm
-from cart.contexts import cart_contents
 from .models import Order, OrderLineItem
 from services.models import Service
+from cart.contexts import cart_contents
 
 import stripe
 
@@ -21,9 +21,9 @@ def checkout(request):
         form_data = {
             'full_name': request.POST['full_name'],
             'email': request.POST['email'],
-            'address_line1': request.POST['street_address1'],
-            'address_line2': request.POST['street_address2'],
-            'city': request.POST['town_or_city'],
+            'address_line1': request.POST['address_line1'],
+            'address_line2': request.POST['address_line2'],
+            'city': request.POST['city'],
             'county': request.POST['county'],
             'postcode': request.POST['postcode'],
             'country': request.POST['country'],
