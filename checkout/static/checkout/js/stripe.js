@@ -70,7 +70,7 @@ form.addEventListener('submit', function (ev) {
     };
     var url = '/checkout/checkout_cache/';
 
-    // Post data to the cache checkout view to update payment intent with meta data
+    // Post data to the checkout cache view to update payment intent with meta data
     $.post(url, postData).done(function () {
         // If 200 response received then initiate stripe confirm card payment
         stripe.confirmCardPayment(clientSecret, {
