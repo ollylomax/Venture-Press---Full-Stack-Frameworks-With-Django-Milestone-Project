@@ -19,8 +19,88 @@ class main_handler:
         """
         Stripe payment_intent.succeeded webhook handler
         """
+        intent = event.data.object
+        pid = intent.id
+        # JSON version of cart from intent
+        cart = intent.metadata.cart
+        # Save info checkbox boolean
+        save_info = intent.metadata.save_info
+
+        billing_details = intent.charges.data[0].billing_details
+        shipping_details = intent.shipping
+        grand_total = round(intent.charges.data[0].amount / 100, 2)
+
+        # Iterate through address to replace empty fields with None
+        for field, value in shipping_details.address.items():
+            if value == "":
+                shipping_details.address[field] = None
+
+        order_exists = False
+        # Variable to increment for python sleep timer
+        attempt = 1
+        # Loop to try and find the order five times before moving on
+        while attempt <= 5:
+            try:
+                order = Order.objects.get(
+                    full_name__iexact=shipping_details.name,
+                    email__iexact=billing_details.email,
+                    phone_number__iexact=shipping_details.phone,
+                    country__iexact=shipping_details.address.country,
+                    postcode__iexact=shipping_details.address.postal_code,
+                    city__iexact=shipping_details.address.city,
+                    address_line1__iexact=shipping_details.address.line1,
+                    address_line2__iexact=shipping_details.address.line2,
+                    county__iexact=shipping_details.address.state,
+                    grand_total=grand_total,
+                    cart_instance=cart,
+                    payment_id=pid,
+                )
+                order_exists = True
+                # Break out of the while loop if order is found
+                break
+            except Order.DoesNotExist:
+                # Increment variable by 1
+                attempt += 1
+                # Python sleep timer
+                time.sleep(1)
+        if order_exists:
+            return HttpResponse(
+                content=f'Webhook: {event["type"]} | SUCCESS: Order exists in database',
+                status=200)
+        else:
+            # Create the order in database using the stripe payment intent information
+            order = None
+            try:
+                order = Order.objects.create(
+                    full_name=shipping_details.name,
+                    email=billing_details.email,
+                    phone_number=shipping_details.phone,
+                    country=shipping_details.address.country,
+                    postcode=shipping_details.address.postal_code,
+                    city=shipping_details.address.city,
+                    address_line1=shipping_details.address.line1,
+                    address_line2=shipping_details.address.line2,
+                    county=shipping_details.address.state,
+                    cart_instance=cart,
+                    payment_id=pid,
+                )
+                for item_id, quantity in json.loads(cart).items():
+                    service = Service.objects.get(id=item_id)
+                    order_line_item = OrderLineItem(
+                        order=order,
+                        service=service,
+                        quantity=quantity,
+                    )
+                    order_line_item.save()
+                    
+            except Exception as e:
+                if order:
+                    order.delete()
+                return HttpResponse(
+                    content=f'Webhook: {event["type"]} | ERROR: {e}',
+                    status=500)
         return HttpResponse(
-            content=f'Webhook: {event["type"]}',
+            content=f'Webhook: {event["type"]} | SUCCESS: Webhook order creation',
             status=200)
 
     def pi_payment_failed_handler(self, event):
