@@ -50,6 +50,10 @@ def checkout(request):
         order_form = OrderForm(form_data)
         if order_form.is_valid():
             order = order_form.save()
+            pid = request.POST.get('client_secret').split('_secret')[0]
+            order.payment_id = pid
+            order.cart_instance = json.dumps(cart)
+            order.save()
             for item_id, quantity in cart.items():
                 try:
                     service = get_object_or_404(Service, pk=item_id)
