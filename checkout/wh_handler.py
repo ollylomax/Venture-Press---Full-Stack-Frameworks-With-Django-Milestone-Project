@@ -1,4 +1,8 @@
 from django.http import HttpResponse
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
+
+from django.conf import settings
 
 from services.models import Service
 from accounts.models import UserProfile
@@ -12,6 +16,22 @@ class main_handler:
 
     def __init__(self, request):
         self.request = request
+
+    def _send_order_confirmation_email(self, order):
+        """ When an order is placed, send an order confirmation email to user's email address """
+        subject = render_to_string(
+            'checkout/order_confirmation_email/order_confirmation_subject.txt',
+            {'order': order})
+        body = render_to_string(
+            'checkout/order_confirmation_email/order_confirmation_body.txt',
+            {'order': order, 'vp_email': settings.VENTURE_PRESS_EMAIL})
+        
+        send_mail(
+            subject,
+            body,
+            settings.VENTURE_PRESS_EMAIL,
+            [order.email]
+        )   
 
     def generic_handler(self, event):
         """
@@ -85,6 +105,7 @@ class main_handler:
                 # Python sleep timer
                 time.sleep(1)
         if order_exists:
+            self._send_order_confirmation_email(order)
             return HttpResponse(
                 content=f'Webhook: {event["type"]} | SUCCESS: Order exists in database',
                 status=200)
@@ -121,6 +142,7 @@ class main_handler:
                 return HttpResponse(
                     content=f'Webhook: {event["type"]} | ERROR: {e}',
                     status=500)
+        self._send_order_confirmation_email(order)
         return HttpResponse(
             content=f'Webhook: {event["type"]} | SUCCESS: Webhook order creation',
             status=200)

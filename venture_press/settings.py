@@ -178,6 +178,12 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Email
+
+VENTURE_PRESS_EMAIL = 'info@venturepress.com'
+
+# Delivery
+
 DELIVERY_THRESHOLD = 50
 DELIVERY_PERCENT = 10
 DELIVERY_CHARGE = 3
