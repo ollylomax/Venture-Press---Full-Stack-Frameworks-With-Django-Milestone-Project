@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect, get_object_or_404, reverse
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.db.models import Q
 from .models import Category, Service
 from .forms import ServiceForm
+from .custom_decorators import superuser_required
 
 
 def all_services(request):
@@ -49,6 +51,8 @@ def service_detail(request, service_id):
     return render(request, 'services/service_detail.html', context)
 
 
+@login_required
+@superuser_required
 def add_service(request):
     """ Create a new print service """
 
@@ -71,6 +75,8 @@ def add_service(request):
     return render(request, template, context)
 
 
+@login_required
+@superuser_required
 def edit_service(request, service_id):
     """ Edit an existing print service """
     service = get_object_or_404(Service, pk=service_id)
@@ -94,6 +100,8 @@ def edit_service(request, service_id):
     return render(request, template, context)
 
 
+@login_required
+@superuser_required
 def delete_service(request, service_id):
     """ Delete an existing print service """
     service = get_object_or_404(Service, pk=service_id)

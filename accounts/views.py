@@ -6,6 +6,7 @@ from .models import UserProfile
 from .forms import UserProfileForm
 
 
+@login_required
 def profile(request):
     """ Profile page view """
     profile = get_object_or_404(UserProfile, user=request.user)
@@ -19,7 +20,7 @@ def profile(request):
             messages.error(request, 'Invalid Form - failed to update')
     else:
         form = UserProfileForm(instance=profile)
-        
+
     orders = profile.orders.all()
 
     template = 'accounts/profile.html'
@@ -32,6 +33,7 @@ def profile(request):
     return render(request, template, context)
 
 
+@login_required
 def order_history(request):
     """ Order History page view """
     profile = get_object_or_404(UserProfile, user=request.user)
@@ -47,6 +49,7 @@ def order_history(request):
     return render(request, template, context)
 
 
+@login_required
 def past_order(request, order_number):
     order = get_object_or_404(Order, order_number=order_number)
 
