@@ -1,6 +1,7 @@
 from django.http import HttpResponse
 
 from services.models import Service
+from accounts.models import UserProfile
 from .models import Order, OrderLineItem
 
 import time
@@ -40,6 +41,21 @@ class main_handler:
             if value == "":
                 shipping_details.address[field] = None
 
+        # If save info box checked then update profile through webhook
+        profile = None
+        username = intent.metadata.username
+        if username != 'AnonymousUser':
+            profile = UserProfile.objects.get(user__username=username)
+            if save_info:
+                profile.default_phone_number = shipping_details.phone
+                profile.default_country = shipping_details.address.country
+                profile.default_postcode = shipping_details.address.postal_code
+                profile.default_town_or_city = shipping_details.address.city
+                profile.default_street_address1 = shipping_details.address.line1
+                profile.default_street_address2 = shipping_details.address.line2
+                profile.default_county = shipping_details.address.state
+                profile.save()
+
         order_exists = False
         # Variable to increment for python sleep timer
         attempt = 1
@@ -77,6 +93,7 @@ class main_handler:
             order = None
             try:
                 order = Order.objects.create(
+                    user_profile=profile,
                     full_name=shipping_details.name,
                     email=billing_details.email,
                     phone_number=shipping_details.phone,
