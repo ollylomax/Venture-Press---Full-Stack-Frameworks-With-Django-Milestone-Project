@@ -40,10 +40,17 @@
                     <li class="list-group-item">£{{ service.price }} per printed unit</li>
                     <li class="list-group-item">{{ service.paper_size }} (other sizes available)</li>
                     <li class="list-group-item">{{ service.category.friendly_name }}</li>
+                    <li class="list-group-item">
+                        <a href="{% url 'service_detail' service.id %}" class="card-link">Customise Order</a></li>
                 </ul>
+                {% if request.user.is_superuser %}
                 <div class="card-body">
-                    <a href="#" class="card-link">Customise Order</a>
+                    <small class="ml-3">
+                        <a href="{% url 'edit_service' service.id %}">Edit</a> | 
+                        <a class="text-danger" href="{% url 'delete_service' service.id %}">Delete</a>
+                    </small>
                 </div>
+                {% endif %}
             </div>
         </div>
     
