@@ -92,3 +92,11 @@ def edit_service(request, service_id):
     }
 
     return render(request, template, context)
+
+
+def delete_service(request, service_id):
+    """ Delete an existing print service """
+    service = get_object_or_404(Service, pk=service_id)
+    service.delete()
+    messages.success(request, 'Deletion successful - service removed')
+    return redirect(reverse('services'))
