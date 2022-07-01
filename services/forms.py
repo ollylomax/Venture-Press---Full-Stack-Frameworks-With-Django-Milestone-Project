@@ -1,5 +1,6 @@
 from django import forms
 from .models import Service, Category
+from .widgets import CustomClearableFileInput
 
 
 class ServiceForm(forms.ModelForm):
@@ -8,6 +9,8 @@ class ServiceForm(forms.ModelForm):
         model = Service
         fields = '__all__'
 
+    image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)
+    
     def __init__(self, *args, **kwargs):
         # Overwrite init method to make changes to fields
         super().__init__(*args, **kwargs)
