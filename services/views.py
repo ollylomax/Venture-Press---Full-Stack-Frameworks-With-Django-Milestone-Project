@@ -2,8 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404, reverse
 from django.contrib import messages
 from django.db.models import Q
 from .models import Category, Service
-
-# Create your views here.
+from .forms import ServiceForm
 
 
 def all_services(request):
@@ -48,3 +47,14 @@ def service_detail(request, service_id):
     }
 
     return render(request, 'services/service_detail.html', context)
+
+
+def add_service(request):
+    """ Create a new print service """
+    form = ServiceForm()
+    template = 'services/add_service.html'
+    context = {
+        'form': form,
+    }
+
+    return render(request, template, context)
