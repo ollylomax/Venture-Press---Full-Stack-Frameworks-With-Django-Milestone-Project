@@ -1,1 +1,1 @@
-web: gunicorn venture-press.wsgi:application
+web: gunicorn venture_press.wsgi:application
