@@ -62,10 +62,33 @@ def add_service(request):
             messages.error(request, 'Invalid Form - failed addition')
     else:
         form = ServiceForm()
-        
+
     template = 'services/add_service.html'
     context = {
         'form': form,
+    }
+
+    return render(request, template, context)
+
+
+def edit_service(request, service_id):
+    """ Edit an existing print service """
+    service = get_object_or_404(Service, pk=service_id)
+    if request.method == 'POST':
+        form = ServiceForm(request.POST, request.FILES, instance=service)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Edit Successful - changes made')
+            return redirect(reverse('service_detail', args=[service.id]))
+        else:
+            messages.error(request, 'Invalid Form - failed edit')
+    else:
+        form = ServiceForm(instance=service)
+
+    template = 'services/edit_service.html'
+    context = {
+        'form': form,
+        'service': service,
     }
 
     return render(request, template, context)
