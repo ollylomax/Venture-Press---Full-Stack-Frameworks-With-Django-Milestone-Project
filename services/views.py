@@ -51,7 +51,18 @@ def service_detail(request, service_id):
 
 def add_service(request):
     """ Create a new print service """
-    form = ServiceForm()
+
+    if request.method == 'POST':
+        form = ServiceForm(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Addition Successful - product added')
+            return redirect(reverse('add_service'))
+        else:
+            messages.error(request, 'Invalid Form - failed addition')
+    else:
+        form = ServiceForm()
+        
     template = 'services/add_service.html'
     context = {
         'form': form,
