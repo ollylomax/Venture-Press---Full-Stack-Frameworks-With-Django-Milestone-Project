@@ -24,7 +24,14 @@
             <div class="col-12 col-md-6">
                 <form method="POST" action="{% url 'edit_service' service.id %}" class="form mb-2" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {{ form | crispy }}
+                    <!-- Render all fields as crispy fields except image to remove placeholder -->
+                    {% for field in form %}
+                        {% if field.name != 'image' %}
+                            {{ field | as_crispy_field }}
+                        {% else %}
+                            {{ field }}
+                        {% endif %}
+                    {% endfor %}
                     <div class="text-right">
                         <a class="btn btn-outline-black rounded-0" href="{% url 'services' %}">Back to Print Services</a>
                         <button class="btn btn-black rounded-0" type="submit">Confirm Edit</button>
@@ -33,4 +40,14 @@
             </div>            
         </div>
     </div>
+{% endblock %}
+
+{% block postjs %}
+    {{ block.super }}
+    <script type="text/javascript">
+        $('#new-image').change(function() {
+            var file = $('#new-image')[0].files[0];
+            $('#filename').text(file.name);
+        });
+    </script>
 {% endblock %}
