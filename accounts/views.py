@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.contrib import messages
 
+from checkout.models import Order
 from .models import UserProfile
 from .forms import UserProfileForm
 
@@ -38,6 +39,17 @@ def order_history(request):
     context = {
         'orders': orders,
         'profile': profile,
+    }
+
+    return render(request, template, context)
+
+
+def past_order(request, order_number):
+    order = get_object_or_404(Order, order_number=order_number)
+
+    template = 'accounts/past_order.html'
+    context = {
+        'order': order,
     }
 
     return render(request, template, context)
