@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-nc!q%v8#p!k_@^=7t-u#spf@rhm2zvz(_ht3018s*f+p6k(5ww'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['venture-press.herokuapp.com', 'localhost']
 
@@ -135,7 +135,7 @@ else:
             'ENGINE': 'django.db.backends.sqlite3',
             'NAME': BASE_DIR / 'db.sqlite3',
         }
-}
+    }
 
 
 # Password validation
