@@ -15,6 +15,7 @@ def contact(request):
             form['first_name'].initial = request.user.first_name
             form['last_name'].initial = request.user.last_name
             form['email'].initial = request.user.email
+            form['user'].initial = request.user
 
     else:
         form = ContactForm(request.POST)

@@ -17,6 +17,7 @@ class Messages(models.Model):
     class Meta:
         verbose_name_plural = 'Messages'
 
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     first_name = models.CharField(max_length=15, null=False, blank=False)
     last_name = models.CharField(max_length=15, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
