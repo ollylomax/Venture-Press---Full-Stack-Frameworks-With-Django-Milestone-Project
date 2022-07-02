@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'accounts/css/profile.css' %}">
+{% endblock %}
+
+{% block page_header %}
+    <div class="container header-container">
+        <div class="row">
+            <div class="col"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <hr>
+                <h2 class="mb-4">Message Centre</h2>
+                <hr>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <p class="text-muted">Your Contact History</p>
+                <div class="order-history table-responsive">
+                    <table class="table table-sm table-borderless">
+                        <thead>
+                            <tr>
+                                <th>Message Number</th>
+                                <th>Date</th>
+                                <th>Subject</th>
+                                <th>Message</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for message in user_messages %}
+                                <tr>
+                                    <td>
+                                        <a href="{% url 'past_message' message.id %}"
+                                        title="{{ message.id }}">
+                                            {{ message.id }}
+                                        </a>
+                                    </td>
+                                    <td>Date</td>
+                                    <td>
+                                        {{ message.subject }}
+                                        </ul>
+                                    </td>
+                                    <td>{{ message.message|truncatechars:20 }}</td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        </div>
+
+{% endblock %}
