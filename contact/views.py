@@ -37,8 +37,11 @@ def contact(request):
                 settings.VENTURE_PRESS_EMAIL,
                 [settings.VENTURE_PRESS_EMAIL]
             )
-            send_mass_mail((customer_email, company_email), fail_silently=False)
-            print(form['email'].value())
+            try:
+                send_mass_mail((customer_email, company_email), fail_silently=False)
+            except Exception as e:
+                messages.error(request, f'Error: {e}')
+                return HttpResponse(status=500)
             return redirect('success')
  
     return render(request, "contact/contact.html", {'form': form})
