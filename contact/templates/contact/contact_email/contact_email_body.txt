@@ -1,0 +1,3 @@
+{{ form.first_name.value }}
+{{ form.last_name.value }}
+{{ form.message.value }}
