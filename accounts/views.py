@@ -12,7 +12,6 @@ from contact.models import Messages
 def profile(request):
     """ Profile page view """
     profile = get_object_or_404(UserProfile, user=request.user)
-    user_messages = get_list_or_404(Messages, user=request.user)
     
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
@@ -31,7 +30,6 @@ def profile(request):
         'form': form,
         'orders': orders,
         'profile': profile,
-        'user_messages': user_messages,
     }
 
     return render(request, template, context)
@@ -68,8 +66,11 @@ def past_order(request, order_number):
 @login_required
 def message_centre(request):
     """ Message centre page view """
-
-    user_messages = get_list_or_404(Messages, user=request.user)
+    
+    if not Messages.objects.filter(user=request.user).exists():
+        user_messages = None
+    else:
+        user_messages = get_list_or_404(Messages, user=request.user)
 
     template = 'accounts/messages.html'
     context = {

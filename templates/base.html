@@ -93,25 +93,34 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav">
-                        <li class="nav-item">
-                            <div class="text-center text-white"><i class="fa-solid fa-key"></i></div>
-                            <a class="text-white nav-link" href="{% url 'account_login' %}">Login</a>
-                        </li>
+                        {% if request.user.is_authenticated %}
                         <li class="nav-item dropdown">
                                 <div class="text-center text-white"><i class="dd-icon fa-solid fa-user"></i></div>
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button"
                                 data-bs-toggle="dropdown" aria-expanded="false">
-                                Account
+                                {{ request.user }}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                                 <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
                                 <li><a class="dropdown-item" href="{% url 'order_history' %}">Order History</a></li>
+                                <li><a class="dropdown-item" href="{% url 'message_centre' %}">Message Centre</a></li>
+                                {% if request.user.is_superuser %}
                                 <li><a class="dropdown-item" href="{% url 'add_service' %}">Add Print Service</a></li>
-                                <li><a class="dropdown-item" href="{% url 'account_signup' %}">Register</a></li>
+                                {% endif %}
                                 <li><a class="dropdown-item" href="{% url 'account_change_password' %}">Change Password</a></li>
                                 <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
                             </ul>
                         </li>
+                        {% else %}
+                        <li class="nav-item">
+                            <div class="text-center text-white"><i class="fa-solid fa-key"></i></div>
+                            <a class="text-white nav-link" href="{% url 'account_login' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <div class="text-center text-white"><i class="fa-solid fa-key"></i></div>
+                            <a class="text-white nav-link" href="{% url 'account_signup' %}">Register</a>
+                        </li>
+                        {% endif %}
                     </ul>
                     <div class="list-inline-item">
                         <a class="cart-trigger {% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
