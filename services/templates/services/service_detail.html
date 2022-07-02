@@ -20,7 +20,7 @@
                             <img class="card-img-top img-fluid" src="{{ service.image.url }}" alt="{{ service.name }}">
                         </a>
                         {% else %}
-                        <a href="/media/placeholder.jpg" target="_blank">
+                        <a href="{{ MEDIA_URL }}placeholder.jpg" target="_blank">
                             <img class="card-img-top img-fluid" src="{{ MEDIA_URL }}placeholder.jpg" alt="{{ service.name }}">
                         </a>
                     {% endif %}

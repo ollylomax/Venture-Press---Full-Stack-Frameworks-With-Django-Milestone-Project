@@ -41,11 +41,11 @@
                             <tr>
                                 {% if item.service.image %}
                                 <td class="p-3 w-25">
-                                    <img class="img-fluid rounded" src="/media/{{ item.service.image }}">
+                                    <img class="img-fluid rounded" src="{{ MEDIA_URL }}{{ item.service.image }}">
                                 </td>
                                 {% else %}
                                 <td class="p-3 w-25">
-                                    <img class="img-fluid rounded" src="/media/placeholder.jpg">
+                                    <img class="img-fluid rounded" src="{{ MEDIA_URL }}placeholder.jpg">
                                 </td>
                                 {% endif %}
                                 <td class="py-3">
