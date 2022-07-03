@@ -15,6 +15,31 @@
 <div class="container">
     <h1>Upload Centre</h1>
     <p>Orders requiring artwork listed below.</p>
+    <ul>
+        {% for order in orders %}
+        <li><a href="{{ order }}">{{ order }}</a></li>
+        <!-- Submit form with encoding type for images -->
+        <form action="{% url 'upload_artwork' order.order_number %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form|crispy }}
+            <p><input type="submit" value="Upload" /></p>
+        </form>
+
+        <!-- <form action="{% url 'upload_artwork' order.order_number %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <p>{{ form.non_field_errors }}</p>
+        <p>{{ form.upload.label_tag }} {{ form.upload.help_text }}</p>
+
+        <p>
+            {{ form.upload.errors }}
+            {{ form.upload }}
+        </p>
+
+        <p><input type="submit" value="Upload" /></p>
+    </form> -->
+        
+        {% endfor %}
+    </ul>
     {% if files %}
     Your Uploads:
     <ul>
@@ -25,22 +50,6 @@
     {% else %}
     <p>No files.</p>
     {% endif %}
-
-    <!-- Upload form. Note enctype attribute! -->
-    <form action="{% url 'orders_requiring_artwork' %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ message }}
-        <p>{{ form.non_field_errors }}</p>
-
-        <p>{{ form.upload.label_tag }} {{ form.upload.help_text }}</p>
-
-        <p>
-            {{ form.upload.errors }}
-            {{ form.upload }}
-        </p>
-
-        <p><input type="submit" value="Upload" /></p>
-    </form>
 </div>
 
 {% endblock %}
