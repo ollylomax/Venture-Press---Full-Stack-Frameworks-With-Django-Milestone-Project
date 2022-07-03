@@ -27,6 +27,7 @@ class Order(models.Model):
     grand_total = models.DecimalField(max_digits=10, decimal_places=2, null=False, default=0)
     cart_instance = models.TextField(null=False, blank=False, default='')
     payment_id = models.CharField(max_length=254, null=False, blank=False, default='')
+    has_artwork = models.BooleanField(null=True, blank=True, default=False)
 
     def _generate_order_number(self):
         """
