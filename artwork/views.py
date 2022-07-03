@@ -6,7 +6,6 @@ from .forms import ArtworkUpload
 
 def orders_requiring_artwork(request):
 
-    message = 'Upload as many files as you want!'
     # Handle file upload
     if request.method == 'POST':
         form = ArtworkUpload(request.POST, request.FILES)
@@ -14,16 +13,15 @@ def orders_requiring_artwork(request):
             cust_artwork = Artwork(upload=request.FILES['upload'])
             cust_artwork.save()
 
-            # Redirect to the document list after POST
+            # Redirect to orders_requiring_artwork view
             return redirect('orders_requiring_artwork')
-        else:
-            message = 'The form is not valid. Fix the following error:'
     else:
-        form = ArtworkUpload()  # An empty, unbound form
+        # Init empty form
+        form = ArtworkUpload()
 
-    # Load documents for the list page
+    # All files to be rendered in template
     files = Artwork.objects.all()
 
-    # Render list page with the documents and the form
+    # Render the artwork template with context
     context = {'files': files, 'form': form, 'message': message}
     return render(request, "artwork/artwork.html", context)
