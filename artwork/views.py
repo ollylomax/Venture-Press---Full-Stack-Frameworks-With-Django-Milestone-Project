@@ -12,10 +12,14 @@ def orders_requiring_artwork(request):
 
     # Init empty form
     form = ArtworkUpload()
-
+    
     order_filter = get_object_or_404(UserProfile, user=request.user)
 
-    orders = order_filter.orders.all()
+    user_orders = order_filter.orders.all()
+    orders = get_list_or_404(user_orders, has_artwork=False)
+    print(orders[1].order_number)
+    form['user'].initial = request.user
+    form['order'].initial = orders
 
     # All files to be rendered in template
     files = Artwork.objects.all()
@@ -43,6 +47,7 @@ def upload_artwork(request, order_number):
         cust_artwork = ArtworkUpload(form_data)
         print(cust_artwork)
         if form.is_valid():
+            order.has_artwork = True
             form.save()
         else:
             messages.error(request, 'NOPE')
