@@ -12,6 +12,7 @@
 {% block content %}
 
 <!-- List of uploaded documents -->
+<div class="overlay"></div>
 <div class="container">
     <h1>Upload Centre</h1>
     {% if orders %}
@@ -43,7 +44,7 @@
         
         {% endfor %}
         {% else %}
-        <p>You have no Orders requiring Artwork at this time. If you would like to amend your artwork, please <a href="">contact us</a>.</p>
+        <p>You have no Orders requiring Artwork at this time. If you would like to amend your artwork, please <a href="{% url 'contact' %}">contact us</a>.</p>
         {% endif %}
     </ul>
 

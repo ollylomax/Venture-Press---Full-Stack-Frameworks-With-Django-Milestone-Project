@@ -15,9 +15,8 @@ def orders_requiring_artwork(request):
     form = ArtworkUpload()
     order_form = OrderForm()
     
-    order_filter = get_object_or_404(UserProfile, user=request.user)
-    user_orders = order_filter.orders.all()
-    orders = get_list_or_404(user_orders, has_artwork=False)
+    profile = get_object_or_404(UserProfile, user=request.user)
+    orders = Order.objects.filter(user_profile=profile, has_artwork=False)
 
     form['user'].initial = request.user
 
@@ -25,7 +24,7 @@ def orders_requiring_artwork(request):
         form['order'].initial = order
 
     # File urls rendered to template
-    files = Artwork.objects.all()
+    files = Artwork.objects.filter(user=profile)
 
     # Render the artwork template with context
     context = {
