@@ -14,14 +14,16 @@ def orders_requiring_artwork(request):
     form = ArtworkUpload()
     
     order_filter = get_object_or_404(UserProfile, user=request.user)
-
     user_orders = order_filter.orders.all()
     orders = get_list_or_404(user_orders, has_artwork=False)
-    print(orders[1].order_number)
-    form['user'].initial = request.user
-    form['order'].initial = orders
 
-    # All files to be rendered in template
+    form['user'].initial = request.user
+
+    for order in orders:  
+        form['order'].initial = order
+        print(order)
+
+    # File urls rendered to template
     files = Artwork.objects.all()
 
     # Render the artwork template with context

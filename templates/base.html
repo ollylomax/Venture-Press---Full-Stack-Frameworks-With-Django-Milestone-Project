@@ -104,6 +104,7 @@
                                 <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
                                 <li><a class="dropdown-item" href="{% url 'order_history' %}">Order History</a></li>
                                 <li><a class="dropdown-item" href="{% url 'message_centre' %}">Message Centre</a></li>
+                                <li><a class="dropdown-item" href="{% url 'orders_requiring_artwork' %}">Upload Artwork</a></li>
                                 {% if request.user.is_superuser %}
                                 <li><a class="dropdown-item" href="{% url 'add_service' %}">Add Print Service</a></li>
                                 {% endif %}
