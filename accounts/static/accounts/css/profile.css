@@ -1,0 +1,29 @@
+/* Tables */
+
+thead > tr {
+    background-color: #001087;
+    color: #fff;
+}
+
+tbody > tr {
+    border: 1px solid black;
+}
+
+tbody > tr:hover {
+    background-color: #6489fa;
+    border: 1px solid black;
+    color: #fff;
+}
+
+/* Buttons */
+
+.btn {
+    border-radius: 0.3rem;
+    color: #fff;
+    background-color: #001087;
+}
+
+.btn:hover {
+    color: #fff;
+    background-color: #001087;
+}
