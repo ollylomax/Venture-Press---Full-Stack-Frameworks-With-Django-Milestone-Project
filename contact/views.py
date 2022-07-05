@@ -1,5 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse, get_object_or_404
+
 from .forms import ContactForm
+from contact.models import Messages
+
 from django.http import HttpResponse
 from django.contrib import messages
 from django.template.loader import render_to_string
@@ -50,3 +53,27 @@ def contact(request):
 def success(request):
     messages.success(request, "Your contact request has been received")
     return render(request, "contact/success.html")
+
+
+def edit_message(request, message_id):
+    """ Edit an existing print service """
+    message = get_object_or_404(Messages, pk=message_id)
+    if request.method == 'POST':
+        form = ContactForm(request.POST, instance=message)
+        if form.is_valid():
+            form.save()
+            messages.success(request, 'Edit Successful - changes made')
+            return redirect(reverse('past_message', args=[message.id]))
+        else:
+            messages.error(request, 'Invalid Form - failed edit')
+    else:
+        form = ContactForm(instance=message)
+
+    template = 'contact/edit_message.html'
+    context = {
+        'form': form,
+        'message': message,
+    }
+
+    return render(request, template, context)
+
