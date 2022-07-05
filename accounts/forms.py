@@ -1,7 +1,7 @@
 from django import forms
 from .models import UserProfile
 
-from allauth.account.forms import ChangePasswordForm
+from allauth.account.forms import ChangePasswordForm, SignupForm, LoginForm
 
 
 class CustomChangePasswordForm(ChangePasswordForm):
@@ -24,6 +24,50 @@ class CustomChangePasswordForm(ChangePasswordForm):
             self.fields[field].label = False
 
 
+class CustomRegisterForm(SignupForm):
+    def __init__(self, *args, **kwargs):
+        super(CustomRegisterForm, self).__init__(*args, **kwargs)
+
+        placeholders = {
+            'email': 'Enter Email',
+            'email2': 'Confirm Email',
+            'username': 'Enter Username',
+            'password1': 'Enter Password',
+            'password2': 'Confirm Password',
+        }
+        
+        self.fields['email'].widget.attrs['autofocus'] = True
+
+        for field in self.fields:
+            if self.fields[field].required:
+                placeholder = f'{placeholders[field]} *'
+            else:
+                placeholder = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].widget.attrs['class'] = 'stripe-style-input'
+            self.fields[field].label = False
+
+
+class CustomLoginForm(LoginForm):
+    def __init__(self, *args, **kwargs):
+        super(CustomLoginForm, self).__init__(*args, **kwargs)
+
+        placeholders = {
+            'login': 'Enter Username or Email',
+            'password': 'Enter Password',
+        }
+
+        for field in self.fields:
+            if field != 'remember':
+                if self.fields[field].required:
+                    placeholder = f'{placeholders[field]} *'
+                else:
+                    placeholder = placeholders[field]
+                self.fields[field].widget.attrs['placeholder'] = placeholder
+                self.fields[field].widget.attrs['class'] = 'stripe-style-input'
+                self.fields[field].label = False
+
+        
 class UserProfileForm(forms.ModelForm):
     class Meta:
         model = UserProfile

@@ -111,7 +111,12 @@ AUTHENTICATION_BACKENDS = (
 
 SITE_ID = 1
 
-ACCOUNT_FORMS = {'change_password': 'accounts.forms.CustomChangePasswordForm'}
+# Customised allauth forms
+ACCOUNT_FORMS = {
+    'change_password': 'accounts.forms.CustomChangePasswordForm',
+    'signup': 'accounts.forms.CustomRegisterForm',
+    'login': 'accounts.forms.CustomLoginForm',
+    }
 
 ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
 ACCOUNT_EMAIL_REQUIRED = True
