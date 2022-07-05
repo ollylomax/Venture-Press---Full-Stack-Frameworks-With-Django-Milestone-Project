@@ -13,6 +13,8 @@
 <div class="overlay"></div>
 <div class="container">
     <h1>Successful Contact Request</h1>
-    We endeavour to get back to you within 2 working days.
+    <p> Thank you for your message {{ user }}.</p>
+    <p>We have received it and endeavour to get back to you within 2 working days.</p>
+    <p>View messages in your <a href=" {% url 'message_centre' %}">Message Centre</a></p>
 </div>
 {% endblock %}
