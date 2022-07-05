@@ -1,6 +1,28 @@
 from django import forms
 from .models import UserProfile
 
+from allauth.account.forms import ChangePasswordForm
+
+
+class CustomChangePasswordForm(ChangePasswordForm):
+    def __init__(self, *args, **kwargs):
+        super(CustomChangePasswordForm, self).__init__(*args, **kwargs)
+
+        placeholders = {
+            'oldpassword': 'Enter Current Password',
+            'password1': 'Enter New Password',
+            'password2': 'Confirm New Password',
+        }
+
+        for field in self.fields:
+            if self.fields[field].required:
+                placeholder = f'{placeholders[field]} *'
+            else:
+                placeholder = placeholders[field]
+            self.fields[field].widget.attrs['placeholder'] = placeholder
+            self.fields[field].widget.attrs['class'] = 'stripe-style-input'
+            self.fields[field].label = False
+
 
 class UserProfileForm(forms.ModelForm):
     class Meta:
