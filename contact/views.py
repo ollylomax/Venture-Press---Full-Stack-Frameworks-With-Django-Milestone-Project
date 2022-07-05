@@ -2,6 +2,7 @@ from django.shortcuts import render, redirect, reverse, get_object_or_404
 
 from .forms import ContactForm
 from contact.models import Messages
+from accounts.models import UserProfile
 
 from django.http import HttpResponse
 from django.contrib import messages
@@ -51,12 +52,13 @@ def contact(request):
 
 
 def success(request):
+    user = get_object_or_404(UserProfile, user=request.user)
     messages.success(request, "Your contact request has been received")
-    return render(request, "contact/success.html")
+    return render(request, "contact/success.html", {'user': user})
 
 
 def edit_message(request, message_id):
-    """ Edit an existing print service """
+    """ Edit an existing user message """
     message = get_object_or_404(Messages, pk=message_id)
     if request.method == 'POST':
         form = ContactForm(request.POST, instance=message)
@@ -77,3 +79,10 @@ def edit_message(request, message_id):
 
     return render(request, template, context)
 
+
+def delete_message(request, message_id):
+    """ Delete an existing user message """
+    message = get_object_or_404(Messages, pk=message_id)
+    message.delete()
+    messages.success(request, 'Deletion successful - message removed')
+    return redirect(reverse('message_centre'))
