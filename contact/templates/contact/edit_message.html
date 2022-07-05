@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block page_header %}
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
+    </div>
+</div>
+{% endblock %}
+
+{% block content %}
+<div class="overlay"></div>
+<div class="container">
+    <h1>Edit Message</h1>
+    <p>Editing <strong>{{ message.subject }}</strong> message number <strong>{{ message.id }}</strong> on {{ message.date }}</p>
+    <form method="POST" action="{% url 'edit_message' message.id %}" class="form mb-2">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <div class="form-actions">
+            <button class="btn" type="submit">Confirm Edit</button>
+            <a class="btn" href="{% url 'message_centre' %}">Back to Messages</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
