@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, get_list_or_404, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 from checkout.models import Order
 from .models import UserProfile
@@ -17,6 +18,10 @@ def profile(request):
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
             form.save()
+            user_form = get_object_or_404(User, username=request.user)
+            user_form.first_name = request.POST['first_name']
+            user_form.last_name = request.POST['last_name']
+            user_form.save()
             messages.success(request, 'Update Successful - changes made')
         else:
             messages.error(request, 'Invalid Form - failed to update')
