@@ -1,15 +1,19 @@
 /* Tables */
 
-thead > tr {
+table {
+    margin: 0 auto !important;
+}
+
+.messages thead > tr {
     background-color: #001087;
     color: #fff;
 }
 
-tbody > tr {
+.messages tbody > tr {
     border: 1px solid black;
 }
 
-tbody > tr:hover {
+.messages tbody > tr:hover {
     background-color: #6489fa;
     border: 1px solid black;
     color: #fff;
@@ -26,4 +30,11 @@ tbody > tr:hover {
 .btn:hover {
     color: #fff;
     background-color: #001087;
+}
+
+/* Forms */
+
+form input,
+form select {
+    margin-top: 0.3rem;
 }
