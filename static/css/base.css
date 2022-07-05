@@ -146,7 +146,18 @@ td {
         height: 2px;
     }
 
-    /* Add/Edit Service Form */
+/* Buttons */
+
+.btn {
+    border-radius: 0.3rem;
+    color: #fff;
+    background-color: #001087;
+}
+
+.btn:hover {
+    color: #fff;
+    background-color: #001087;
+}
 
 .btn-file {
     position: relative;
@@ -172,4 +183,8 @@ td {
     background-color: #dc3545;
     border-color: #dc3545;
     border-radius: 0;
+}
+
+.search-input {
+    margin-top: 0 !important;
 }

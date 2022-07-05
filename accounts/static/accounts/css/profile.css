@@ -19,19 +19,6 @@ table {
     color: #fff;
 }
 
-/* Buttons */
-
-.btn {
-    border-radius: 0.3rem;
-    color: #fff;
-    background-color: #001087;
-}
-
-.btn:hover {
-    color: #fff;
-    background-color: #001087;
-}
-
 /* Forms */
 
 form input,
