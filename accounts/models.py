@@ -10,6 +10,8 @@ class UserProfile(models.Model):
     Profile model for profile and order history views
     """
     user = models.OneToOneField(User, on_delete=models.CASCADE)
+    first_name = models.CharField(max_length=80, null=True, blank=True)
+    last_name = models.CharField(max_length=80, null=True, blank=True)
     default_address_line1 = models.CharField(max_length=80, null=True, blank=True)
     default_address_line2 = models.CharField(max_length=80, null=True, blank=True)
     default_city = models.CharField(max_length=40, null=True, blank=True)
