@@ -11,7 +11,9 @@
 
 {% block content %}
 <div class="container">
+    <hr>
     <h2 class="text-center">Venture Press Services</h2>
+    <hr>
     <!-- Indexing Results -->
     <p class="text-center">
         {% if query %}
@@ -33,15 +35,15 @@
                     {% endif %}
                 </a>
                 <div class="card-body">
+                    <a href="{% url 'service_detail' service.id %}" class="stretched-link"></a>
                     <h5 class="card-title">{{ service.name }}</h5>
-                    <p class="card-text">{{ service.description}}</p>
+                    <p class="card-text">{{ service.description|truncatechars:200 }}</p>
+                    <small style="color: #001087;">Read More</small>
                 </div>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">£{{ service.price }} per printed unit</li>
                     <li class="list-group-item">{{ service.paper_size }} (other sizes available)</li>
-                    <li class="list-group-item">{{ service.category.friendly_name }}</li>
-                    <li class="list-group-item">
-                        <a href="{% url 'service_detail' service.id %}" class="card-link">Customise Order</a></li>
+                    <li class="list-group-item">{{ service.category.friendly_name }}</li>  
                 </ul>
                 {% if request.user.is_superuser %}
                 <div class="card-body">

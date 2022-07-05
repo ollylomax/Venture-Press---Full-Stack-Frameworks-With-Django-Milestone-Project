@@ -188,3 +188,37 @@ td {
 .search-input {
     margin-top: 0 !important;
 }
+
+/* Services */
+
+.card-anchor a,
+.card-anchor a:link,.card-anchor,
+.card-anchor a:visited,
+.card-anchor a:hover,
+.card-anchor a:active{
+    text-decoration: none !important;
+    
+}
+
+.card {
+    transition: all .2s ease-in-out;
+    margin: 0.5rem;
+}
+
+.card:hover {
+    transform: scale(1.03);
+}
+
+.card button {
+    position: relative;
+    z-index: 999;
+}
+
+.card p {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    line-clamp: 4; 
+    -webkit-box-orient: vertical;
+}

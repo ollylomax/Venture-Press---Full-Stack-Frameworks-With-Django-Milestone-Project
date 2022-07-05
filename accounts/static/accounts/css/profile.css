@@ -6,6 +6,7 @@ table {
 
 .messages thead > tr {
     background-color: #001087;
+    border: 1px solid black;
     color: #fff;
 }
 
