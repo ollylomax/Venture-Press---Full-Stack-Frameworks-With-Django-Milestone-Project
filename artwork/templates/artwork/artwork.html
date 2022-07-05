@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block add_css %}
+<link rel="stylesheet" href="{% static 'accounts/css/profile.css' %}">
+{% endblock %}
+
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
@@ -14,50 +18,79 @@
 <!-- List of uploaded documents -->
 <div class="overlay"></div>
 <div class="container">
-    <h1>Upload Centre</h1>
-    {% if orders %}
-    <p>Orders requiring artwork listed below.</p>
-    <ul>
-        {% for order in orders %}
-        <li><a href="{{ order }}">{{ order }}</a></li>
-        <!-- Submit form with encoding type for images -->
-        <form action="{% url 'upload_artwork' order.order_number %}" method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form|crispy }}
-            
-            <!-- <input type="select" value="{{ order }}"> -->
-            <p><input type="submit" value="Upload" /></p>
-        </form>
+    <div class="row artwork">
+        <div class="col-12">
+            <hr>
+            <h2>Upload Centre</h2>
+            <hr>
+            {% if orders %}
+            <p>Orders requiring artwork listed below.</p>
 
-        <!-- <form action="{% url 'upload_artwork' order.order_number %}" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <p>{{ form.non_field_errors }}</p>
-        <p>{{ form.upload.label_tag }} {{ form.upload.help_text }}</p>
+            <table class="table table-sm table-borderless">
+                <thead>
+                    <tr>
+                        <th>View Order</th>
+                        <th>Order Date</th>
+                        <th>Artwork Required</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in orders %}
+                    <tr>
+                        <td class="align-middle">
+                            <a href="{% url 'past_order' order.order_number %}"
+                                class="btn">{{ order|truncatechars:15 }}</a>
+                            </a>
+                        </td>
+                        <td class="align-middle">
+                            {{ order.date }}
+                        </td>
+                        <td>
+                            <form action="{% url 'upload_artwork' order.order_number %}" method="post"
+                                enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ form|crispy }}
 
-        <p>
-            {{ form.upload.errors }}
-            {{ form.upload }}
-        </p>
+                                <!-- <input type="select" value="{{ order }}"> -->
+                                <p><input class="btn" type="submit" value="Upload" /></p>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>You have no Orders requiring Artwork at this time. If you would like to amend your artwork, please <a
+                    href="{% url 'contact' %}">contact us</a>.</p>
+            {% endif %}
 
-        <p><input type="submit" value="Upload" /></p>
-    </form> -->
-        
-        {% endfor %}
-        {% else %}
-        <p>You have no Orders requiring Artwork at this time. If you would like to amend your artwork, please <a href="{% url 'contact' %}">contact us</a>.</p>
-        {% endif %}
-    </ul>
+            <div class="row">
+                <div class="col-12">
+                    <hr>
+                    <h2>Previous Uploads</h2>
+                    <hr>
+                    {% if files %}
+                    <p class="text-center">Your previously uploaded artwork files are listed below.</p>
+                    <ul class="list-unstyled text-center">
+                        {% for file in files %}
+                        <li><a href="{{ file.upload.url }}">{{ file.upload.name }}</a></li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p>You have no Previous Uploads.</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
 
-    {% if files %}
-    Your Uploads:
-    <ul>
-        {% for file in files %}
-        <li><a href="{{ file.upload.url }}">{{ file.upload.name }}</a></li>
-        {% endfor %}
-    </ul>
-    {% else %}
-    <p>No files.</p>
-    {% endif %}
-</div>
+        {% endblock %}
 
-{% endblock %}
+        {% block postjs %}
+        {{ block.super }}
+        <script type="text/javascript">
+            $('#new-file').change(function () {
+                var file = $('#new-file')[0].files[0];
+                $('#filename').text(file.name);
+            });
+        </script>
+        {% endblock %}
