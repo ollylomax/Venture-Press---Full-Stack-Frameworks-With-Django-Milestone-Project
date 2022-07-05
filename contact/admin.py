@@ -4,9 +4,11 @@ from .models import Messages
 
 class MessagesAdmin(admin.ModelAdmin):
 
-    fields = ('user', 'first_name', 'last_name', 'email', 'subject', 'message')
+    readonly_fields = ('date',)
 
-    list_display = ('user', 'first_name', 'last_name', 'email', 'subject')
+    fields = ('user', 'date', 'first_name', 'last_name', 'email', 'subject', 'message')
+
+    list_display = ('user', 'date', 'first_name', 'last_name', 'email', 'subject')
 
 
 admin.site.register(Messages, MessagesAdmin)

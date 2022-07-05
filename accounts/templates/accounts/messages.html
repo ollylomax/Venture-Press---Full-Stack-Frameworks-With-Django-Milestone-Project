@@ -31,27 +31,55 @@
                     <table class="table table-sm table-borderless">
                         <thead>
                             <tr>
-                                <th>Message Number</th>
+                                <th>View Message</th>
                                 <th>Date</th>
                                 <th>Subject</th>
                                 <th>Message</th>
+                                <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             {% for message in user_messages %}
                                 <tr>
                                     <td>
-                                        <a href="{% url 'past_message' message.id %}"
-                                        title="{{ message.id }}">
-                                            {{ message.id }}
+                                        <a class="btn" role='button' href="{% url 'past_message' message.id %}">Message: {{ message.id }}</a>
                                         </a>
                                     </td>
-                                    <td>Date</td>
+                                    <td>{{ message.date }}</td>
                                     <td>
                                         {{ message.subject }}
                                         </ul>
                                     </td>
                                     <td>{{ message.message|truncatechars:20 }}</td>
+                                    <td>
+                                        <!-- {{ message.subject }} -->
+                                        {% if message.subject == 'GENERAL' %}
+                                        <small class="ml-3">
+                                            <a class="btn" role='button' href="">Edit Query</a>
+                                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="">
+                                                Delete
+                                            </button>  
+                                        </small>
+                                        {% endif %}
+                                        {% if message.subject == 'QUOTE' %}
+                                        <small class="ml-3">
+                                            <a class="btn" role='button' href="">Edit Quote</a>
+                                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="">
+                                                Delete
+                                            </button>  
+                                        </small>
+                                        {% endif %}
+                                        {% if message.subject == 'COMPLAINT' %}
+                                        <small class="ml-3">
+                                            <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="">
+                                                Resolved
+                                            </button>  
+                                        </small>
+                                        {% endif %}
+                                        {% if message.subject == 'PARTNERS' %}
+                                        <p>Someone will contact your shortly.</p>
+                                        {% endif %}
+                                    </td>
                                 </tr>
                             {% endfor %}
                         </tbody>
