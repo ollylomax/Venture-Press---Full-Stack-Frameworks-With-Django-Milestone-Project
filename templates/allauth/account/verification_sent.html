@@ -1,12 +1,21 @@
 {% extends "account/base.html" %}
+{% load static %}
+
+{% block add_css %}
+<link rel="stylesheet" href="{% static 'accounts/css/profile.css' %}">
+{% endblock %}
 
 {% load i18n %}
 
 {% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
 
 {% block inner %}
-    <h1>{% trans "Verify Your E-mail Address" %}</h1>
+    <hr>
+    <h2>{% trans "Verify Your Email" %}</h2>
+    <hr>
 
-    <p>{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
+    <p>{% blocktrans %}An email has been sent to you with instructions on whow to complete the sign up process.{% endblocktrans %}</p>
+    <p>If you do not receive it within a few minutes, please <a href="{% url 'contact' %}">contact</a> us.</p>
+    <a class="btn float-end mt-2" href="{% url 'home' %}">Home</a>
 
 {% endblock %}
