@@ -13,6 +13,20 @@ from contact.models import Messages
 def profile(request):
     """ Profile page view """
     profile = get_object_or_404(UserProfile, user=request.user)
+
+    template = 'accounts/profile.html'
+
+    context = {
+        'profile': profile,
+    }
+
+    return render(request, template, context)
+
+
+@login_required
+def edit_profile(request):
+    """ Update Profile page view """
+    profile = get_object_or_404(UserProfile, user=request.user)
     
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
@@ -30,7 +44,7 @@ def profile(request):
 
     orders = profile.orders.all()
 
-    template = 'accounts/profile.html'
+    template = 'accounts/edit_profile.html'
     context = {
         'form': form,
         'orders': orders,
@@ -38,6 +52,7 @@ def profile(request):
     }
 
     return render(request, template, context)
+
 
 
 @login_required
