@@ -4,6 +4,11 @@ from .widgets import CustomClearableFileInput
 
 
 class ArtworkUpload(forms.ModelForm):
+    """
+    Form class importing the ArtworkUpload model, hiding user and order fields
+    using widgets and remove label from upload field. Set upload filefield
+    variable to use custom clearable file input widget from imported widgets.
+    """
     class Meta:
         model = Artwork
         widgets = {
@@ -13,13 +18,9 @@ class ArtworkUpload(forms.ModelForm):
         fields = ('user', 'order', 'upload')
     
     def __init__(self, *args, **kwargs):
-        """
-        Add placeholders and classes, remove auto-generated
-        labels and set autofocus on first field
-        """
         super().__init__(*args, **kwargs)
         
         self.fields['upload'].label = False
     
-    upload = forms.FileField(label='Upload Artwork', widget=CustomClearableFileInput)
-    # image = forms.ImageField(label='Image', required=False, widget=CustomClearableFileInput)
+    upload = forms.FileField(
+        label='Upload Artwork', widget=CustomClearableFileInput)
