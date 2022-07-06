@@ -50,7 +50,7 @@
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
                 
-                <a class="text-white navbar-brand" href="{% url 'home' %}"><img class="logo" src="{{ MEDIA_URL}}printing-machine.png" alt="Venture Press Logo">Venture Press</a>
+                <a class="text-white navbar-brand mt-1" href="{% url 'home' %}"><img class="logo" src="{{ MEDIA_URL}}printing-machine.png" alt="Venture Press Logo">Venture Press</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -58,7 +58,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
-                        <form class="mt-1" method="GET" action="{% url 'services' %}">
+                        <form method="GET" action="{% url 'services' %}">
                             <div class="input-group w-100 nav-index">
                                 <input class="search-input form-control border border-black rounded-0" type="text" name="query"
                                     placeholder="Search">

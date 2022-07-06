@@ -203,6 +203,12 @@ td {
     border-radius: 0;
 }
 
+/* Nav Searchbar */
+
+.navbar form {
+    margin-top: 0.8rem;
+}
+
 .search-input {
     margin-top: 0 !important;
 }
