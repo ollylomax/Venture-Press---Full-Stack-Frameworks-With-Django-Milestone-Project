@@ -5,29 +5,47 @@ from allauth.account.forms import ChangePasswordForm, SignupForm, LoginForm
 
 
 class CustomChangePasswordForm(ChangePasswordForm):
+    """
+    Class to update existing allauth password change form by passing it in as
+    an argument. Define custom placeholders for each form field then iterate
+    through the fields making custom modifications.
+    """
     def __init__(self, *args, **kwargs):
         super(CustomChangePasswordForm, self).__init__(*args, **kwargs)
 
+        # Define custom placeholders
         placeholders = {
             'oldpassword': 'Enter Current Password',
             'password1': 'Enter New Password',
             'password2': 'Confirm New Password',
         }
 
+        # Iterate through every field.
         for field in self.fields:
             if self.fields[field].required:
+                # Add an asterisk to placeholder text if field is required.
                 placeholder = f'{placeholders[field]} *'
             else:
+                # Remain unchanged if not required.
                 placeholder = placeholders[field]
+            # Apply new placeholder text.
             self.fields[field].widget.attrs['placeholder'] = placeholder
+            # Apply custom styling to match stripe.
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
+            # Remove all labels.
             self.fields[field].label = False
 
 
 class CustomRegisterForm(SignupForm):
+    """
+    Class to update existing allauth sign up form by passing it in as an
+    argument. Define custom placeholders for each form field, set a desired
+    autofocus then iterate through the fields making custom modifications.
+    """
     def __init__(self, *args, **kwargs):
         super(CustomRegisterForm, self).__init__(*args, **kwargs)
 
+        # Define custom placeholders
         placeholders = {
             'email': 'Enter Email',
             'email2': 'Confirm Email',
@@ -36,49 +54,73 @@ class CustomRegisterForm(SignupForm):
             'password2': 'Confirm Password',
         }
         
+        # Set field as autofocus on page load.
         self.fields['email'].widget.attrs['autofocus'] = True
 
+        # Iterate through every field.
         for field in self.fields:
             if self.fields[field].required:
+                # Add an asterisk to placeholder text if field is required.
                 placeholder = f'{placeholders[field]} *'
             else:
+                # Remain unchanged if not required.
                 placeholder = placeholders[field]
+            # Apply new placeholder text.
             self.fields[field].widget.attrs['placeholder'] = placeholder
+            # Apply custom styling to match stripe.
             self.fields[field].widget.attrs['class'] = 'stripe-style-input'
+            # Remove all labels.
             self.fields[field].label = False
 
 
 class CustomLoginForm(LoginForm):
+    """
+    Class to update existing allauth login form by passing it in as an
+    argument. Define custom placeholders for each form field, then if the
+    field is not checkbox iterate through the fields making custom
+    modifications.
+    """
     def __init__(self, *args, **kwargs):
         super(CustomLoginForm, self).__init__(*args, **kwargs)
 
+        # Define custom placeholders.
         placeholders = {
             'login': 'Enter Username or Email',
             'password': 'Enter Password',
         }
 
+        # Iterate through every field.
         for field in self.fields:
+            # Omit the checkbox field from the nested iteration.
             if field != 'remember':
                 if self.fields[field].required:
+                    # Add an asterisk to placeholder text if field is required.
                     placeholder = f'{placeholders[field]} *'
                 else:
+                    # Remain unchanged if not required.
                     placeholder = placeholders[field]
+                # Apply new placeholder text.
                 self.fields[field].widget.attrs['placeholder'] = placeholder
+                # Apply custom styling to match stripe.
                 self.fields[field].widget.attrs['class'] = 'stripe-style-input'
+                # Remove all labels.
                 self.fields[field].label = False
 
         
 class UserProfileForm(forms.ModelForm):
+    """
+    Form class importing the UserProfile model, excluding user field then
+    add placeholders and style classes, remove all labels and set autofocus on
+    desired field.
+    """
     class Meta:
         model = UserProfile
         exclude = ('user',)
 
     def __init__(self, *args, **kwargs):
-        """
-        Add placeholders and classes, remove auto-generated
-        labels and set autofocus on first field
-        """
         super().__init__(*args, **kwargs)
+
+        # Define custom placeholders.
         placeholders = {
             'first_name': 'First Name',
             'last_name': 'Last Name',
@@ -90,13 +132,22 @@ class UserProfileForm(forms.ModelForm):
             'default_phone_number': 'Phone Number',
         }
 
+        # Set field as autofocus on page load.
         self.fields['first_name'].widget.attrs['autofocus'] = True
+
+        # Iterate through every field.
         for field in self.fields:
             if field != 'default_country':
                 if self.fields[field].required:
+                    # Add an asterisk to placeholder text if field is required.
                     placeholder = f'{placeholders[field]} *'
                 else:
+                    # Remain unchanged if not required.
                     placeholder = placeholders[field]
+                    # Apply new placeholder text.
                 self.fields[field].widget.attrs['placeholder'] = placeholder
-            self.fields[field].widget.attrs['class'] = 'border-black rounded-0 profile-form-input'
+            # Apply custom styling to match stripe.
+            self.fields[field].widget.attrs[
+                'class'] = 'border-black rounded-0 profile-form-input'
+            # Remove all labels.
             self.fields[field].label = False
