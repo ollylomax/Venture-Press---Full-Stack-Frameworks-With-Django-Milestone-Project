@@ -77,7 +77,7 @@ def success(request):
 
 def edit_message(request, message_id):
     """ Edit an existing user message by receiving message id from url path,
-    searching Messages database by primary key and returning the message to a
+    searching Messages model by primary key and returning the message to a
     variable. Instantiate a ContactForm with the variable set above and pass
     both the form and the variable to the template. If request is POST then
     check form for validity and if valid then save.
@@ -113,5 +113,5 @@ def delete_message(request, message_id):
     message = get_object_or_404(Messages, pk=message_id)
     message.delete()
     messages.success(request, 'Deletion successful - message removed')
-    
+
     return redirect(reverse('message_centre'))
