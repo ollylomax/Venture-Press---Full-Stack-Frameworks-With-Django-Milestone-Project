@@ -3,7 +3,10 @@ from django.core.validators import MinLengthValidator
 
 
 class Category(models.Model):
-
+    """
+    Category model with simple name and friendly name fields with friendly name
+    not required. Change category plural for admin view.
+    """
     class Meta:
         verbose_name_plural = 'Categories'
         
@@ -18,6 +21,11 @@ class Category(models.Model):
 
 
 class Service(models.Model):
+    """
+    Service modelincluding foreign key from Category model, basic charfields,
+    text field with a min length validator for description, image field and
+    decimal field and a paper size char field with choices.
+    """
 
     PAPER_SIZE_CHOICES = [
         ('A2', 'A2'),
@@ -30,7 +38,8 @@ class Service(models.Model):
         ('90x60', '90x60'),
     ]
 
-    category = models.ForeignKey('Category', null=True, blank=True, on_delete=models.SET_NULL)
+    category = models.ForeignKey(
+        'Category', null=True, blank=True, on_delete=models.SET_NULL)
     sku = models.CharField(max_length=254, null=True, blank=True)
     name = models.CharField(max_length=254)
     description = models.TextField(validators=[MinLengthValidator(200)])
@@ -42,6 +51,5 @@ class Service(models.Model):
         default='A4',
     )
     
-
     def __str__(self):
         return self.name

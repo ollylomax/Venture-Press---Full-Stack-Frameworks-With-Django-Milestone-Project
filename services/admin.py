@@ -20,6 +20,5 @@ class CategoryAdmin(admin.ModelAdmin):
         'name',
     )
 
-# Register your models here.
 admin.site.register(Category, CategoryAdmin)
 admin.site.register(Service, ServiceAdmin)
