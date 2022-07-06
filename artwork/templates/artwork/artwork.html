@@ -1,12 +1,17 @@
 {% extends "base.html" %}
+
+<!-- Load static files -->
 {% load static %}
 
+<!-- Add corresponding page suffix to base page title -->
 {% block title_suffix %}- Artwork Centre{% endblock %}
 
+<!-- Inject profile css into this template -->
 {% block add_css %}
 <link rel="stylesheet" href="{% static 'accounts/css/profile.css' %}">
 {% endblock %}
 
+<!-- Page header -->
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
@@ -15,19 +20,21 @@
 </div>
 {% endblock %}
 
+<!-- Main content block -->
 {% block content %}
-
-<!-- List of uploaded documents -->
+<!-- Background image overlay -->
 <div class="overlay"></div>
 <div class="container">
     <div class="row artwork">
         <div class="col-12">
+            <!-- Page title -->
             <hr>
             <h2>Upload Centre</h2>
             <hr>
+            <!-- Conditional to check if orders exist from the filter -->
             {% if orders %}
             <p>Orders requiring artwork listed below.</p>
-
+            <!-- Table content -->
             <table class="table table-sm table-borderless">
                 <thead>
                     <tr>
@@ -37,9 +44,11 @@
                     </tr>
                 </thead>
                 <tbody>
+                    <!-- Iterate through filtered orders object -->
                     {% for order in orders %}
                     <tr>
                         <td class="align-middle">
+                            <!-- Button passing order number to view -->
                             <a href="{% url 'past_order' order.order_number %}"
                                 class="btn">{{ order|truncatechars:15 }}</a>
                             </a>
@@ -48,9 +57,12 @@
                             {{ order.date }}
                         </td>
                         <td>
+                            <!-- Form with encoding posting to view and passing order_number -->
                             <form action="{% url 'upload_artwork' order.order_number %}" method="post"
                                 enctype="multipart/form-data">
+                                <!-- Django csrf token -->
                                 {% csrf_token %}
+                                <!-- Form from view rendered as a crispy form -->
                                 {{ form|crispy }}
 
                                 <!-- <input type="select" value="{{ order }}"> -->
@@ -61,34 +73,43 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <!-- If no orders in filtered object -->
             {% else %}
+            <!-- Paragraph including link to contact page -->
             <p>You have no Orders requiring Artwork at this time. If you would like to amend your artwork, please <a
                     href="{% url 'contact' %}">contact us</a>.</p>
             {% endif %}
-
+            <!-- Uploaded files -->
             <div class="row">
                 <div class="col-12">
+                    <!-- Secondary page title -->
                     <hr>
                     <h2>Previous Uploads</h2>
                     <hr>
+                    <!-- If files in filtered object -->
                     {% if files %}
                     <p class="text-center">Your previously uploaded artwork files are listed below.</p>
                     <ul class="list-unstyled text-center">
+                        <!-- Iterate through files object -->
                         {% for file in files %}
+                        <!-- List item with anchor link to uplaoded file -->
                         <li><a href="{{ file.upload.url }}">{{ file.upload.name }}</a></li>
                         {% endfor %}
                     </ul>
+                    <!-- If no files exist in filtered object -->
                     {% else %}
                     <p>You have no Previous Uploads.</p>
                     {% endif %}
                 </div>
             </div>
         </div>
-
         {% endblock %}
 
+        <!-- Inject additional javascript -->
         {% block postjs %}
+        <!-- Add but don't overwrite -->
         {{ block.super }}
+        <!-- Custom script to change layout and styling in clearablefileinput widget -->
         <script type="text/javascript">
             $('#new-file').change(function () {
                 var file = $('#new-file')[0].files[0];
