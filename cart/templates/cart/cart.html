@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col">
                 <hr>
-                <h2 class="mb-4">Your Cart</h2>
+                <h2>Your Cart</h2>
                 <hr>
             </div>
         </div>
@@ -62,21 +62,21 @@
                                     <form class="form update-form" method="POST" action="{% url 'quantity_amend' item.item_id %}">
                                         {% csrf_token %}
                                         <div class="form-group">
-                                            <div class="input-group">
+                                            <div class="input-group justify-content-center">
                                                 <div class="input-group-prepend">
-                                                    <button class="decrement-qty btn btn-sm btn-black rounded-0" 
+                                                    <button class="decrement-qty btn btn-sm" 
                                                         data-item_id="{{ item.item_id }}" id="decrement-qty_{{ item.item_id }}">
                                                         <span>
                                                             <i class="fas fa-minus fa-sm"></i>
                                                         </span>
                                                     </button>
                                                 </div>
-                                                <input class="form-control form-control-sm qty_input" type="number"
-                                                    name="quantity" value="{{ item.quantity }}" min="1" max="99"
+                                                <input class="form-control form-control-sm qty_input text-center" style="max-width: 95px;" type="number"
+                                                    name="quantity" value="{{ item.quantity }}" min="10" readonly
                                                     data-item_id="{{ item.item_id }}"
                                                     id="id_qty_{{ item.item_id }}">
                                                 <div class="input-group-append">
-                                                    <button class="increment-qty btn btn-sm btn-black rounded-0"
+                                                    <button class="increment-qty btn btn-sm"
                                                         data-item_id="{{ item.item_id }}" id="increment-qty_{{ item.item_id }}">
                                                         <span>
                                                             <i class="fas fa-plus fa-sm"></i>
@@ -89,18 +89,17 @@
                                             </div>
                                         </div>
                                     </form>
-                                    <a class="update-link text-info"><small>Update</small></a>
-                                    <a class="remove-item text-danger float-right" id="remove_{{ item.item_id }}"><small>Remove</small></a>
-                                    <button type="button" class="update-link btn btn-sm btn-primary">Update</button>
-                                    <button type="button" class="btn btn-sm btn-danger">Remove</button>
+                                    <a class="update-link btn mt-2"><small>Update</small></a>
+                                    <a class="remove-item btn mt-2" id="remove_{{ item.item_id }}"><small>Remove</small></a>
                                 </td>
                                 <td class="py-3">
                                     <p class="my-0">£{{ item.service.price | calculate_sub:item.quantity }}</p>
                                 </td>
                             </tr>
                         {% endfor %}
-                        <tr>
-                            <td colspan="5" class="pt-5 text-right">
+                    </table>
+                            <div class="float-end">
+                                <div class="text-end">
                                 <h6><strong>Cart Total: £{{ total|floatformat:2 }}</strong></h6>
                                 <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
                                 <h4 class="mt-4"><strong>Amount Due: £{{ grand_total|floatformat:2 }}</strong></h4>
@@ -109,25 +108,22 @@
                                         Spend just <strong>£{{ delivery_dearth }}</strong> more to receive FREE DELIVERY!
                                     </p>
                                     {% endif %}
-                                </td>
-                            </tr>
-                            <tr>
-                                <td colspan="5" class="text-right">
-                                    <a href="{% url 'services' %}" class="btn btn-outline-black rounded-0 btn-lg">
+                                </div>
+       
+                 
+                                    <a href="{% url 'services' %}" class="btn mt-2">
                                         <span class="icon">
                                             <i class="fas fa-chevron-left"></i>
                                         </span>
-                                        <span class="text-uppercase">Back To Services</span>
+                                        <span>Back To Services</span>
                                     </a>
-                                    <a href="{% url 'checkout' %}" class="btn btn-black rounded-0 btn-lg">
-                                        <span class="text-uppercase">Checkout Now</span>
+                                    <a href="{% url 'checkout' %}" class="btn mt-2">
+                                        <span>Checkout Now</span>
                                         <span class="icon">
                                             <i class="fas fa-chevron-right"></i>
                                         </span>
                                     </a>
-                                </td>
-                            </tr>
-                        </table>
+                                </div>
                     </div>
                 {% else %}
                     <p class="mb-5">Nothing in your cart.</p>
