@@ -125,10 +125,18 @@
                                 </div>
                     </div>
                 {% else %}
-                    <p class="mb-5">Nothing in your cart.</p>
-                    <a href="{% url 'services' %}" class="btn">
-                        <span class="text-uppercase">Back to Services</span>
-                    </a>
+                <div class="row">
+                    <div class="col-12 text-center">
+                    <p class="mb-2">Nothing currently in your cart.</p>
+                    
+                            <a href="{% url 'services' %}" class="btn mt-2">
+                                <span class="icon mr-2">
+                                    <i class="fa-solid fa-arrow-rotate-left"></i>
+                                </span>
+                                <span>Back to Print Services</span>
+                            </a>
+                    </div>
+                </div>
                 {% endif %}
             </div>
         </div>
