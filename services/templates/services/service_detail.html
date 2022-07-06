@@ -30,7 +30,7 @@
                 <div class="product-details-container mb-5 mt-md-5">
                     <p class="mb-0">{{ service.name }}</p>
                     <p class="lead mb-0 text-left font-weight-bold">£{{ service.price }} per printed unit</p>
-                    <p class="mt-3">{{ service.description }}</p>
+                    <p class="mt-3" style="overflow-wrap: break-word;">{{ service.description }}</p>
                     <select class="validate" required>
                         <option value="" disabled selected>Choose Paper Size</option>
                         {% for size in service.PAPER_SIZE_CHOICES %}
