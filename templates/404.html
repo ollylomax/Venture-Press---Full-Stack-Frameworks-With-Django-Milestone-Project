@@ -12,17 +12,16 @@
 {% endblock %}
 
 {% block content%}
-    <div class="col-12 text-center">
-        <!-- Kitchen Craft logo sourced from directed images dir -->
-        <img src="">
-    </div>
-    <h1>ERROR 404</h1>
-    <h2>Woops - Youre in the dark room!</h2>
-    <!-- Error message passed through from not_found function -->
-    <p>{{ error }}</p>
-    <p>Click below to get back to go back to the Home Page!</p>
-    <!-- Anchor directing to home page -->
-    <a href="{{ url 'home' }}">Home</a>
+<div class="col-12 text-center">
+    <!-- Venture Press Logo -->
+    <img src="">
+</div>
+<h1>ERROR 404</h1>
+<h2>Woops - Youre in the dark room!</h2>
+<!-- Error message -->
+<p>{{ error }}</p>
+<p>Click below to get back to go back to the Home Page!</p>
+<!-- Anchor directing to home page -->
+<a href="{% url 'home' %}">Home</a>
 
 {% endblock %}
-

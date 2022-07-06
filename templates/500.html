@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title_suffix %}- ERROR 404{% endblock %}
+{% block title_suffix %}- ERROR 500{% endblock %}
 
 {% block page_header %}
 <div class="container header-container">
@@ -13,16 +13,16 @@
 
 {% block content%}
     <div class="col-12 text-center">
-        <!-- Kitchen Craft logo sourced from directed images dir -->
-        <img src="">
+        <!-- Venture Press Logo -->
+        <img src="{{ MEDIA_URL }}/printing-machine.png" alt="Venture Press Logo">
     </div>
-    <h1>ERROR 404</h1>
-    <h2>Woops - Youre in the dark room!</h2>
-    <!-- Error message passed through from not_found function -->
+    <h1>ERROR 500</h1>
+    <h2>Stop Press - Something's not quite right!</h2>
+    <!-- Error message -->
     <p>{{ error }}</p>
     <p>Click below to get back to go back to the Home Page!</p>
     <!-- Anchor directing to home page -->
-    <a href="{{ url 'home' }}">Home</a>
+    <a href="{% url 'home' %}">Home</a>
 
 {% endblock %}
 
