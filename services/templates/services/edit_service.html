@@ -1,8 +1,12 @@
 {% extends "base.html" %}
+
+<!-- Load static files -->
 {% load static %}
 
+<!-- Add corresponding page suffix to base page title -->
 {% block title_suffix %}- Edit Service{% endblock %}
 
+<!-- Page header -->
 {% block page_header %}
     <div class="container header-container">
         <div class="row">
@@ -11,9 +15,12 @@
     </div>
 {% endblock %}
 
+<!-- Main content block -->
 {% block content %}
+<!-- Background image overlay -->
     <div class="overlay"></div>
     <div class="container">
+        <!-- Page title -->
         <div class="row justify-content-center">
             <div class="col-8 col-offset-2">
                 <hr>
@@ -21,10 +28,11 @@
                 <hr>
             </div>
         </div>
-
+        <!-- Form block -->
         <div class="row justify-content-center">
             <div class="col-8 col-offset-2">
                 <form method="POST" action="{% url 'edit_service' service.id %}" class="form mb-2" enctype="multipart/form-data">
+                    <!-- Django csrf token -->
                     {% csrf_token %}
                     <!-- Render all fields as crispy fields except image to remove placeholder -->
                     {% for field in form %}
@@ -35,8 +43,10 @@
                         {% endif %}
                     {% endfor %}
                     <div class="float-end">
-                        <a class="btn mt-2" href="{% url 'services' %}">Back to Print Services</a>
-                        <button class="btn mt-2" type="submit">Confirm Edit</button>
+                        <!-- Back to Print Services button directing to services view -->
+                    <a class="btn mt-2" href="{% url 'services' %}">Back to Print Services</a>
+                    <!-- Confirm Edit button which submits form -->
+                    <button class="btn mt-2" type="submit">Confirm Edit</button>
                     </div>
                 </form>
             </div>            
@@ -44,12 +54,15 @@
     </div>
 {% endblock %}
 
+<!-- Custom javascript injection -->
 {% block postjs %}
-    {{ block.super }}
-    <script type="text/javascript">
-        $('#new-image').change(function() {
-            var file = $('#new-image')[0].files[0];
-            $('#filename').text(file.name);
-        });
-    </script>
+<!-- Add but don't overwrite -->
+{{ block.super }}
+<!-- Custom script to change layout and styling in clearablefileinput widget -->
+<script type="text/javascript">
+    $('#new-image').change(function () {
+        var file = $('#new-image')[0].files[0];
+        $('#filename').text(file.name);
+    });
+</script>
 {% endblock %}

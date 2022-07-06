@@ -1,55 +1,69 @@
 {% extends "base.html" %}
+
+<!-- Load static files -->
 {% load static %}
 
+<!-- Add corresponding page suffix to base page title -->
 {% block title_suffix %}- Add Service{% endblock %}
 
+<!-- Page header -->
 {% block page_header %}
-    <div class="container header-container">
-        <div class="row">
-            <div class="col"></div>
-        </div>
+<div class="container header-container">
+    <div class="row">
+        <div class="col"></div>
     </div>
+</div>
 {% endblock %}
 
+<!-- Main content block -->
 {% block content %}
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-8 col-offset-2">
-                <hr>
-                <h2>Add Print Service</h2>
-                <hr>
-            </div>
-        </div>
-
-        <div class="row justify-content-center">
-            <div class="col-8 col-offset-2">
-                <form method="POST" action="{% url 'add_service' %}" class="form mb-2" enctype="multipart/form-data">
-                    {% csrf_token %}
-                    <!-- Render all fields as crispy fields except image to remove placeholder -->
-                    {% for field in form %}
-                        {% if field.name != 'image' %}
-                            {{ field | as_crispy_field }}
-                        {% else %}
-                            {{ field }}
-                        {% endif %}
-                    {% endfor %}
-                    <div class="float-end">
-                        <a class="btn mt-2" href="{% url 'services' %}">Back to Print Services</a>
-                        <button class="btn mt-2" type="submit">Confirm Addition</button>
-                    </div>
-                </form>
-            </div>            
+<!-- Background image overlay -->
+<div class="overlay"></div>
+<div class="container">
+    <!-- Page title -->
+    <div class="row justify-content-center">
+        <div class="col-8 col-offset-2">
+            <hr>
+            <h2>Add Print Service</h2>
+            <hr>
         </div>
     </div>
+    <!-- Form block -->
+    <div class="row justify-content-center">
+        <div class="col-8 col-offset-2">
+            <!-- Form with encoding posting to add service view -->
+            <form method="POST" action="{% url 'add_service' %}" class="form mb-2" enctype="multipart/form-data">
+                <!-- Django csrf token -->
+                {% csrf_token %}
+                <!-- Render all fields as crispy fields except image to remove placeholder -->
+                {% for field in form %}
+                {% if field.name != 'image' %}
+                {{ field | as_crispy_field }}
+                {% else %}
+                {{ field }}
+                {% endif %}
+                {% endfor %}
+                <div class="float-end">
+                    <!-- Back to Print Services button directing to services view -->
+                    <a class="btn mt-2" href="{% url 'services' %}">Back to Print Services</a>
+                    <!-- Confirm Addition button which submits form -->
+                    <button class="btn mt-2" type="submit">Confirm Addition</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
+<!-- Custom javascript injection -->
 {% block postjs %}
-    {{ block.super }}
-    <script type="text/javascript">
-        $('#new-image').change(function() {
-            var file = $('#new-image')[0].files[0];
-            $('#filename').text(file.name);
-        });
-    </script>
+<!-- Add but don't overwrite -->
+{{ block.super }}
+<!-- Custom script to change layout and styling in clearablefileinput widget -->
+<script type="text/javascript">
+    $('#new-image').change(function () {
+        var file = $('#new-image')[0].files[0];
+        $('#filename').text(file.name);
+    });
+</script>
 {% endblock %}
