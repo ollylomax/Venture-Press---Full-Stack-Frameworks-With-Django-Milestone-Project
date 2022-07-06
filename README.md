@@ -1,6 +1,6 @@
 <h1 align="center">Venture-Press---Full-Stack-Frameworks-With-Django-Milestone-Project (Milestone Project #4)</h1>
 <h1 align="center">Olly Lomax</h1>
-<h2 align="center"><img src=""></h2>
+<h2 align="center"><img src="media/readme/readmeheader.png"></h2>
 
 ![Responsive Visuals]()
 
@@ -25,3 +25,45 @@ View the live project [here](https://venture-press.herokuapp.com/)
 - To provide a website with notification feedback through email for registration, purchases and contact form.
 - To provide a website with admin functionality for adding new print services.
 - To provide a website with superuser functionality for managing backend operations.
+
+### User Stories
+
+- As a user, I want to easily understand the purpose of the site.
+
+- As a user, I want to clearly view the website and content on any device.
+
+- As a user, I want to easily navigate the website so that I can find content quickly.
+
+- As a user, I want to be able to see what print services are available and how much they are.
+
+- As a user, I want to be able to search the website for services I may be interested in.
+
+- As a user, I want to be able to filter the print services by category.
+
+- As a user, I want to be able to customise my chosen service and then add it to my cart.
+
+- As a user, I want to be able to view all services I have added to my cart before deciding whether to proceed to payment.
+
+- As a user, I want to be able to proceed to purchasing the contents of my cart, input my card details and make the purchase.
+
+- As a user, I want to be able to contact the company about any queries or custom quotations I might need.
+
+- As a user, I want to be able to easily return to the website if I encounter a page error.
+
+- As a user, I want to be able to register on the website.
+
+- As a registered user, I want to be able to log in to my account on the website.
+
+- As a registered user, I want to be able to log out of my account on the website.
+
+- As a registered user, I want to be able to view my profile, edit my details and change my password.
+
+- As a registered user, I want to be able to see a list of my order history.
+
+- As an admin user, I want to be able to create, edit and delete print services. 
+
+- As the superuser, I want to be able to create, edit and delete categories and services.
+
+- As the superuser, I want to be able to create, edit and delete user details and emails.
+
+- As the superuser, I want to be able to create, edit and delete orders.
