@@ -1,12 +1,17 @@
 {% extends "base.html" %}
+
+<!-- Load static files -->
 {% load static %}
 
+<!-- Add corresponding page suffix to base page title -->
 {% block title_suffix %}- Edit Profile{% endblock %}
 
+<!-- Inject profile css into this template -->
 {% block add_css %}
 <link rel="stylesheet" href="{% static 'accounts/css/profile.css' %}">
 {% endblock %}
 
+<!-- Page header -->
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
@@ -15,9 +20,12 @@
 </div>
 {% endblock %}
 
+<!-- Main content block -->
 {% block content %}
+<!-- Background image overlay -->
 <div class="overlay"></div>
 <div class="container">
+    <!-- Page title -->
     <div class="row justify-content-center">
         <div class="col-8 col-offset-2">
             <hr>
@@ -25,9 +33,9 @@
             <hr>
         </div>
     </div>
+    <!-- Form block -->
     <div class="row justify-content-center">
         <div class="col-8 col-offset-2">
-
             <form class="mt-3" action="{% url 'edit_profile' %}" method="POST" id="profile-update-form">
                 {% csrf_token %}
                 <p class="text-muted">Personal Information</p>
