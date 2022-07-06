@@ -13,6 +13,17 @@ from django.conf import settings
 
 
 def contact(request):
+    """
+    Contact view where if request is GET then an empty ContactForm is
+    initialised with pre-filled fields if there is a current user session
+    and form is passed to template.
+
+    If request is POST then a ContactForm is initialised from the post
+    request and checked if valid. If valid then contact emails are assigned
+    to corresponding variables and packaged in either a user email or company
+    email. Emails are mass sent with exception handler.
+    """
+
     if request.method == 'GET':
         form = ContactForm()
         if request.user.username:
@@ -52,13 +63,26 @@ def contact(request):
 
 
 def success(request):
+    """
+    Simple success view which gets the current user from session and
+    assigns a variable from the profile found in UserProfile model.
+    Sends a toast success message and renders success template passing
+    the user variable.
+    """
     user = get_object_or_404(UserProfile, user=request.user)
     messages.success(request, "Your contact request has been received")
+
     return render(request, "contact/success.html", {'user': user})
 
 
 def edit_message(request, message_id):
-    """ Edit an existing user message """
+    """ Edit an existing user message by receiving message id from url path,
+    searching Messages database by primary key and returning the message to a
+    variable. Instantiate a ContactForm with the variable set above and pass
+    both the form and the variable to the template. If request is POST then
+    check form for validity and if valid then save.
+    """
+
     message = get_object_or_404(Messages, pk=message_id)
     if request.method == 'POST':
         form = ContactForm(request.POST, instance=message)
@@ -81,8 +105,13 @@ def edit_message(request, message_id):
 
 
 def delete_message(request, message_id):
-    """ Delete an existing user message """
+    """ Delete an existing user message by receiving message id from url path,
+    searching Messages database by primary key and returning the message to a
+    variable. Delete message and send toast success message.
+    """
+
     message = get_object_or_404(Messages, pk=message_id)
     message.delete()
     messages.success(request, 'Deletion successful - message removed')
+    
     return redirect(reverse('message_centre'))

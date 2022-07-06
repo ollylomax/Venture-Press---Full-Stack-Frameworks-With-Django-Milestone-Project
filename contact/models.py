@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-
+# Subjects tuple for subject choices field.
 SUBJECTS = (
     ('GENERAL', 'General'),
     ('QUOTE', 'Quote'),
@@ -12,9 +12,11 @@ SUBJECTS = (
 
 class Messages(models.Model):
     """
-    Contact model for contact and success views
-    """
+    Contact model for contact and success views including foreign key from
+    User model, date time field, charfield with choices from tuple above,
+    standard charfields, email field and textfield for the message content."""
     class Meta:
+        # Change plural in admin
         verbose_name_plural = 'Messages'
 
     user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
