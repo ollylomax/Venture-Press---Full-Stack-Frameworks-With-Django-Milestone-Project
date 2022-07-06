@@ -7,9 +7,9 @@ Your order has been received and the details are attached below:-
 Date: {{ order.date }}
 Order Number: {{ order.order_number }}
 
-Total: ${{ order.order_total }}
-Delivery: ${{ order.delivery_cost }}
-Amount Paid: ${{ order.grand_total }}
+Total: £{{ order.order_total }}
+Delivery: £{{ order.delivery_cost }}
+Amount Paid: £{{ order.grand_total }}
 
 Your order will be sent out the following day and be delivered to:-
 

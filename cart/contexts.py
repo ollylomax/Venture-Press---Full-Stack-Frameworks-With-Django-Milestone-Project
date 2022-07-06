@@ -5,6 +5,12 @@ from services.models import Service
 
 
 def cart_contents(request):
+    """All page view to calculate contents of cart by initialising an empty
+    list variable as well as initial values for cost variables. Get the current
+    cart session then iterate over the contents calculating the total cost and
+    quantity then appending to the empty list. Conditionally check if the cart
+    meets the free delivery requirements and redefine delivery variable if so.
+    Return all the updated variables and the cart items list."""
 
     cart_items = []
     total = 0
