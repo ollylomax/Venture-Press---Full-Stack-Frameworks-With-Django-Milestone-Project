@@ -3,6 +3,10 @@ from .models import Order
 
 
 class OrderForm(forms.ModelForm):
+    """
+    Form class importing the Order model and hiding the has_artwork boolean
+    field using widgets.
+    """
     class Meta:
         model = Order
         widgets = {
@@ -15,8 +19,9 @@ class OrderForm(forms.ModelForm):
 
     def __init__(self, *args, **kwargs):
         """
-        Add placeholders and classes, remove auto-generated
-        labels and set autofocus on first field
+        Set custom placeholders and autofocus to full name. Iterate through all
+        fields excluding the has_artwork boolean, apply placeholders, add
+        custom stripe style classes and remove all labels.
         """
         super().__init__(*args, **kwargs)
         placeholders = {
