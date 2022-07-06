@@ -29,7 +29,7 @@ class main_handler:
         body = render_to_string(
             'checkout/order_confirmation_email/order_confirmation_body.txt',
             {'order': order, 'vp_email': settings.VENTURE_PRESS_EMAIL})
-        
+        # Takes four parameters, email subject, email body, from email and to email.
         send_mail(
             subject,
             body,
@@ -39,7 +39,7 @@ class main_handler:
 
     def generic_handler(self, event):
         """
-        Handler for a undefined webhook event
+        Handler for a undefined webhook event.
         """
         return HttpResponse(
             content=f'Undefined webhook: {event["type"]}',

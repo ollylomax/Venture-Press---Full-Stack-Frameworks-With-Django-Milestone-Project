@@ -14,7 +14,8 @@ class Messages(models.Model):
     """
     Contact model for contact and success views including foreign key from
     User model, date time field, charfield with choices from tuple above,
-    standard charfields, email field and textfield for the message content."""
+    standard charfields, email field and textfield for the message content.
+    """
     class Meta:
         # Change plural in admin
         verbose_name_plural = 'Messages'
