@@ -1,8 +1,12 @@
 {% extends "base.html" %}
+
+<!-- Load static files -->
 {% load static %}
 
+<!-- Add corresponding page suffix to base page title -->
 {% block title_suffix %}- Contact Received{% endblock %}
 
+<!-- Page header -->
 {% block page_header %}
 <div class="container header-container">
     <div class="row">
@@ -11,18 +15,23 @@
 </div>
 {% endblock %}
 
+<!-- Main content block -->
 {% block content %}
+<!-- Background image overlay -->
 <div class="overlay"></div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-8 col-offset-2">
-    <hr>
-    <h2>Successful Contact Request</h2>
-    <hr>
-    <p> Thank you for your message {{ user }}.</p>
-    <p>We have received it and endeavour to get back to you within 2 working days.</p>
-    <p>View messages in your <a href=" {% url 'message_centre' %}">Message Centre</a></p>
-</div>
+            <hr>
+            <!-- Page title -->
+            <h2>Successful Contact Request</h2>
+            <hr>
+            <!-- Contact feedback -->
+            <p> Thank you for your message {{ user }}.</p>
+            <p>We have received it and endeavour to get back to you within 2 working days.</p>
+            <!-- Anchor directing to message centre view -->
+            <p>View messages in your <a href=" {% url 'message_centre' %}">Message Centre</a></p>
+        </div>
     </div>
 </div>
 {% endblock %}
