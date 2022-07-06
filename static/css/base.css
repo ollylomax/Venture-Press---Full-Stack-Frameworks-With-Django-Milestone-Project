@@ -61,6 +61,15 @@ header {
     padding-right: 15px;
 }
 
+.nav-item {
+    transition: all .2s ease-in-out;
+    margin: 0.5rem;
+}
+    
+.nav-item:hover {
+    transform: scale(1.1);
+}
+
 /* Headers */
 
 h2 {
