@@ -187,15 +187,14 @@
         $(".cart").mouseleave(function() {
             setTimeout(function() {
                 $(".cart-container").addClass('d-none')
-            }, 2000);
+            }, 3000);
         });
-        $(".cart-container").mouseover(function() {
+        $(".cart-container").mouseenter(function() {
             $(".cart-container").removeClass('d-none');
         });
-        // $(".cart").mouseleave(function() {
-        //     $(".cart-container").addClass('d-none');
-        // });
-
+        $( "#close" ).click(function() {
+            $(".cart-container").addClass('d-none');
+        });
     </script>
     {% endblock %}
 
