@@ -1,7 +1,11 @@
 <div class="cart" role="alert" aria-live="assertive" aria-atomic="true">
 
     {% if grand_total %}
-    <p class="text-white py-1">Cart ({{ service_count }} impressions)</p>
+    <div class="text-center" style="background-color: black;">
+        <i class="fa-solid fa-angle-down text-white align-top"></i>
+    </div>
+    <div class="cart-inner">
+    <p class="text-white py-1"><strong>Cart</strong> ({{ service_count }} impressions)</p>
     <div>
         {% for item in cart_items %}
         {% if item.service.image %}
@@ -47,5 +51,6 @@
             </div>
             </div>
         </div>
+    </div>
         {% endif %}
     </div>

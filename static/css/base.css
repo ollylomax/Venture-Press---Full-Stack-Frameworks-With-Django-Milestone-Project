@@ -135,7 +135,6 @@ td {
     }
 
     .cart {
-        padding: 1rem;
         display: block;
         position: fixed;
         top: 82px;
@@ -143,6 +142,10 @@ td {
         z-index: 999;
         background-color: #001087 !important;
         overflow: visible;
+    }
+
+    .cart-inner {
+        padding: 1rem;
     }
 
     .message-container {
@@ -164,7 +167,7 @@ td {
         height: 2px;
     }
 
-/* Buttons */
+/* Generic Buttons */
 
 .btn {
     border-radius: 0.3rem;
@@ -177,6 +180,7 @@ td {
     background-color: #001087;
 }
 
+/* Clearable File Input Buttons */
 .btn-file {
     position: relative;
     overflow: hidden;
@@ -201,6 +205,19 @@ td {
     background-color: #dc3545;
     border-color: #dc3545;
     border-radius: 0;
+}
+
+/* Mini Cart Buttons */
+
+.cart .btn {
+    border-radius: 0.3rem;
+    color: #001087;
+    background-color: #fff;
+}
+
+.cart .btn:hover {
+    color: #fff;
+    background-color: #6489fa;
 }
 
 /* Nav Searchbar */
