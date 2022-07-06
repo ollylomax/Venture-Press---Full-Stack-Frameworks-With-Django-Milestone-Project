@@ -124,11 +124,11 @@
                 <!-- Cart totals content -->
                 <div class="float-end">
                     <div class="text-end">
-                        <!-- Rounding to two decimal placed -->
+                        <!-- Rounding to two decimal places -->
                         <h6><strong>Cart Total: £{{ total|floatformat:2 }}</strong></h6>
-                        <!-- Rounding to two decimal placed -->
+                        <!-- Rounding to two decimal places -->
                         <h6>Delivery: £{{ delivery|floatformat:2 }}</h6>
-                        <!-- Rounding to two decimal placed -->
+                        <!-- Rounding to two decimal places -->
                         <h4 class="mt-4"><strong>Amount Due: £{{ grand_total|floatformat:2 }}</strong></h4>
                         <!-- Check if free delivery requirements are matched -->
                         {% if delivery_dearth > 0 %}
