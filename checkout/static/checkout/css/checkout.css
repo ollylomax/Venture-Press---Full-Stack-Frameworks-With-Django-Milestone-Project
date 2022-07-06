@@ -72,3 +72,8 @@ select:invalid,
 select option[value=""] {
     color: #aab7c4 !important;
 }
+
+form input,
+form select {
+    margin-top: 0.3rem;
+}
