@@ -11,6 +11,7 @@ from .models import Order, OrderLineItem
 import time
 import json
 
+
 class main_handler:
     """Handler for stripe webhooks"""
 
@@ -18,7 +19,10 @@ class main_handler:
         self.request = request
 
     def _send_order_confirmation_email(self, order):
-        """ When an order is placed, send an order confirmation email to user's email address """
+        """
+        Function for when an order is placed to send a order confirmation
+        email to user's email address based on txt templates.
+        """
         subject = render_to_string(
             'checkout/order_confirmation_email/order_confirmation_subject.txt',
             {'order': order})

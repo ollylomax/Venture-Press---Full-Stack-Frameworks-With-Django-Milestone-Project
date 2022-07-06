@@ -16,6 +16,10 @@ import json
 
 @require_POST
 def checkout_cache(request):
+    """
+    View for modifying the stripe payment intent by inserting metadata
+    from cart session, user session and save info boolean.
+    """
     try:
         pid = request.POST.get('client_secret').split('_secret')[0]
         stripe.api_key = settings.STRIPE_SECRET_KEY
@@ -31,6 +35,20 @@ def checkout_cache(request):
 
 
 def checkout(request):
+    """
+    Checkout view getting the public and secret stripe keys from settings file.
+    If request is POST then define cart variable from current session if exists
+    else assign an empty dictionary. Create a dictionary of the posted form
+    data and assign to a variable to instantiate an OrderForm. If valid,
+    assign to a variable, update with payment id and cart instance then save.
+    Iterate through the cart items, getting the service by item id and
+    assigning order, service and quantity to OrderLineItem model and save.
+    
+    If request is GET then calculate the stripe total and create payment
+    intent. Instantiate OrderForm with profile information if it exists,
+    else instantiate empty OrderForm. Pass the form and stripe keys to the 
+    template.
+    """
 
     stripe_public_key = settings.STRIPE_PUBLIC_KEY
     stripe_secret_key = settings.STRIPE_SECRET_KEY
@@ -126,7 +144,13 @@ def checkout(request):
 
 def checked_out(request, order_number):
     """
-    Handler for successful checkouts
+    Successful checkout view receiving order_number as parameter, getting the 
+    corresponding object from Order model and assigning to variable. If user
+    is authenticated then assign profile variable by finding UserProfile object
+    by current user session. Link the order to the user profile and save. If
+    the save info box was checked then update profile data if instantiated
+    form is valid. Remove anything if it's left in cart session and pass order
+    variable to template.
     """
     save_info = request.session.get('save_info')
     order = get_object_or_404(Order, order_number=order_number)

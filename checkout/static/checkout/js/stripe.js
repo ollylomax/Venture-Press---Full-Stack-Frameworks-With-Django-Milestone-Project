@@ -1,11 +1,4 @@
-/*
-    Core logic/payment flow for this comes from here:
-    https://stripe.com/docs/payments/accept-a-payment
-
-    CSS from here: 
-    https://stripe.com/docs/stripe-js
-*/
-
+// Define stripe variables
 var stripePublicKey = $('#id_stripe_public_key').text().slice(1, -1);
 var clientSecret = $('#id_client_secret').text().slice(1, -1);
 var stripe = Stripe(stripePublicKey);
@@ -28,6 +21,7 @@ var style = {
 var card = elements.create('card', {
     style: style
 });
+// Mount stripe card input element to html id
 card.mount('#card-element');
 
 // Realtime validation handler for errors in card input
