@@ -3,17 +3,20 @@ from django.contrib import messages
 
 from services.models import Service
 
-# Create your views here.
-
 
 def cart(request):
-    """ Route to return the Index page """
+    """ Simple route to render the cart template """
 
     return render(request, 'cart/cart.html')
 
 
 def add_to_cart(request, item_id):
-    """ View to add quantity of chosen product to cart """
+    """ View to add or update the quantity of chosen services to cart by receiving
+    item id from the template, using it to get the corresponding service and
+    adding or updating their quantity to the cart variable then updating the
+    session. Set a variable for the path from POST and redirect to previous path
+    after adding/updating.
+    """
 
     service = Service.objects.get(pk=item_id)
     quantity = int(request.POST.get('quantity'))
@@ -32,7 +35,12 @@ def add_to_cart(request, item_id):
 
 
 def quantity_amend(request, item_id):
-    """Amend the quantity of the chosen product """
+    """View to amend the quantity of the chosen product by receiving the item
+    id from the template, getting the corresponding servie from the Service
+    object and saving it to a variable. Get the quantity from the POST request
+    and the cart from session if it exists, else create an empty object. Use
+    conditional to update or delete services from the cart then update the cart
+    session and redirect to cart view."""
 
     quantity = int(request.POST.get('quantity'))
     service = Service.objects.get(pk=item_id)
@@ -50,7 +58,11 @@ def quantity_amend(request, item_id):
 
 
 def delete_from_cart(request, item_id):
-    """Remove the item from the shopping bag"""
+    """View to remove the chosen product by receiving the item id from the
+    template, getting the corresponding servie from the Service object and
+    saving it to a variable. Get the cart from session if it exists, else
+    create an empty object. Delete service from the cart then update the cart
+    session."""
 
     cart = request.session.get('cart', {})
     service = Service.objects.get(pk=item_id)
