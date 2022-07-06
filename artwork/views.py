@@ -1,4 +1,10 @@
-from django.shortcuts import render, redirect, get_object_or_404, get_list_or_404, reverse
+from django.shortcuts import (
+    render,
+    redirect,
+    get_object_or_404,
+    reverse,
+)
+
 from django.contrib import messages
 
 from checkout.models import Order
@@ -10,6 +16,15 @@ from .forms import ArtworkUpload
 
 
 def orders_requiring_artwork(request):
+    """
+    Orders requiring artwork view initialising an empty ArtworkUpload form
+    and an empty OrderForm from the respective imported models. Get the current
+    user from the session then filter the Order object by the user and by the
+    has_artwork boolean field and save to orders variable. Set initial field
+    values for the foreign key fields from the Artwork model and filter model
+    by user session to a files variable. Pass both forms, and both variables
+    to the template.
+    """
 
     # Init empty form
     form = ArtworkUpload()
@@ -38,15 +53,25 @@ def orders_requiring_artwork(request):
 
 
 def upload_artwork(request, order_number):
+    """
+    View to upload artwork by receiving order_number from the template, get the 
+    order from the order Object by order_number and save it to a variable used
+    to instantiate an OrderForm. If request is POST then instantiate an
+    ArtworkUpload form with submitted fields and file into a variable and save
+    if valid. Set a variable for an uncommitted save of OrderForm, update the
+    has_artwork field to true and save. Pass both forms and order variable back
+    to the template.
+    """
     order = get_object_or_404(Order, order_number=order_number)
     order_form = OrderForm(instance=order)
 
-     # Handle file upload
+    # Handle file upload
     if request.method == 'POST':
         files = Artwork.objects.all()
         form = ArtworkUpload(request.POST, request.FILES)
         form['order'].initial = order
 
+        # Upload file and change has_artwork boolean in corresponding order
         if form.is_valid():           
             artworks = form.save()
             artworks.order = order
