@@ -33,7 +33,7 @@ header {
 }
 
 .container {
-    padding: 100px 0 125px;
+    padding: 100px 0 150px;
 }
 
 .logo {
@@ -269,6 +269,20 @@ footer {
     -webkit-line-clamp: 4;
     line-clamp: 4;
     -webkit-box-orient: vertical;
+}
+
+/* Service Detail */
+
+.service-detail-info {
+    text-align: center;
+}
+
+.service-detail-info > p {
+    padding: 0 1rem;
+}
+
+.service-detail-quantity {
+    justify-content: center;
 }
 
 /* Media Queries */

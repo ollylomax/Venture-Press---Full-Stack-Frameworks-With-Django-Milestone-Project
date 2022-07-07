@@ -27,7 +27,7 @@
 <div class="container">
     <!-- Page title -->
     <div class="row justify-content-center">
-        <div class="col-8 col-offset-2">
+        <div class="col-10 col-offset-1">
             <hr>
             <h2>My Profile</h2>
             <hr>
@@ -121,11 +121,11 @@
             <!-- Buttons block -->
             <div class="row justify-content-center">
                 <!-- Edit Profile button directing to edit profile view -->
-                <a href="{% url 'edit_profile' %}" class="col-3 btn m-2">Edit Profile</a>
+                <a href="{% url 'edit_profile' %}" class="col-12 col-lg-3 btn m-2">Edit Profile</a>
                 <!-- Change Password button directing to allauth account change password view -->
-                <a href="{% url 'account_change_password' %}" class="col-3 btn m-2">Change Password</a>
+                <a href="{% url 'account_change_password' %}" class="col-12 col-lg-3 btn m-2">Change Password</a>
                 <!-- Logout button directing to allauth account logout view -->
-                <a href="{% url 'account_logout' %}" class="col-3 btn m-2">Log Out</a>
+                <a href="{% url 'account_logout' %}" class="col-12 col-lg-3 btn m-2">Log Out</a>
             </div>
         </div>
     </div>
