@@ -252,21 +252,21 @@
         });
         // Show mini cart on trigger hover
         $(".cart-trigger").mouseover(function () {
-            $(".cart-container").removeClass('d-none');
+            $(".cart-container").addClass('d-lg-block');
         });
         // Hide mini cart after 3 seconds on cart mouseleave
         $(".cart").mouseleave(function () {
             setTimeout(function () {
-                $(".cart-container").addClass('d-none')
+                $(".cart-container").removeClass('d-lg-block')
             }, 3000);
         });
         // Show mini cart on container hover
         $(".cart-container").mouseenter(function () {
-            $(".cart-container").removeClass('d-none');
+            $(".cart-container").addClass('d-lg-block');
         });
         // Hide mini cart on clicking close button
         $("#close").click(function () {
-            $(".cart-container").addClass('d-none');
+            $(".cart-container").removeClass('d-lg-block');
         });
         // Get current year in footer copyright by assigning new date object to year id
         $(document).ready(function () {
@@ -276,18 +276,13 @@
     {% endblock %}
 
     <!-- Footer -->
-    <footer class="container-fluid fixed-bottom d-flex flex-wrap justify-content-between align-items-center py-3">
-        <div class="col-md-4 d-flex align-items-center">
-            <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
-                <svg class="bi" width="30" height="24">
-                    <use xlink:href="#bootstrap"></use>
-                </svg>
-            </a>
+    <footer class="container-fluid fixed-bottom d-flex flex-wrap justify-content-between py-3">
+        <div class="col-12 col-lg-4 d-flex justify-content-center">
             <!-- Copywright span with innerHTML current year injected from javascript by id -->
-            <span class="text-white">© <span id="year"></span> Venture Press All Rights Reserved</span>
+            <span class="text-white text-center">© <span id="year"></span> Venture Press All Rights Reserved</span>
         </div>
 
-        <ul class="nav col-md-4 justify-content-center list-unstyled d-flex">
+        <ul class="nav col-12 col-lg-4 justify-content-center list-unstyled d-flex">
             <li class="social">
                 <a href="https://twitter.com" target="_blank" rel="noopener" aria-label="Twitter link">
                     <i class="fa-brands fa-twitter"></i>

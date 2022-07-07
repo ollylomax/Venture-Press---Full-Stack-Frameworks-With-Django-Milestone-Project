@@ -174,7 +174,7 @@ td {
 
 footer {
     background-color: #001087 !important;
-    height: 72px;
+    height: 130px;
     border-top: 10px solid black;
 }
 
@@ -277,7 +277,7 @@ footer {
     .hero-wrapper {
         background-color: #001087a6;
         color: #fff;
-        margin: 1rem;
+        margin: 0 1rem 0.7rem;
         padding: 1rem;
         border-radius: 0.5rem;
     }
@@ -323,5 +323,13 @@ footer {
 
     .hero .btn {
         margin-left: 1rem;
+    }
+
+    /* Footer */
+
+    footer {
+        background-color: #001087 !important;
+        height: 72px;
+        border-top: 10px solid black;
     }
 }
