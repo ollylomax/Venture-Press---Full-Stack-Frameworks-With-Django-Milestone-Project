@@ -67,3 +67,30 @@ View the live project [here](https://venture-press.herokuapp.com/)
 - As the superuser, I want to be able to create, edit and delete user details and emails.
 
 - As the superuser, I want to be able to create, edit and delete orders.
+
+## UX SCOPE
+
+- ### Planned Features
+
+    -   Creating and storing User, Category, Service, Cart and Order information inside a PostgresSQL database.
+    -   Adopting UX Design Philosophy.
+    -   Navigation links on all pages.
+    -   Cart info on all pages.								
+    -   Website title and description clearly stating intended purpose.			
+    -   CRUD Functionality.							
+    -   Login/Logout Functionality.	
+    -   Home page with introduction, hero image and a set of example services on offer.
+    -   Profile page viewable and editable by registered users.
+    -   Order history page viewable by registered users.
+    -   Change password page, separate from edit profile page, for users to securely change their password with validation.
+    -   Print services page viewable, searchable and filterable by all users.
+    -   Add/Edit Service pages for registered users to add or edit print services.
+    -   Service detail pages with images, descriptions and prices viewable and purchasable by all users.
+    -   Cart page with total amount of order and a list of services and their respective images, quantities and details that a user has added.
+    -   Mini cart pop-up when users scroll over their cart at top right of nav menu displaying a reduced version of the same page above.
+    -   Checkout page with delivery information form and stripe card input for users to process their orders.
+    -   Order confirmation page showing full details of the processed order and all line items.
+    -   Toast notifications for many site actions including adding items to cart, processing orders and submitting contact form.
+    -   Email notifications when registering, confirming email, submitting contact form requests and processing orders.
+    -   Map access to full backend functionality packaged with Django.
+    -   404 and 500 error pages caught Django error handling to direct user back to website.
