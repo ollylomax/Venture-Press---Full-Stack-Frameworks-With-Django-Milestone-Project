@@ -1,20 +1,28 @@
 {% extends "base.html" %}
+
+<!-- Load static files -->
 {% load static %}
 
+<!-- Add corresponding page suffix to base page title -->
 {% block title_suffix %}- Home{% endblock %}
 
+<!-- Page header -->
 {% block content %}
     <div class="container h-100">
         <div class="row h-100">
             <div class="col-7 col-md-6 my-auto">
+                <!-- Hero image heading -->
                 <h1 class="display-4 text-black">
                     Excellence In Print
                 </h1>
+                <!-- Hero image text -->
                 <p>With over 50 years in the industry, our standards are high and our services are refined and fast.</p>
                 <p>Check out the services we offer to buy online, and if you can't find what you're looking for then feel free to contact us for bespoke jobs.</p>
                 <div class="my-5">
                     <h4>
+                        <!-- Print Services button directing to services view -->
                         <a href="{% url 'services' %}" class="btn btn-lg">Print Services</a>
+                        <!-- Contact Us button directing to contact view -->
                         <a href="{% url 'contact' %}" class="btn btn-lg">Contact Us</a>
                     </h4>
                 </div>
