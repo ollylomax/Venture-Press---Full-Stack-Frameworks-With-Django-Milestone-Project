@@ -9,12 +9,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Custom Meta -->
     <meta name="description"
         content="Venture Press is a leading print supplier based in the UK offering a wide range of printing services on paper and textiles">
     <meta name="keywords" content="print, printing, paper, textiles, 4-color, digital, lithographic, business cards">
     <meta name="author" content="Olly Lomax">
     {% endblock %}
 
+    <!-- Bootstrap frameworks stylesheet -->
     {% block corecss %}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
@@ -22,21 +24,27 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
         integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" type="text/css" />
+    <!-- Project level style sheet -->
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     {% endblock %}
 
+    <!-- Extra css block to inject from templates -->
     {% block add_css %}
     {% endblock %}
 
     {% block corejs %}
+    <!-- jQuery import -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+
+    <!-- Boostrap javascript imports -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
         integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous">
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
         integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy" crossorigin="anonymous">
     </script>
+
     <!-- Stripe -->
     <script src="https://js.stripe.com/v3/"></script>
     {% endblock %}
@@ -48,6 +56,7 @@
     <link rel="manifest" href="{{ MEDIA_URL }}favicon/site.webmanifest">
     <!-- favicon links end -->
 
+    <!-- Main page title with suffix block to inject from inherited templates -->
     <title>Venture Press {% block title_suffix %}{% endblock %}</title>
 </head>
 
@@ -56,8 +65,10 @@
 
         <nav class="navbar navbar-expand-lg bg-light">
             <div class="container-fluid">
-                
-                <a class="text-white navbar-brand mt-1" href="{% url 'home' %}"><img class="logo" src="{{ MEDIA_URL}}printing-machine.png" alt="Venture Press Logo">Venture Press</a>
+                <!-- Logo and Logo text -->
+                <a class="text-white navbar-brand mt-1" href="{% url 'home' %}"><img class="logo"
+                        src="{{ MEDIA_URL}}printing-machine.png" alt="Venture Press Logo">Venture Press</a>
+                <!-- Mobile burger toggler -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -65,12 +76,16 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
+                        <!-- Search query form directing to services view -->
                         <form method="GET" action="{% url 'services' %}">
                             <div class="input-group w-100 nav-index">
-                                <input class="search-input form-control border border-black rounded-0" type="text" name="query"
-                                    placeholder="Search">
+                                <!-- Search input field with placeholder -->
+                                <input class="search-input form-control border border-black rounded-0" type="text"
+                                    name="query" placeholder="Search">
                                 <div class="input-group-append">
-                                    <button class="form-control btn btn-black border border-black rounded-0" type="submit">
+                                    <!-- Search button which submits the form -->
+                                    <button class="form-control btn btn-black border border-black rounded-0"
+                                        type="submit">
                                         <span class="icon text-white">
                                             <i class="fas fa-search"></i>
                                         </span>
@@ -78,67 +93,103 @@
                                 </div>
                             </div>
                         </form>
+                        <!-- Home nav link and icon -->
                         <li class="nav-item">
-                                <div class="text-center text-white"><i class="fa-solid fa-house-crack"></i></div>
+                            <div class="text-center text-white"><i class="fa-solid fa-house-crack"></i></div>
+                            <!-- Home button directing to home view -->
                             <a class="text-white nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                         </li>
+                        <!-- Print Services nav dropdown link and icon -->
                         <li class="nav-item dropdown">
-                                <div class="text-center text-white"><i class="dd-icon fa-solid fa-scroll"></i></div>
-                            <a class="text-white nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="text-center text-white"><i class="dd-icon fa-solid fa-scroll"></i></div>
+                            <a class="text-white nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Print Services
                             </a>
+                            <!-- Unordered list of dropdown menu choices -->
                             <ul class="dropdown-menu text-white" aria-labelledby="navbarDropdownMenuLink">
-                                <li><a class="dropdown-item" href="{% url 'services' %}?category=stationery">Stationery</a></li>
-                                <li><a class="dropdown-item" href="{% url 'services' %}?category=advertising">Advertising</a></li>
-                                <li><a class="dropdown-item" href="{% url 'services' %}?category=textiles">Textiles</a></li>
+                                <!-- Stationery link directing to services view with category query -->
+                                <li><a class="dropdown-item"
+                                        href="{% url 'services' %}?category=stationery">Stationery</a></li>
+                                <!-- Advertising link directing to services view with category query -->
+                                <li><a class="dropdown-item"
+                                        href="{% url 'services' %}?category=advertising">Advertising</a></li>
+                                <!-- Textiles link directing to services view with category query -->
+                                <li><a class="dropdown-item" href="{% url 'services' %}?category=textiles">Textiles</a>
+                                </li>
+                                <!-- All Services link directing to services view -->
                                 <li><a class="dropdown-item" href="{% url 'services' %}">All Services</a></li>
                             </ul>
                         </li>
+                        <!-- Contact nav link and icon -->
                         <li class="nav-item">
                             <div class="text-center text-white"><i class="fa-solid fa-marker"></i></div>
+                            <!-- Contact button directing to contact view -->
                             <a class="text-white nav-link" href="{% url 'contact' %}">Contact</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">
+                        <!-- Conditional to check if user session exists -->
                         {% if request.user.is_authenticated %}
+                        <!-- Account(username) nav dropdown link and icon -->
                         <li class="nav-item dropdown">
-                                <div class="text-center text-white"><i class="dd-icon fa-solid fa-user"></i></div>
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="text-center text-white"><i class="dd-icon fa-solid fa-user"></i></div>
+                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
+                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ request.user }}
                             </a>
+                            <!-- Unordered list of dropdown menu choices -->
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                                <!-- Profile link directing to profile view -->
                                 <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
+                                <!-- Order History link directing to order history view -->
                                 <li><a class="dropdown-item" href="{% url 'order_history' %}">Order History</a></li>
+                                <!-- Message Centre link directing to message centre view -->
                                 <li><a class="dropdown-item" href="{% url 'message_centre' %}">Message Centre</a></li>
-                                <li><a class="dropdown-item" href="{% url 'orders_requiring_artwork' %}">Upload Artwork</a></li>
+                                <!-- Upload Artwork link directing to orders requiring artwork view -->
+                                <li><a class="dropdown-item" href="{% url 'orders_requiring_artwork' %}">Upload
+                                        Artwork</a></li>
+                                <!-- Conditional to check if user status is superuser -->
                                 {% if request.user.is_superuser %}
+                                <!-- Add Print Service link directing to add service view -->
                                 <li><a class="dropdown-item" href="{% url 'add_service' %}">Add Print Service</a></li>
                                 {% endif %}
-                                <li><a class="dropdown-item" href="{% url 'account_change_password' %}">Change Password</a></li>
+                                <!-- Change Password link directing to account change password view -->
+                                <li><a class="dropdown-item" href="{% url 'account_change_password' %}">Change
+                                        Password</a></li>
+                                <!-- Logout link directing to account logout view -->
                                 <li><a class="dropdown-item" href="{% url 'account_logout' %}">Logout</a></li>
                             </ul>
                         </li>
+                        <!-- If no user session exists -->
                         {% else %}
+                        <!-- Login nav link and icon -->
                         <li class="nav-item">
                             <div class="text-center text-white"><i class="fa-solid fa-key"></i></div>
+                            <!-- Login button directing to account login view -->
                             <a class="text-white nav-link" href="{% url 'account_login' %}">Login</a>
                         </li>
+                        <!-- Register nav link and icon -->
                         <li class="nav-item">
                             <div class="text-center text-white"><i class="fa-solid fa-key"></i></div>
+                            <!-- Register link directing to account signup view -->
                             <a class="text-white nav-link" href="{% url 'account_signup' %}">Register</a>
                         </li>
                         {% endif %}
                     </ul>
+                    <!-- Cart link and icon -->
                     <div class="list-inline-item">
+                        <!-- Cart button directing to cart view and targetted by custom javascript to initiate mini cart -->
                         <a class="cart-trigger {% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
                             href="{% url 'cart' %}">
                             <div class="text-center text-white">
                                 <div><i class="fa-solid fa-cart-flatbed"></i></div>
                                 <p class="my-0">
+                                    <!-- Conditional to check if grand total exists (cart has services) -->
                                     {% if grand_total %}
+                                    <!-- Round to two decimal places -->
                                     £{{ grand_total|floatformat:2 }}
+                                    <!-- If no grand total (nothing in cart) -->
                                     {% else %}
                                     £0.00
                                     {% endif %}
@@ -151,29 +202,39 @@
         </nav>
 
     </header>
-    
+
+    <!-- Mini cart includes hidden by default -->
     <div class="cart-container d-none">
-    {% if grand_total %}
+        <!-- Conditional to check if grand total (cart has items) -->
+        {% if grand_total %}
+        <!-- Include mini cart template -->
         {% include 'includes/mini-cart.html' %}
-    {% endif %}
+        {% endif %}
     </div>
-    
+
+    <!-- Conditional to check if messages for toast includes -->
     {% if messages %}
-        <div class="message-container">
-            {% for message in messages %}
-                {% with message.level as level %}
-                    {% if level == 40 %}
-                        {% include 'includes/toasts/toast_error.html' %}
-                    {% elif level == 30 %}
-                        {% include 'includes/toasts/toast_warning.html' %}
-                    {% elif level == 25 %}
-                        {% include 'includes/toasts/toast_success.html' %}
-                    {% else %}
-                        {% include 'includes/toasts/toast_info.html' %}
-                    {% endif %}
-                {% endwith %}
-            {% endfor %}
-        </div>
+    <div class="message-container">
+        <!-- Iterate over messages -->
+        {% for message in messages %}
+        <!-- Use bultin message levels to determine which toast to display -->
+        {% with message.level as level %}
+        <!-- Conditional to check level -->
+        {% if level == 40 %}
+        {% include 'includes/toasts/toast_error.html' %}
+        <!-- Conditional to check level -->
+        {% elif level == 30 %}
+        {% include 'includes/toasts/toast_warning.html' %}
+        <!-- Conditional to check level -->
+        {% elif level == 25 %}
+        {% include 'includes/toasts/toast_success.html' %}
+        <!-- If none of above levels -->
+        {% else %}
+        {% include 'includes/toasts/toast_info.html' %}
+        {% endif %}
+        {% endwith %}
+        {% endfor %}
+    </div>
     {% endif %}
 
     {% block header %}
@@ -182,39 +243,48 @@
     {% block content %}
     {% endblock %}
 
+    <!-- Custom javascript injection -->
     {% block postjs %}
     <script>
-        $(document).ready(function() {
+        // Initialise toast messages
+        $(document).ready(function () {
             $(".toast").toast('show');
         });
-
-        $(".cart-trigger").mouseover(function() {
+        // Show mini cart on trigger hover
+        $(".cart-trigger").mouseover(function () {
             $(".cart-container").removeClass('d-none');
         });
-        $(".cart").mouseleave(function() {
-            setTimeout(function() {
+        // Hide mini cart after 3 seconds on cart mouseleave
+        $(".cart").mouseleave(function () {
+            setTimeout(function () {
                 $(".cart-container").addClass('d-none')
             }, 3000);
         });
-        $(".cart-container").mouseenter(function() {
+        // Show mini cart on container hover
+        $(".cart-container").mouseenter(function () {
             $(".cart-container").removeClass('d-none');
         });
-        $( "#close" ).click(function() {
+        // Hide mini cart on clicking close button
+        $("#close").click(function () {
             $(".cart-container").addClass('d-none');
+        });
+        // Get current year in footer copyright by assigning new date object to year id
+        $(document).ready(function () {
+            document.getElementById("year").innerHTML = new Date().getFullYear();
         });
     </script>
     {% endblock %}
 
     <!-- Footer -->
-    <footer
-        class="container-fluid fixed-bottom d-flex flex-wrap justify-content-between align-items-center py-3">
+    <footer class="container-fluid fixed-bottom d-flex flex-wrap justify-content-between align-items-center py-3">
         <div class="col-md-4 d-flex align-items-center">
             <a href="/" class="mb-3 me-2 mb-md-0 text-muted text-decoration-none lh-1">
                 <svg class="bi" width="30" height="24">
                     <use xlink:href="#bootstrap"></use>
                 </svg>
             </a>
-            <span class="text-white">© 2022 Venture Press All Rights Reserved</span>
+            <!-- Copywright span with innerHTML current year injected from javascript by id -->
+            <span class="text-white">© <span id="year"></span> Venture Press All Rights Reserved</span>
         </div>
 
         <ul class="nav col-md-4 justify-content-center list-unstyled d-flex">
@@ -249,7 +319,7 @@
             </li>
         </ul>
     </footer>
-    
+
 </body>
 
 </html>

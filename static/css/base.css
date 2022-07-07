@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Odibee+Sans&family=Roboto:wght@100;300;400;500;700;900&display=swap');
 
+/* Major */
+
 html {
     height: 100%;
 }
@@ -13,16 +15,16 @@ body {
 }
 
 .overlay {
-	height: 100%;
-	width: 100%;
-	top: 0;
-	left: 0;
-	position: fixed;
-	background: url('/media/overlay-image.jpg') no-repeat center center fixed;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    position: fixed;
+    background: url('/media/overlay-image.jpg') no-repeat center center fixed;
     background-size: cover;
     height: 100vh;
     color: #555;
-	z-index: -1;
+    z-index: -1;
 }
 
 header {
@@ -30,9 +32,15 @@ header {
     border-bottom: 10px solid black;
 }
 
+.container {
+    padding: 100px 0;
+}
+
 .logo {
     margin-right: 1rem;
 }
+
+/* Navigation */
 
 .navbar {
     background-color: #001087 !important;
@@ -65,7 +73,7 @@ header {
     transition: all .2s ease-in-out;
     margin: 0.5rem;
 }
-    
+
 .nav-item:hover {
     transform: scale(1.1);
 }
@@ -111,66 +119,7 @@ td {
     text-align: center;
 }
 
-.container {
-        padding: 100px 0;
-    }
-
-    .btt-button {
-        border: 0 !important;
-        margin: 0 auto;
-        position: fixed;
-        height: 20px;
-        width: 100%;
-        bottom: 70px;
-        left:0px;
-        z-index: 999;
-        background-color: black;
-    }
-    
-    .btt-link {
-        cursor: pointer;
-    }
-
-    footer {
-        background-color: #001087 !important;
-        height: 72px;
-        border-top: 10px solid black;
-    }
-
-    .cart {
-        display: block;
-        position: fixed;
-        top: 82px;
-        right: 0px;
-        z-index: 999;
-        background-color: #001087 !important;
-        overflow: visible;
-    }
-
-    .cart-inner {
-        padding: 1rem;
-    }
-
-    .message-container {
-        position: fixed;
-        bottom: 85px;
-        right: 15px;
-        z-index: 999;
-    }
-
-    .toast-header {
-        background-color: #001087 !important;
-    }
-
-    .custom-toast {
-        overflow: visible;
-    }
-    
-    .toast-capper {
-        height: 2px;
-    }
-
-/* Generic Buttons */
+/* Buttons */
 
 .btn {
     border-radius: 0.3rem;
@@ -183,7 +132,6 @@ td {
     background-color: #001087;
 }
 
-/* Clearable File Input Buttons */
 .btn-file {
     position: relative;
     overflow: hidden;
@@ -199,18 +147,21 @@ td {
     cursor: pointer;
 }
 
-.custom-checkbox .custom-control-label::before {
-    border-radius: 0;
-    border-color: #dc3545;
+.btt-button {
+    border: 0 !important;
+    margin: 0 auto;
+    position: fixed;
+    height: 20px;
+    width: 100%;
+    bottom: 70px;
+    left: 0px;
+    z-index: 999;
+    background-color: black;
 }
 
-.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-    background-color: #dc3545;
-    border-color: #dc3545;
-    border-radius: 0;
+.btt-link {
+    cursor: pointer;
 }
-
-/* Mini Cart Buttons */
 
 .cart .btn {
     border-radius: 0.3rem;
@@ -223,6 +174,64 @@ td {
     background-color: #6489fa;
 }
 
+/* Footer */
+
+footer {
+    background-color: #001087 !important;
+    height: 72px;
+    border-top: 10px solid black;
+}
+
+/* Mini cart */
+
+.cart {
+    display: block;
+    position: fixed;
+    top: 82px;
+    right: 0px;
+    z-index: 999;
+    background-color: #001087 !important;
+    overflow: visible;
+}
+
+.cart-inner {
+    padding: 1rem;
+}
+
+/* Toasts */
+
+.message-container {
+    position: fixed;
+    bottom: 85px;
+    right: 15px;
+    z-index: 999;
+}
+
+.toast-header {
+    background-color: #001087 !important;
+}
+
+.custom-toast {
+    overflow: visible;
+}
+
+.toast-capper {
+    height: 2px;
+}
+
+/* Checkboxes */
+
+.custom-checkbox .custom-control-label::before {
+    border-radius: 0;
+    border-color: #dc3545;
+}
+
+.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    border-radius: 0;
+}
+
 /* Nav Searchbar */
 
 .navbar form {
@@ -233,16 +242,7 @@ td {
     margin-top: 0 !important;
 }
 
-/* Services */
-
-.card-anchor a,
-.card-anchor a:link,.card-anchor,
-.card-anchor a:visited,
-.card-anchor a:hover,
-.card-anchor a:active{
-    text-decoration: none !important;
-    
-}
+/* Cards */
 
 .card {
     transition: all .2s ease-in-out;
@@ -263,6 +263,6 @@ td {
     text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 4;
-    line-clamp: 4; 
+    line-clamp: 4;
     -webkit-box-orient: vertical;
 }
