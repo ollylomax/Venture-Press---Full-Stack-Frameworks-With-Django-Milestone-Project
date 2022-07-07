@@ -60,6 +60,7 @@ def service_detail(request, service_id):
 
     return render(request, 'services/service_detail.html', context)
 
+
 # Require session decorator from django decorators.
 @login_required
 # Require superuser decorator from my custom decorators.

@@ -4,6 +4,7 @@ from .forms import ContactForm
 from contact.models import Messages
 from accounts.models import UserProfile
 
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse
 from django.contrib import messages
 from django.template.loader import render_to_string
@@ -75,6 +76,8 @@ def success(request):
     return render(request, "contact/success.html", {'user': user})
 
 
+# Require session decorator from django decorators.
+@login_required()
 def edit_message(request, message_id):
     """ Edit an existing user message by receiving message id from url path,
     searching Messages model by primary key and returning the message to a
@@ -104,6 +107,8 @@ def edit_message(request, message_id):
     return render(request, template, context)
 
 
+# Require session decorator from django decorators.
+@login_required()
 def delete_message(request, message_id):
     """ Delete an existing user message by receiving message id from url path,
     searching Messages database by primary key and returning the message to a

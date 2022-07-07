@@ -6,6 +6,7 @@ from django.shortcuts import (
 )
 
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
 
 from checkout.models import Order
 from checkout.forms import OrderForm
@@ -15,6 +16,8 @@ from .models import Artwork
 from .forms import ArtworkUpload
 
 
+# Require session decorator from django decorators.
+@login_required
 def orders_requiring_artwork(request):
     """
     Orders requiring artwork view initialising an empty ArtworkUpload form
@@ -52,6 +55,8 @@ def orders_requiring_artwork(request):
     return render(request, "artwork/artwork.html", context)
 
 
+# Require session decorator from django decorators.
+@login_required
 def upload_artwork(request, order_number):
     """
     View to upload artwork by receiving order_number from the template, get the 
