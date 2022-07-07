@@ -2,7 +2,7 @@
 <h1 align="center">Olly Lomax</h1>
 <h2 align="center"><img src="media/readme/readmeheader.png"></h2>
 
-![Responsive Visuals]()
+![Responsive Visuals](media/readme/am-i-responsive.png)
 
 # Venture Press Website
 
@@ -847,13 +847,13 @@ The live project is deployed [here](https://venture-press.herokuapp.com/).
 
 Test results can be found below.
 
- - Link directly to the Google Sheet [here]().
+ - Link directly to the Google Sheet [here](https://docs.google.com/spreadsheets/d/19QKG2UDOJREVHE7_k47eb-r-S2i-CKOldfp3_QO0AsA).
 
- - Downloadable .pdf format [here]().
+ - Downloadable .pdf format [here](media/readme/test-case-scenarios.pdf).
 
- - Downloadable .xlsx format [here]().
+ - Downloadable .xlsx format [here](media/readme/test-case-scenarios.xlsx).
 
-![Testing]()
+![Testing](media/readme/test-case-scenarios.png)
 
 ## Test Fails and Resolutions
 
@@ -956,51 +956,97 @@ Forks are used to either propose changes to other projects or to use as a starti
 
 - ### References
     https://stackoverflow.com/questions/36515187/django-get-object-or-404-or-filter-exists
+
     https://stackoverflow.com/questions/38388423/what-does-on-delete-do-on-django-models
+    
     https://stackoverflow.com/questions/43267339/is-there-a-way-to-undo-a-migration-on-django-and-uncheck-it-from-the-list-of-sho
+
     https://stackoverflow.com/questions/4271686/model-object-has-no-attribute-save
+
     https://stackoverflow.com/questions/18786939/could-not-be-changed-because-the-data-didnt-validate-django
+
     https://stackoverflow.com/questions/64686380/why-is-my-django-form-not-valid-cant-get-the-post-request-to-update-database
+
     https://stackoverflow.com/questions/8389880/django-select-option-in-template
+
     https://stackoverflow.com/questions/63586714/how-can-you-dynamically-set-initial-value-of-form-select-field-at-the-time-of-re
+
     https://stackoverflow.com/questions/27732772/how-to-access-initial-values-of-form-fields-in-a-loop-in-django-templates
+
     https://stackoverflow.com/questions/43959790/how-do-i-include-the-id-field-in-a-django-form
+
     https://stackoverflow.com/questions/28994963/how-to-assign-a-value-to-a-django-form-field-in-the-template
+
     https://docs.djangoproject.com/en/4.0/ref/models/fields/
+
     https://stackoverflow.com/questions/26312219/operationalerror-no-such-column-django
+
     https://stackoverflow.com/questions/68564615/how-can-i-display-my-product-variations-separately-in-the-shopping-cart-template
+
     https://inloop.github.io/sqlite-viewer/
+
     https://temp-mail.org/en
+
     https://heroku-data-explorer.herokuapp.com/#/
+    
     https://stackoverflow.com/questions/16181188/django-doesnotexist
+
     https://stackoverflow.com/questions/3090302/how-do-i-get-the-object-if-it-exists-or-none-if-it-does-not-exist-in-django
+
     https://stackoverflow.com/questions/6862250/change-a-django-form-field-to-a-hidden-field
+
     https://stackoverflow.com/questions/324477/in-a-django-form-how-do-i-make-a-field-readonly-or-disabled-so-that-it-cannot
+
     https://docs.djangoproject.com/en/4.0/ref/models/instances/
+
     https://docs.djangoproject.com/en/dev/ref/models/fields/#django.db.models.FileField.upload_to
+
     https://stackoverflow.com/questions/68179104/django-how-to-change-where-uploaded-file-is-saved
+    
     https://stackoverflow.com/questions/41314403/django-form-not-passing-is-valid-test
+
     https://stackoverflow.com/questions/2712682/how-to-select-a-record-and-update-it-with-a-single-queryset-in-django
+
     https://stackoverflow.com/questions/48799005/how-to-instantiate-a-django-modelform-with-pre-filled-required-fields
+    
     https://docs.djangoproject.com/en/4.0/topics/forms/
+
     https://stackoverflow.com/questions/5516437/django-form-has-no-errors-but-form-is-valid-doesnt-validate
+
     https://stackoverflow.com/questions/58030866/django-crispy-forms-set-css-for-individual-field-and-inputs
+
     https://docs.djangoproject.com/en/4.0/topics/forms/modelforms/
+    
     https://stackoverflow.com/questions/8389880/django-select-option-in-template
+
     https://stackoverflow.com/questions/8536107/django-forms-give-select-a-valid-choice-that-choice-is-not-one-of-the-availabl
+
     https://stackoverflow.com/questions/58168181/django-countries-full-name-value
+    
     https://github.com/pennersr/django-allauth/blob/master/docs/forms.rst#account_forms
+
     https://stackoverflow.com/questions/66558497/how-to-use-country-name-as-default-instead-of-code-in-django-countries-package
+
     https://stackoverflow.com/questions/60262602/how-can-i-fix-this-issue-provide-a-one-off-default-now
+
     https://stackoverflow.com/questions/2236691/how-do-i-display-the-value-of-a-django-form-field-in-a-template
+
     https://stackoverflow.com/questions/3206905/django-textfield-max-length-validation-for-modelform
+
     https://docs.djangoproject.com/en/4.0/ref/views/#the-404-page-not-found-view
+
     https://stackoverflow.com/questions/3922739/limit-text-length-to-n-lines-using-css
+
     https://stackoverflow.com/questions/57452301/how-to-raise-bootstrap-button-over-a-stretched-link
+
     https://stackoverflow.com/questions/5871730/how-to-upload-a-file-in-django
+
     https://stackoverflow.com/questions/31130706/dropdown-in-django-model
+
     https://inloop.github.io/sqlite-viewer/
+    
     https://datazenit.com/heroku-data-explorer.html#/
+
     https://stackoverflow.com/questions/68564615/how-can-i-display-my-product-variations-separately-in-the-shopping-cart-template
 
 
