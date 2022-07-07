@@ -24,16 +24,16 @@
 <div class="overlay"></div>
 <div class="container mb-2">
     <!-- Page title -->
-    <div class="row">
-        <div class="col">
+    <div class="row justify-content-center">
+        <div class="col-10 col-offset-1">
             <hr>
             <h2>Your Cart</h2>
             <hr>
         </div>
     </div>
     <!-- Cart block -->
-    <div class="row">
-        <div class="col">
+    <div class="row justify-content-center">
+        <div class="col-10 col-offset-1">
             <!-- Conditional to check for cart items in session -->
             {% if cart_items %}
             <div class="table-responsive rounded">
@@ -43,9 +43,10 @@
                         <tr>
                             <th scope="col">Product Info</th>
                             <th scope="col"></th>
-                            <th scope="col">Price</th>
+                            <th scope="col">Size</th>
+                            <th scope="col">Per Unit Price</th>
                             <th scope="col">Quantity</th>
-                            <th scope="col" class="d-none d-lg-block">Total</th>
+                            <th scope="col">Price</th>
                         </tr>
                     </thead>
                     <!-- Iterate through items in cart session -->
@@ -53,32 +54,30 @@
                     <tr>
                         <!-- If item has a service image uploaded -->
                         {% if item.service.image %}
-                        <td class="p-3 w-25">
+                        <td class="w-25" style="margin: 0 auto;">
                             <!-- Service image served from media directory -->
                             <img class="img-fluid rounded" src="{{ MEDIA_URL }}{{ item.service.image }}">
                         </td>
                         <!-- If item has no image -->
                         {% else %}
-                        <td class="p-3 w-25">
+                        <td class="w-25" style="margin: 0 auto;">
                             <!-- Placeholder image served from media directory -->
                             <img class="img-fluid rounded" src="{{ MEDIA_URL }}placeholder.jpg">
                         </td>
                         {% endif %}
-                        <td class="py-3">
+                        <td class="">
                             <p class="my-0"><strong>{{ item.service.name }}</strong></p>
                             <p class="my-0 small text-muted">SKU: {{ item.service.sku|upper }}</p>
                         </td>
-                        <td class="py-3">
+                        <td class="">
+                            <p class="my-0">{{ item.service.paper_size }}</p>
+                        </td>
+                        <td class="">
                             <p class="my-0">£{{ item.service.price }}</p>
                         </td>
-                        <td class="py-3">
-                            <div class="d-block d-lg-none">
-                            {{ item.quantity }}x
-                            <br>
-                            <a href="{% url 'service_detail' item.service.id %}" class="btn btn-small">Change</a>
-                        </div>
+                        <td class="">
                             <!-- Form with POST passing item id to the quantity amend view -->
-                            <form class="d-none d-lg-block form update-form" method="POST"
+                            <form class="form update-form" method="POST"
                                 action="{% url 'quantity_amend' item.item_id %}">
                                 {% csrf_token %}
                                 <!-- Quantity increment and decrement group -->
@@ -115,7 +114,7 @@
                             <!-- Remove button with class used by custom script to remove service from cart -->
                             <a class="remove-item btn mt-2" id="remove_{{ item.item_id }}"><small>Remove</small></a>
                         </td>
-                        <td class="py-3 d-none d-lg-block">
+                        <td class="py-3">
                             <!-- Paragraph with result of price and quantity being passed to cart utils template tag -->
                             <p class="my-0">£{{ item.service.price | calculate_sub:item.quantity }}</p>
                         </td>
@@ -123,8 +122,8 @@
                     {% endfor %}
                 </table>
                 <!-- Cart totals content -->
-                <div class="cart-totals">
-                    <div class="cart-totals-text">
+                <div class="float-end">
+                    <div class="text-end">
                         <!-- Rounding to two decimal places -->
                         <h6><strong>Cart Total: £{{ total|floatformat:2 }}</strong></h6>
                         <!-- Rounding to two decimal places -->

@@ -285,6 +285,11 @@ footer {
     justify-content: center;
 }
 
+td {
+    padding-bottom: 1rem;
+    padding-top: 1rem;
+}
+
 /* Media Queries */
 
 @media(min-width: 300px) {
@@ -380,4 +385,43 @@ footer {
     .cart-totals-text {
         text-align: right;
     }
+}
+
+@media (max-width: 767px)  {
+
+    /* Tables */
+    
+	table, thead, tbody, th, td, tr { 
+		display: block; 
+	}
+	
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { 
+        border: 1px solid #ccc;
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+	
+	td { 
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 50%;
+        padding-bottom: 0;
+        padding-top: 0;
+	}
+	
+	td:before { 
+		position: absolute;
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
 }

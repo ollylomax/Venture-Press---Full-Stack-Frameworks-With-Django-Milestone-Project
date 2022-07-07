@@ -25,8 +25,8 @@
 <!-- Background image overlay -->
 <div class="overlay"></div>
 <div class="container">
-    <div class="row artwork">
-        <div class="col-12">
+    <div class="row artwork justify-content-center">
+        <div class="col-10 col-offset-1">
             <!-- Page title -->
             <hr>
             <h2>Upload Centre</h2>
@@ -93,7 +93,8 @@
                         <!-- Iterate through files object -->
                         {% for file in files %}
                         <!-- List item with anchor link to uplaoded file -->
-                        <li><a href="{{ file.upload.url }}">{{ file.upload.name }}</a></li>
+                        <li class="d-none d-sm-block"><a href="{{ file.upload.url }}">{{ file.upload.name|truncatechars:50 }}</a></li>
+                        <li class="d-sm-none"><a href="{{ file.upload.url }}">{{ file.upload.name|truncatechars:28 }}</a></li>
                         {% endfor %}
                     </ul>
                     <!-- If no files exist in filtered object -->
