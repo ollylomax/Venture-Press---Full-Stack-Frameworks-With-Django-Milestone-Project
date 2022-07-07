@@ -328,6 +328,17 @@ footer {
     .navbar .dropdown-menu {
         text-align: center;
     }
+
+    /* Cart */
+
+    .cart-totals {
+        justify-content: center;
+        padding: 0 10px;
+    }
+
+    .cart-totals-text {
+        text-align: center;
+    }
 }
 
 @media(min-width: 992px) {
@@ -358,5 +369,15 @@ footer {
         background-color: #001087 !important;
         height: 72px;
         border-top: 10px solid black;
+    }
+
+    /* Cart */
+
+    .cart-totals {
+        float: right;
+    }
+
+    .cart-totals-text {
+        text-align: right;
     }
 }
