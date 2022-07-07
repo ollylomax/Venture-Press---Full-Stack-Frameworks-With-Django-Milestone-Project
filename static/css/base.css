@@ -197,9 +197,12 @@ footer {
 /* Toasts */
 
 .message-container {
+    margin: 0 auto;
+    text-align: center;
+    max-width: 90%;
     position: fixed;
-    bottom: 85px;
-    right: 15px;
+    right: 1.5rem;
+    bottom: 135px;
     z-index: 999;
 }
 
@@ -239,7 +242,7 @@ footer {
 }
 
 .index-results {
-    color:#001087;
+    color: #001087;
     border: 1px solid #001087;
     text-align: center;
     background-color: #fff;
@@ -277,7 +280,7 @@ footer {
     text-align: center;
 }
 
-.service-detail-info > p {
+.service-detail-info>p {
     padding: 0 1rem;
 }
 
@@ -346,6 +349,49 @@ td {
     }
 }
 
+@media (max-width: 767px) {
+
+    /* Tables */
+
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr {
+        display: block;
+    }
+
+    thead tr {
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr {
+        border: 1px solid #ccc;
+        padding: 1rem;
+        margin: 1rem 0;
+    }
+
+    td {
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-bottom: 0;
+        padding-top: 0;
+    }
+
+    td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 45%;
+        padding-right: 10px;
+        white-space: nowrap;
+    }
+}
+
 @media(min-width: 992px) {
 
     /* Major */
@@ -385,42 +431,13 @@ td {
     .cart-totals-text {
         text-align: right;
     }
-}
 
-@media (max-width: 767px)  {
+    /* Toasts */
 
-    /* Tables */
-    
-	table, thead, tbody, th, td, tr { 
-		display: block; 
-	}
-	
-	thead tr { 
-		position: absolute;
-		top: -9999px;
-		left: -9999px;
-	}
-	
-	tr { 
-        border: 1px solid #ccc;
-        padding: 1rem;
-        margin: 1rem 0;
+    .message-container {
+        position: fixed;
+        bottom: 85px;
+        right: 15px;
+        z-index: 999;
     }
-	
-	td { 
-		border: none;
-		border-bottom: 1px solid #eee; 
-		position: relative;
-        padding-bottom: 0;
-        padding-top: 0;
-	}
-	
-	td:before { 
-		position: absolute;
-		top: 6px;
-		left: 6px;
-		width: 45%; 
-		padding-right: 10px; 
-		white-space: nowrap;
-	}
 }

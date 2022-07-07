@@ -52,6 +52,8 @@ def edit_profile(request):
             user_form.last_name = request.POST['last_name']
             user_form.save()
             messages.success(request, 'Update Successful - changes made')
+
+            return redirect('profile')
         else:
             messages.error(request, 'Invalid Form - failed to update')
     else:

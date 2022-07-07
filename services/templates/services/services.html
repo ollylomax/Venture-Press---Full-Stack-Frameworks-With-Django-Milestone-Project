@@ -20,37 +20,42 @@
 {% block content %}
 <!-- Background image overlay -->
 <div class="container">
-    <hr>
-    <!-- Page title -->
-    <h2 class="text-center">Venture Press Services</h2>
-    <hr>
-    <!-- Indexing Results -->
-    {% if query or categories %}
-    <p class="index-results">
-        <!-- If query returned to template -->
-        {% if query %}
-        <!-- Anchor link directing to services view -->
-        <span class="small"><a href="{% url 'services' %}">Back to Services</a> | </span>
-        <!-- Query results -->
-        Your search returned {{ services|length }}
-        Result{% if services|length > 1 or services|length == 0 %}s{% endif %} for <strong>"{{ query }}"</strong>
-        <!-- Else if categories returned to template -->
-        {% elif categories %}
-        <!-- Anchor link directing to services view -->
-        <span class="small"><a href="{% url 'services' %}">Remove Filter</a> | </span>
-        <!-- Filter results -->
-        Filtered by <strong>"{{ categories.0 }}"</strong>'
-        {% endif %}
-    </p>
+    <div class="row justify-content-center">
+        <div class="col-12">
+            <hr>
+            <!-- Page title -->
+            <h2 class="text-center mx-2">Venture Press Services</h2>
+            <hr>
+            <!-- Indexing Results -->
+            {% if query or categories %}
+            <p class="index-results mx-2">
+                <!-- If query returned to template -->
+                {% if query %}
+                <!-- Anchor link directing to services view -->
+                <span class="small"><a href="{% url 'services' %}">Back to Services</a> | </span>
+                <!-- Query results -->
+                Your search returned {{ services|length }}
+                Result{% if services|length > 1 or services|length == 0 %}s{% endif %} for
+                <strong>"{{ query }}"</strong>
+                <!-- Else if categories returned to template -->
+                {% elif categories %}
+                <!-- Anchor link directing to services view -->
+                <span class="small"><a href="{% url 'services' %}">Remove Filter</a> | </span>
+                <!-- Filter results -->
+                Filtered by <strong>"{{ categories.0 }}"</strong>'
+                {% endif %}
+            </p>
+        </div>
+    </div>
     {% endif %}
     <!-- Services block -->
-    <div class="row">
+    <div class="row justify-content-center">
         <!-- Iterate through services -->
         {% for service in services %}
         <div class="col-sm-12 col-md-6 col-lg-4">
             <!-- Bootstrap card directing to service detail page passing the service id -->
             <div class="card"><a href="{% url 'service_detail' service.id %}">
-                <!-- If service has image uploaded -->
+                    <!-- If service has image uploaded -->
                     {% if service.image %}
                     <!-- Service image served from media directory -->
                     <img class="card-img-top" src="{{ MEDIA_URL }}{{ service.image }}" alt="{{ service.name }}">
