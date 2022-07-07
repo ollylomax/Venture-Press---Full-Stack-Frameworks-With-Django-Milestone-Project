@@ -8,25 +8,39 @@
 
 <!-- Page header -->
 {% block content %}
-    <div class="container h-100">
-        <div class="row h-100">
-            <div class="col-7 col-md-6 my-auto">
+<div class="hero container h-100">
+    <div class="row h-100">
+        <div class="col-12 col-md-6 my-auto">
+            <div class="hero-wrapper">
                 <!-- Hero image heading -->
-                <h1 class="display-4 text-black">
+                <h1 class="display-4">
                     Excellence In Print
                 </h1>
                 <!-- Hero image text -->
                 <p>With over 50 years in the industry, our standards are high and our services are refined and fast.</p>
-                <p>Check out the services we offer to buy online, and if you can't find what you're looking for then feel free to contact us for bespoke jobs.</p>
-                <div class="my-5">
-                    <h4>
-                        <!-- Print Services button directing to services view -->
-                        <a href="{% url 'services' %}" class="btn btn-lg">Print Services</a>
-                        <!-- Contact Us button directing to contact view -->
-                        <a href="{% url 'contact' %}" class="btn btn-lg">Contact Us</a>
-                    </h4>
-                </div>
+                <p>Check out the services we offer to buy online, and if you can't find what you're looking for then
+                    feel free to contact us for bespoke jobs.</p>
+            </div>
+            <!-- Desktop buttons -->
+            <div class="my-5 d-none d-lg-block">
+                <h4>
+                    <!-- Print Services button directing to services view -->
+                    <a href="{% url 'services' %}" class="btn btn-lg mt-2">Print Services</a>
+                    <br class="d-block d-lg-none">
+                    <!-- Contact Us button directing to contact view -->
+                    <a href="{% url 'contact' %}" class="btn btn-lg mt-2">Contact Us</a>
+                </h4>
+            </div>
+            <!-- Mobile buttons -->
+            <div class="my-5 d-block d-lg-none">
+                <h4>
+                    <!-- Print Services button directing to services view -->
+                    <a href="{% url 'services' %}" class="btn">Print Services</a>
+                    <!-- Contact Us button directing to contact view -->
+                    <a href="{% url 'contact' %}" class="btn">Contact Us</a>
+                </h4>
             </div>
         </div>
     </div>
+</div>
 {% endblock %}
