@@ -25,7 +25,8 @@
     <h2 class="text-center">Venture Press Services</h2>
     <hr>
     <!-- Indexing Results -->
-    <p class="text-center">
+    {% if query or categories %}
+    <p class="index-results">
         <!-- If query returned to template -->
         {% if query %}
         <!-- Anchor link directing to services view -->
@@ -35,10 +36,13 @@
         Result{% if services|length > 1 or services|length == 0 %}s{% endif %} for <strong>"{{ query }}"</strong>
         <!-- Else if categories returned to template -->
         {% elif categories %}
+        <!-- Anchor link directing to services view -->
+        <span class="small"><a href="{% url 'services' %}">Remove Filter</a> | </span>
         <!-- Filter results -->
         Filtered by <strong>"{{ categories.0 }}"</strong>'
         {% endif %}
     </p>
+    {% endif %}
     <!-- Services block -->
     <div class="row">
         <!-- Iterate through services -->
