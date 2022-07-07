@@ -95,13 +95,13 @@
                         </form>
                         <!-- Home nav link and icon -->
                         <li class="nav-item">
-                            <div class="text-center text-white"><i class="fa-solid fa-house-crack"></i></div>
+                            <div class="d-none d-lg-block text-center text-white"><i class="fa-solid fa-house-crack"></i></div>
                             <!-- Home button directing to home view -->
                             <a class="text-white nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                         </li>
                         <!-- Print Services nav dropdown link and icon -->
                         <li class="nav-item dropdown">
-                            <div class="text-center text-white"><i class="dd-icon fa-solid fa-scroll"></i></div>
+                            <div class="d-none d-lg-block text-center text-white"><i class="dd-icon fa-solid fa-scroll"></i></div>
                             <a class="text-white nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 Print Services
@@ -123,7 +123,7 @@
                         </li>
                         <!-- Contact nav link and icon -->
                         <li class="nav-item">
-                            <div class="text-center text-white"><i class="fa-solid fa-marker"></i></div>
+                            <div class="d-none d-lg-block text-center text-white"><i class="fa-solid fa-marker"></i></div>
                             <!-- Contact button directing to contact view -->
                             <a class="text-white nav-link" href="{% url 'contact' %}">Contact</a>
                         </li>
@@ -133,7 +133,7 @@
                         {% if request.user.is_authenticated %}
                         <!-- Account(username) nav dropdown link and icon -->
                         <li class="nav-item dropdown">
-                            <div class="text-center text-white"><i class="dd-icon fa-solid fa-user"></i></div>
+                            <div class="d-none d-lg-block text-center text-white"><i class="dd-icon fa-solid fa-user"></i></div>
                             <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
                                 role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ request.user }}
@@ -165,20 +165,20 @@
                         {% else %}
                         <!-- Login nav link and icon -->
                         <li class="nav-item">
-                            <div class="text-center text-white"><i class="fa-solid fa-key"></i></div>
+                            <div class="d-none d-lg-block text-center text-white"><i class="fa-solid fa-key"></i></div>
                             <!-- Login button directing to account login view -->
                             <a class="text-white nav-link" href="{% url 'account_login' %}">Login</a>
                         </li>
                         <!-- Register nav link and icon -->
                         <li class="nav-item">
-                            <div class="text-center text-white"><i class="fa-solid fa-key"></i></div>
+                            <div class="d-none d-lg-block text-center text-white"><i class="fa-solid fa-key"></i></div>
                             <!-- Register link directing to account signup view -->
                             <a class="text-white nav-link" href="{% url 'account_signup' %}">Register</a>
                         </li>
                         {% endif %}
                     </ul>
                     <!-- Cart link and icon -->
-                    <div class="list-inline-item">
+                    <div class="nav-item">
                         <!-- Cart button directing to cart view and targetted by custom javascript to initiate mini cart -->
                         <a class="cart-trigger {% if grand_total %}text-info font-weight-bold{% else %}text-black{% endif %} nav-link"
                             href="{% url 'cart' %}">

@@ -94,3 +94,4 @@ View the live project [here](https://venture-press.herokuapp.com/)
     -   Email notifications when registering, confirming email, submitting contact form requests and processing orders.
     -   Map access to full backend functionality packaged with Django.
     -   404 and 500 error pages caught Django error handling to direct user back to website.
+
