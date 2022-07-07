@@ -101,7 +101,7 @@
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Are you sure you want to delete this Service?
+                        <h5 class="modal-title">Are you sure you want to delete this Service?
                         </h5>
                         <!-- Button to close modal dialog -->
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -127,22 +127,23 @@
                 <i class="text-white fa-solid fa-angle-up mx-auto my-auto"></i>
             </a>
         </div>
-        {% endblock %}
+    </div>
+    {% endblock %}
 
-        <!-- Custom javascript injection -->
-        {% block postjs %}
-        <!-- Add but don't overwrite -->
-        {{ block.super }}
-        <!-- Bootstrap tooltips -->
-        <script type="text/javascript">
-            $(function () {
-                $('[data-toggle="tooltip"]').tooltip()
-            })
-        </script>
-        <!-- Script targetting back to top button which scrolls window to fixed position -->
-        <script type="text/javascript">
-            $('.btt-link').click(function (e) {
-                window.scrollTo(0, 0)
-            })
-        </script>
-        {% endblock %}
+    <!-- Custom javascript injection -->
+    {% block postjs %}
+    <!-- Add but don't overwrite -->
+    {{ block.super }}
+    <!-- Bootstrap tooltips -->
+    <script>
+        $(function () {
+            $('[data-toggle="tooltip"]').tooltip()
+        })
+    </script>
+    <!-- Script targetting back to top button which scrolls window to fixed position -->
+    <script>
+        $('.btt-link').click(function (e) {
+            window.scrollTo(0, 0)
+        })
+    </script>
+    {% endblock %}

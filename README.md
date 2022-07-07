@@ -434,3 +434,143 @@ View the live project [here](https://venture-press.herokuapp.com/)
 
 **Original Design Wireframes**
 * [Home]()
+
+## UX SURFACE
+
+- ### Colour Scheme
+
+    ![Dark Blue #001087](media/readme/001087.png)
+    ![Light Blue #6489fa](media/readme/6489fa.png)
+    ![Off-White #FFF](media/readme/fff.png)
+
+    I used three main colours for the website. Two shades of blue for most block component elements and an off white for contrast. I felt like they complimented each other well, provided an aesthetically pleasing and user friendly theme and provided the necessary contrast to use exclusively throughout the design process.
+
+- ### Typography
+    I used the Roboto font family with weight variations for all content throughout the website which is well recognised and a standard in web design.
+
+- ### Imagery
+    I sourced the Venture Press main logo from Flaticon, a free resource for vectors and icons.The home page hero image was sourced from free Adobe Stock images. The service images were sourced from a combination of Unsplash, a free stock image website and Shutterstock free trial which are free for personal and commercial use. Using my knowledge of Adobe Photoshop and Illustrator, all images have been selected and edited/exported with as much uniformity as possible and downsampled to decrease page load times.
+
+- ### Notable amendments to Design
+
+   **********
+
+## Features
+
+- ### Current
+
+    - Responsive across all viewports using Bootstrap classes.
+    - Mobile responsive design.
+    - Home page displaying hero image and clear information on the purple of the website.
+    - Registration functionality.
+    - Log In / Log Out functionality.
+    - Navigation menu that will change based on whether user is logged in and/or has certain privileges.
+    - Services page with a list of all services in the PostgresSQL database with corresponding name, description and price. Edit and Delete buttons available on each service for admin users.
+    - Service Details page with customisable options, quantity input and Add to Cart functionality.
+    - Contact page with form submission and email response.
+    - Add New Service page with Create functionality for admin users.
+    - Edit Service page with Update functionality for admin users.
+    - Profile page for registered users with profile info.
+    - Edit Profile page with Update functionality.
+    - Change Password page with Update functionality.
+    - Order History page showing all previously submitted orders by the user.
+    - Mini Cart display when hovering over Cart button.
+    - Cart page showing all services added by the user to their shopping cart.
+    - Checkout page showing cart details and forms to submit delivery information and card payment.
+    - Stripe webhooks in place for redundancy.
+    - Order Confirmation page showing order details once successfully processed.
+    - Django administration backend.
+    - Error handling to direct user to 404 and 500 error pages and provide a direct path back to the website.
+
+
+- ### Prospective
+
+    - Add pagination for Services page for future scoping the website when services are expanded upon.
+
+## Technologies Used
+
+-   ### Languages
+    - [HTML5](https://en.wikipedia.org/wiki/HTML5)<br>
+        The language used to display content and provide structure used extensively throughout this site.
+    - [CSS3](https://en.wikipedia.org/wiki/Cascading_Style_Sheets)<br>
+        I used custom styling on top of Bootstrap frameworks.
+    - [JavaScript](https://en.wikipedia.org/wiki/JavaScript)<br>
+        I used custom JavaScript on top of Bootstrap frameworks.
+    - [Python](https://www.python.org)<br>
+        The core of this project was built using Python 3.8.11 logic and the means to run/view the website.
+        Python Modules used from the requirements.txt file:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;****<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;****<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;****<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;****<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;****<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;****<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;****<br>
+    - [Django](https://www.djangoproject.com)<br>
+        A high-level Python web framework following Model-View-Template design.
+
+-   ### Frameworks, Libraries & Programs
+    - [Bootstrap v5.1](https://materializecss.com/)<br>
+        Framework used throughout the site to provide baseline styling and import JavaScript/jQuery.
+    - [PostgreSQL](https://www.postgresql.org/)<br>
+        PostgreSQL was used to create the relational databases used as data storage for this project.
+    - [Heroku](https://www.mongodb.com/)<br>
+        Used to deploy the live version of the website.
+    - [Google Fonts](https://fonts.google.com/)<br>
+        Used to import the Roboto font used throughout the website.
+    - [Font Awesome](https://fontawesome.com/)<br>
+        Used for various icons including social media and navigation icons.
+    - [jQuery](https://jquery.com/)<br>
+        jQuery is used for the following:<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Mini cart popup<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Getting the current year being injected into the copyright footer.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Increment/Decrement quantity inputs.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Bootstrap tooltips.<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Bootstrap toasts<br>
+        &nbsp;&nbsp;&nbsp;&nbsp;Bootstrap modal dialogs.<br>
+    - [Git](https://git-scm.com/)<br>
+        Used for version control to commit and push code via Gitpod to the GitHub repository where the source code is stored.
+    - [Gitpod](https://www.gitpod.io/)<br>
+        This is the IDE (Integrated Development Environment) I used to build the website and commit to Git and push to GitHub
+    - [GitHub](https://github.com/)<br>
+        GitHub is used to store the projects code after being pushed from Git and to host the deployment of the live site via GitHub Pages.
+    - [Adobe Photohop](https://www.adobe.com/uk/products/photoshop.html)<br>
+        Used to convert and resize images before uploading to local repository.
+    - [Adobe Illustrator](https://www.adobe.com/uk/products/illustrator.html)<br>
+        Used to edit logo and export documents before uploading to local repository.
+    - [Balsamiq](https://balsamiq.com/)<br>
+        Used during the scoping process to visualise the basic structure of the website and create wireframes during the Skeleton phase of UX Design.
+
+-   ### Resources, Tools & Diagnostics
+    - [Unsplash](https://unsplash.com/)<br>
+        Free stock image database used for some service images.
+    - [Shutterstock](https://www.shutterstock.com)<br>
+        Paid stock photo database which I used for all product images. These images are licensed under the free trial of 10 image downloads.
+    - [Adobe Stock](https://stock.adobe.com)<br>
+        10 Free stock images used for some service images and hero image.
+    - [Flaticon](https://www.flaticon.com/)<br>
+        Free stock resource for vectors and icons, used for Venture Press logo.
+    - [TinyJPG](https://tinyjpg.com)<br>
+        Used to downsample images to smaller file sizes in order to increase load times and reduce storage requirements.
+    - [Favicon.io](https://favicon.io/)<br>
+        Used in the creation of the website Favicon across all pages.
+    - [Chrome DevTools](https://developer.chrome.com/docs/devtools/)<br>
+        Used throughout the design process for debugging purposes in console.
+    - [Safari Web Inspector](https://developer.apple.com/safari/tools/)<br>
+        Used as above for cross-browser support.
+    - [Firefox Developer Tools](https://developer.mozilla.org/en-US/docs/Tools)<br>
+        Used as above for cross-browser support.
+    - [Am I Responsive?](http://ami.responsivedesign.is/)<br>
+        Used to create a website mock-up image across different sized devices to showcase viewport responsiveness.
+    - [WAVE](https://wave.webaim.org/)<br>
+        Used for diagnostic contrast testing.
+    - [Lighthouse](https://developers.google.com/web/tools/lighthouse)<br>
+        Used for diagnostic performance, accessibility and SEO testing.
+    - [W3C Markup Validation Service](https://validator.w3.org/)<br>
+        HTML Validator used to validate every page of the project to ensure there were no syntax errors.
+    - [W3C CSS Validation Service](https://jigsaw.w3.org/css-validator/)<br>
+        CSS Validator used to ensure there were no syntax errors in styling.
+    - [JSHint](https://jshint.com/)<br>
+        JavaScript related tool to check for errors and potential problems in my JavaScript code
+    - [PEP8Online](http://pep8online.com/)<br>
+        Python related tool to check for PEP8 compliance.
