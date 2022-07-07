@@ -498,14 +498,29 @@ View the live project [here](https://venture-press.herokuapp.com/)
         I used custom JavaScript on top of Bootstrap frameworks.
     - [Python](https://www.python.org)<br>
         The core of this project was built using Python 3.8.11 logic and the means to run/view the website.
-        Python Modules used from the requirements.txt file:<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;****<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;****<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;****<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;****<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;****<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;****<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;****<br>
+        Python Modules used from the requirements.txt file:
+
+        -   asgiref==3.5.2-    
+        -   boto3==1.24.22
+        -   botocore==1.27.22
+        -   dj-database-url==0.5.0
+        -   Django==3.2.13
+        -   django-allauth==0.41.0
+        -   django-countries==7.2.1
+        -   django-crispy-forms==1.14.0
+        -   django-storages==1.12.3
+        -   gunicorn==20.1.0
+        -   jmespath==1.0.1
+        -   oauthlib==3.2.0
+        -   Pillow==9.1.1
+        -   psycopg2-binary==2.9.3
+        -   python3-openid==3.2.0
+        -   pytz==2022.1
+        -   requests-oauthlib==1.3.1
+        -   s3transfer==0.6.0
+        -   sqlparse==0.4.2
+        -   stripe==3.4.0
+
     - [Django](https://www.djangoproject.com)<br>
         A high-level Python web framework following Model-View-Template design.
 
@@ -522,12 +537,12 @@ View the live project [here](https://venture-press.herokuapp.com/)
         Used for various icons including social media and navigation icons.
     - [jQuery](https://jquery.com/)<br>
         jQuery is used for the following:<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;Mini cart popup<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;Getting the current year being injected into the copyright footer.<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;Increment/Decrement quantity inputs.<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;Bootstrap tooltips.<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;Bootstrap toasts<br>
-        &nbsp;&nbsp;&nbsp;&nbsp;Bootstrap modal dialogs.<br>
+        -   Mini cart popup<br>
+        -   Getting the current year being injected into the copyright footer.<br>
+        -   Increment/Decrement quantity inputs.<br>
+        -   Bootstrap tooltips.<br>
+        -   Bootstrap toasts<br>
+        -   Bootstrap modal dialogs.<br>
     - [Git](https://git-scm.com/)<br>
         Used for version control to commit and push code via Gitpod to the GitHub repository where the source code is stored.
     - [Gitpod](https://www.gitpod.io/)<br>
@@ -574,3 +589,428 @@ View the live project [here](https://venture-press.herokuapp.com/)
         JavaScript related tool to check for errors and potential problems in my JavaScript code
     - [PEP8Online](http://pep8online.com/)<br>
         Python related tool to check for PEP8 compliance.
+
+## Test Strategy
+ - The testing will be done on four web browsers:-
+    - Chrome
+    - Firefox
+    - Safari
+    - Edge
+
+    And on every common breakpoint (Mobile, Tablet, Desktop, XL Desktop).
+
+ - Validation of feature inclusion will be undertaken from the wireframes scoped during the Skeleton stage of UX design.
+ 
+ - Elements should not overlap other container divs and should remain on the screen at all sizes above and including 300px.
+
+ - Testing is required on all features and user stories documented in this README. All clickable links must direct to the correct pages. All forms linked to PostgresSQL must be tested to ensure they insert all respective fields into the applicable collections.
+
+## User Story Testing
+
+> As a user, I want to easily understand the purpose of the site.
+
+ - The title of the site is shown in the browser with a favicon.
+
+ - A hero image and introduction is shown beneath the navigation menu on the home page.
+
+ - A small section containing print services available is displayed beneath the hero image.
+
+> As a user, I want to clearly view the website and content on any device.
+
+  - The site is fully viewable and functional on Mobile, Tablet, and Desktop viewports.
+
+> As a user, I want to easily navigate the website so that I can find content quickly.
+
+ - On desktop, there is a navigation menu at the top of the page which indicates other pages the user can visit.
+
+ - On tablet and mobile, there is a burger menu which allows the user to get around the site.
+
+ - Clicking the venture press name logo takes the user to the homepage.
+
+> As a user, I want to be able to see what print services are available and how much they are.
+
+ - From loading the home page, simply scrolling down to below the hero image will show a small cross-section of services available to purchase, with details clearly displayed.
+
+ - Clicking on the Services button in the hero image should direct the user to an unfiltered services page with all services displayed with associated details.
+
+ - Using the navigation menu, clicking on Services will trigger a dropdown menu with an 'All Services' option available to click. Clicking on this will return the same unfiltered Services page as the link in the hero image does.
+
+> As a user, I want to be able to search the website for services I may be interested in.
+
+ - At the top of every page inside the navigation menu, there will be a search bar. 
+
+ - Searching for a service name will return only that service. 
+
+ - Searching for a category will return all services pertaining to that category.
+
+ - Partial searches should still return results, including searching content in service descriptions.
+
+ - Searching with no query should bring up a toast error message. 
+
+ - Clicking the search icon as well as hitting enter will both allow the user to search once a term has been typed in.
+
+> As a user, I want to be able to filter the print services by category.
+
+ - Clicking on Services in the navigation bar will trigger a dropdown menu of categories. 
+
+ - Clicking on any of these categories will take the user to a filtered version of the Services page based on the category chosen.
+
+ - This category and the number of services within it will be displayed at the top of the filtered results with a link to go back to an unfiltered page. 
+
+ - The page itself will show the details of each print service, including an image, price, description, category and a link to show more details.
+
+> As a user, I want to be able to customise my chosen service and then add it to my cart.
+
+ - Clicking on any service will bring up a Service Details page with customisable options. These options will include various paper choices, print process and quantity required.
+ 
+ - Clicking on any service will bring up a Service Details page with an option to change quantity. Changing the quantity will adjust the price displayed accordingly.
+ 
+ - Clicking on any service will bring up a Service Details page and underneath the customisable options there will be an 'Add to Cart' button.
+
+ - Adding a service to the cart will initiate a toast success message and save an instance of the service with the chosen options to the session cart.
+
+ - The price below the Cart icon at the top right of the navigation menu will change to reflect the items added to the Cart.
+
+> As a user, I want to be able to view all services I have added to my cart before deciding whether to proceed to payment.
+
+ - Hovering over the Cart icon on the navigation menu should initiate a mini cart popup displaying all services currently in the cart and a cart total.
+
+ - Beneath this information will b a 'View Cart' button.
+
+ - Hovering away from the Cart icon and/or the cart popup itself will cause the cart popup to disappear.
+
+ - Clicking on the Cart icon on the navigation menu or hovering over it to initiate the mini cart popup then clicking on 'View Cart' will both direct the user to the full Cart page.
+
+ - This page will clearly display all services currently in the cart, delivery charges and a cart total.
+
+ - Beneath this information will be a 'Checkout' button.
+
+> As a user, I want to be able to proceed to purchasing the contents of my cart, input my card details and make the purchase.
+
+ - Once on the Cart page, beneath the cart contents will be a 'Checkout' button. Clicking on this button will bring up the Checkout page.
+
+ - On the Checkout page, information regarding the cart contents and totals will be displayed along with input forms for both delivery details and card capture.
+
+ - Filling in the forms with valid inputs then clicking on the 'Submit Order' button will process the order and direct to an Order Confirmation page with details of the order.
+
+ - Form validation on the Checkout page will initiate toast error messages if for example, card details are invalid or if a required field has no input.
+
+> As a user, I want to be able to contact the company about any queries or custom quotations I might need.
+
+ - Clicking on the 'Contact' link in the navigation menu at the top of the page will bring up a Contact page.
+
+ - On this page will be a contact form with a category selector and required inputs.
+ 
+ - Choosing a category for the query, filling in the required fields and clicking on the 'Submit Query' button will save the query to the Contact database, initiate a toast success message and send a confirmation email to the address input in the form.
+
+> As a user, I want to be able to easily return to the website if I encounter a page error.
+
+ - When a 404 page error is found, click on the home link to get back to the homepage.
+
+ - When a 500 page error is found, click on the home link to get back to the homepage.
+
+> As a user, I want to be able to register on the website.
+
+ - Assuming there is no current session, a 'Register' link on the navigation bar is displayed. Clicking on this link will direct to the Register page. This page contains a form with required inputs.
+ 
+ - If the passwords input match in both input boxes, and both emails match in both input boxers and the username doesn't already exist then upon submitting the form a user account will be created in the Users database. 
+
+ - This will initiate an info message for the user to check their email in order to confirm it as well as an email sent to the address input on registration with the link necessary to confirm the email address. 
+
+ - Clicking on this link will direct the user to a confirmation page whereby clicking on the 'Confirm' button will verify the address and subsequently allow the user to login to their account.
+
+> As a registered user, I want to be able to log in to my account on the website.
+
+ - When not logged in or in a new session, a 'Login' link should be visible inside the main navigation menu at the top of every page.
+
+ - Filling in the correct login details will initiate a user session.
+
+> As a registered user, I want to be able to log out of my account on the website.
+
+ - When logged into a user session, the main navigation bar will have a 'User' option which when clicked, will initiate a dropdown menu with several options.
+
+ - One of these options will be a 'Logout' link, which when clicked, will initiate a toast success message and delete the current user session and direct the user back to the homepage.
+
+> As a registered user, I want to be able to view my profile, edit my details and change my password.
+
+ - When logged into a user session, the main navigation bar will have a 'User' option which when clicked, will initiate a dropdown menu with several options.
+
+ - One of these options will be a 'Profile' link, which when clicked, will direct the user to a Profile page specific to their user account. On this page profile information is stored and displayed.
+ 
+ - When on the Profile page, beneath the profile information will be an 'Edit Profile' button.
+
+ - Clicking on this button will direct the user to an Edit Profile page specific to their user account.
+
+ - Changing/Adding any details then clicking on 'Update Profile' will update the profile details, initiate a toast success message and direct the user back to their Profile back which will reflect the changes in values.
+
+ - When on the Profile page, beneath the profile information will be an 'Change Password' button.
+
+ - Clicking on this button will direct the user to a Change Password page specific to their user account.
+
+ - Changing the password and confirming the change then clicking on 'Update Password' will update the password details and direct the user back to their Profile with a toast success message.
+
+> As a registered user, I want to be able to see a list of my order history.
+
+ - When logged into a user session, the main navigation bar will have a 'User' option which when clicked, will initiate a dropdown menu with several options.
+
+ - One of these options will be an 'Order History' link, which when clicked, will direct the user to an Order History page specific to their user account.
+
+ - On this page all the previous order information will be displayed to the user.
+ 
+ - After navigating to the Order History page, each individual order in the list will be clickable and direct to an Order Confirmation page specific to that order.
+
+ - This page will have a more details breakdown of the order with delivery information and beneath that a 'Back to Orders' button which will direct back to the main Order History page.
+
+> As an admin user, I want to be able to create, edit and delete print services.
+
+ - When logged in as an admin user, the "Add New Service" option will be available in the dropdown menu when clicking on the User button in the main navigation bar.
+
+ - This will take the user to an Add Service page with a form to fill in to add a new service to the Services database.
+
+ - On the Services page, on every displayed service will be an 'Edit' button within the card.
+
+ - Clicking on this button will direct to an Edit Service page with a form where the fields can be amended and a 'Confirm Changes' buttons can be clicked to submit the update to the database.
+
+ - When changes are made and the button clicked, a toast success message is initiated and the user is directed back to the previous page.
+
+ - On any Service Details page there will be an 'Edit' button within the product details.
+
+ - Clicking on this button will direct to an Edit Service page with a form where the fields can be amended and a 'Confirm Changes' buttons can be clicked to submit the update to the database.
+
+ - When changes are made and the button clicked, a toast success message is initiated and the user is directed back to the previous page.
+
+ - On the Services page, on every displayed service will be a 'Delete' button within the card.
+
+ - Clicking on this button will initiate a dialog window asking user to confirm the deletion. On the dialog window there will a 'Confirm Deletion' button and a 'Cancel' button.
+
+ - Clicking on the 'Confirm Deletion' button will initiate a toast success message, delete the pertaining service from the Services database and direct the user to the Services page.
+
+ - Clicking on the 'Cancel' button will direct user back to the Services page without deletion.
+
+ - On any Service Details page there will be an 'Delete' button within the card.
+
+ - Clicking on this button will initiate a dialog window asking user to confirm the deletion. On the dialog window there will a 'Confirm Deletion' button and a 'Cancel' button.
+
+ - Clicking on the 'Confirm Deletion' button will initiate a toast success message, delete the pertaining service from the Services database and direct the user to the Services page.
+
+ - Clicking on the 'Cancel' button will direct user back to the specific Service Details page.
+
+> As the superuser, I want to be able to create, edit and delete categories and services.
+
+ - When logged in as the superuser in the django administration section of the website, clicking on the Categories menu item on the left hand side will open a Categories page where a list of current Categories are displayed.
+
+ - These will be editable by clicking on each Category, making desired changes to the fields then clicking on the 'Save' button. 
+
+ - Categories can be deleted by either using the checkboxes on the left hand side of the list of categories then using the 'Delete selected categories' option in the action selector, or by clicking on each individual category and clicking on the 'Delete' button. 
+
+ - New categories can also be added using the 'Add Category' button.
+
+ - When logged in as the superuser in the django administration section of the website, clicking on the Services menu item on the left hand side will open a Services page where a list of current Services are displayed.
+
+ - These will be editable by clicking on each Service, making desired changes to the fields followed by clicking on the 'Save' button.
+
+ - Services can be deleted by either using the checkboxes on the left hand side of the list of services then using the 'Delete selected services' option in the action selector, or by clicking on each individual service and clicking on the 'Delete' button.
+
+ - New services can also be added using the 'Add Service' button.
+
+> As the superuser, I want to be able to create, edit and delete user details and emails.
+
+ - When logged in as the superuser in the django administration section of the website, clicking on the Users menu item on the left hand side will open a Users page where a list of current Users are displayed.
+
+ - These will be editable by clicking on each User, making desired changes to the fields followed by clicking on the 'Save' button. 
+
+ - Users can be deleted by either using the checkboxes on the left hand side of the list of users then using the 'Delete selected users' option in the action selector, or by clicking on each individual user and clicking on the 'Delete' button.
+
+ - New users can also be added using the 'Add User' button.
+
+ - When logged in as the superuser in the django administration section of the website, clicking on the Email addresses menu item on the left hand side will open an Email addresses page where a list of current Email addresses are displayed.
+
+ - These will be editable by clicking on each Email address, making desired changes to the fields followed by clicking on the 'Save' button. 
+
+ - Email addresses can be deleted by either using the checkboxes on the left hand side of the list of email addresses then using the 'Delete selected email addresses' option in the action selector, or by clicking on each individual email address and clicking on the 'Delete' button.
+
+ - New email addresses can also be added using the 'Add Email address' button.
+
+> As the superuser, I want to be able to create, edit and delete orders.
+
+ - When logged in as the superuser in the django administration section of the website, clicking on the Orders menu item on the left hand side will open a Orders page where a list of current Orders are displayed.
+
+ - These will be editable by clicking on each Order, making desired changes to the fields followed by clicking on the 'Save' button. 
+
+ - Orders can be deleted by either using the checkboxes on the left hand side of the list of orders then using the 'Delete selected orders' option in the action selector, or by clicking on each individual order and clicking on the 'Delete' button.
+
+ - New orders can also be added using the 'Add Order' button.
+
+The live project is deployed [here](https://venture-press.herokuapp.com/).
+
+## Test Results
+
+Test results can be found below.
+
+ - Link directly to the Google Sheet [here]().
+
+ - Downloadable .pdf format [here]().
+
+ - Downloadable .xlsx format [here]().
+
+![Testing]()
+
+## Test Fails and Resolutions
+
+Passed all test scenarios.
+
+## Out of Scope: Additional Feature Backlog
+
+- Make sure that the logo itself links to the home page as well as the text.
+- Remove the category dropdown from the navigation menu, and integrate category filtering into the Services page itself.
+- Add form validation to restrict empty search terms entirely, rather than allow the search with an error toast message.
+
+## Deployment
+
+### Project Creation
+I created this project by first installing the Gitpod [plugin](https://www.gitpod.io/). I then navigated to the Code Institute [gitpod-full-template](https://github.com/Code-Institute-Org/gitpod-full-template) and clicked on the "Use this Template" button. I chose and input my project name (Venture-Press---Full-Stack-Frameworks-With-Django-Milestone-Project) then created my repository from the template by clicking the button. After that I simply clicked on the "Gitpod" button from my repository page to open up my IDE and begin coding.
+
+The following commands were used throughout the development process:
+
+- **git status**<br>
+ Used to show my untracked and staged files.
+- **git add**<br>
+ Used to add files to the staging area before committing.
+- **git commit -m**<br>
+ Used to commit the changes to my local repository.
+- **git push**<br>
+ Used to push all committed changes to the GitHub repository.
+- **git log**<br>
+ Used to show a list of my previous commits.
+- **git reset --hard**<br>
+ Used with applicable checksum to revert to a previous commit.
+
+### Deployment to Heroku
+
+- Create application:
+
+    - Navigate to the [Heroku website](https://id.heroku.com/) and login.
+    - Click on the 'New' button
+    - Browse down to 'Create New App' link and click.
+    - Enter the desired name of the app, in this case I called it the same as on Github.
+    - Select the region, in this case 'Europe'.
+
+- Connect to Github Repository:
+
+    - Click the 'Deploy' tab at the top of dashboard.
+    - Select 'GitHub' then 'Connect to GitHub'.
+    - A prompt to find your github repository will then be displayed.
+    - Enter your repository name in the search field and press enter.
+    - Once you have found the desired repo, click the 'Connect' button.
+
+- Set the environment variables:
+
+    - Click the 'Settings' tab at the top of the dashboard.
+    - Click the 'Reveal Config Vars' button.
+    - Add the following:<br>
+
+      ****************
+
+- Enable automatic deployment:
+
+    - Click the 'Deploy'' tab at the top of the dashboard.
+    - Scroll down to the automatic deploys section.
+    - Choose the branch you want to deploy from.
+    - Click on 'Enable Automatic Deploys'.
+
+- Website deployed [here](https://venture-press.herokuapp.com/)
+
+### Run Locally
+
+This project will not run locally with database connections without the environment variables stored securely in Heroku. These details are required but due to both security and privacy they are not disclosed in this repository.
+
+- Navigate to my [Github Repository](https://github.com/ollylomax/Venture-Press---Full-Stack-Frameworks-With-Django-Milestone-Project).
+- Click the 'Code' button for a drop down menu.
+- Download and unpack the ZIP file then and open with the IDE you prefer.
+#### OR
+- Navigate to my [GitHub Repository](https://github.com/ollylomax/Venture-Press---Full-Stack-Frameworks-With-Django-Milestone-Project).
+- Click the 'Code' button for a drop down menu.- Copy Git URL from the HTTPS dialogue box.
+- Open the IDE you prefer then open a terminal window in a directory of your choice.
+- Use the **git clone** command in the terminal followed by the copied git URL.
+- A clone of the project will be created locally on your machine.
+
+- Once this is done run the following command in the shell to install all the required packages:
+> pip install -r requirements.txt
+
+### Fork Project 
+
+Forks are used to either propose changes to other projects or to use as a starting point to build upon your own development ideas.
+
+- Navigate to my [GitHub Repository](https://github.com/ollylomax/Venture-Press---Full-Stack-Frameworks-With-Django-Milestone-Project).
+- Click on the 'Fork' button at the very top right of the page.
+- This will create an identical duplicate of the project in your own repository.
+
+## Credits
+ - ### Code
+
+    Bootstrap 5.1 was used throughout the project to assist in making site responsive using the Bootstrap Grid System.
+
+    jQuery library was used in my script files to make document traversal and manipulation easier as well as to make code less verbose.
+
+    I used the [Code Institute Increment/Decrement JavaScript]() from the boutique-ado walkthrough lessons for my on my service and cart pages.
+
+https://stackoverflow.com/questions/36515187/django-get-object-or-404-or-filter-exists
+https://stackoverflow.com/questions/38388423/what-does-on-delete-do-on-django-models
+https://stackoverflow.com/questions/43267339/is-there-a-way-to-undo-a-migration-on-django-and-uncheck-it-from-the-list-of-sho
+https://stackoverflow.com/questions/4271686/model-object-has-no-attribute-save
+https://stackoverflow.com/questions/18786939/could-not-be-changed-because-the-data-didnt-validate-django
+https://stackoverflow.com/questions/64686380/why-is-my-django-form-not-valid-cant-get-the-post-request-to-update-database
+https://stackoverflow.com/questions/8389880/django-select-option-in-template
+https://stackoverflow.com/questions/63586714/how-can-you-dynamically-set-initial-value-of-form-select-field-at-the-time-of-re
+https://stackoverflow.com/questions/27732772/how-to-access-initial-values-of-form-fields-in-a-loop-in-django-templates
+https://stackoverflow.com/questions/43959790/how-do-i-include-the-id-field-in-a-django-form
+https://stackoverflow.com/questions/28994963/how-to-assign-a-value-to-a-django-form-field-in-the-template
+https://docs.djangoproject.com/en/4.0/ref/models/fields/
+https://stackoverflow.com/questions/26312219/operationalerror-no-such-column-django
+https://stackoverflow.com/questions/68564615/how-can-i-display-my-product-variations-separately-in-the-shopping-cart-template
+https://inloop.github.io/sqlite-viewer/
+https://temp-mail.org/en
+https://heroku-data-explorer.herokuapp.com/#/
+https://stackoverflow.com/questions/16181188/django-doesnotexist
+https://stackoverflow.com/questions/3090302/how-do-i-get-the-object-if-it-exists-or-none-if-it-does-not-exist-in-django
+https://stackoverflow.com/questions/6862250/change-a-django-form-field-to-a-hidden-field
+https://stackoverflow.com/questions/324477/in-a-django-form-how-do-i-make-a-field-readonly-or-disabled-so-that-it-cannot
+https://docs.djangoproject.com/en/4.0/ref/models/instances/
+https://docs.djangoproject.com/en/dev/ref/models/fields/#django.db.models.FileField.upload_to
+https://stackoverflow.com/questions/68179104/django-how-to-change-where-uploaded-file-is-saved
+https://stackoverflow.com/questions/41314403/django-form-not-passing-is-valid-test
+https://stackoverflow.com/questions/2712682/how-to-select-a-record-and-update-it-with-a-single-queryset-in-django
+https://stackoverflow.com/questions/48799005/how-to-instantiate-a-django-modelform-with-pre-filled-required-fields
+https://docs.djangoproject.com/en/4.0/topics/forms/
+https://stackoverflow.com/questions/5516437/django-form-has-no-errors-but-form-is-valid-doesnt-validate
+https://stackoverflow.com/questions/58030866/django-crispy-forms-set-css-for-individual-field-and-inputs
+https://docs.djangoproject.com/en/4.0/topics/forms/modelforms/
+https://stackoverflow.com/questions/8389880/django-select-option-in-template
+https://stackoverflow.com/questions/8536107/django-forms-give-select-a-valid-choice-that-choice-is-not-one-of-the-availabl
+https://stackoverflow.com/questions/58168181/django-countries-full-name-value
+https://github.com/pennersr/django-allauth/blob/master/docs/forms.rst#account_forms
+https://stackoverflow.com/questions/66558497/how-to-use-country-name-as-default-instead-of-code-in-django-countries-package
+https://stackoverflow.com/questions/60262602/how-can-i-fix-this-issue-provide-a-one-off-default-now
+https://stackoverflow.com/questions/2236691/how-do-i-display-the-value-of-a-django-form-field-in-a-template
+https://stackoverflow.com/questions/3206905/django-textfield-max-length-validation-for-modelform
+https://docs.djangoproject.com/en/4.0/ref/views/#the-404-page-not-found-view
+https://stackoverflow.com/questions/3922739/limit-text-length-to-n-lines-using-css
+https://stackoverflow.com/questions/57452301/how-to-raise-bootstrap-button-over-a-stretched-link
+
+https://stackoverflow.com/questions/5871730/how-to-upload-a-file-in-django
+https://stackoverflow.com/questions/31130706/dropdown-in-django-model
+https://inloop.github.io/sqlite-viewer/
+https://datazenit.com/heroku-data-explorer.html#/
+https://stackoverflow.com/questions/68564615/how-can-i-display-my-product-variations-separately-in-the-shopping-cart-template
+
+
+ - ### Content
+   All content on this site was created by Olly Lomax.
+
+ - ### Media
+
+   All images on this site were sourced from free stock images on [Shutterstock](https://www.shutterstock.com) free trial, [Adobe](https://stock.adobe.com) free stock images, [Flaticon](https://www.flaticon.com/) and [Unsplash](https://unsplash.com/).
+
+ - ### Acknowledgements
+
+    Many thanks to my Code Institute Mentor Daisy McGirr for her insight and advice during development.
