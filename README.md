@@ -26,6 +26,8 @@ View the live project [here](https://venture-press.herokuapp.com/)
 - To provide a website with admin functionality for adding new print services.
 - To provide a website with superuser functionality for managing backend operations.
 
+![Scope Table](media/readme/scope-table.png)
+
 ### User Stories
 
 - As a user, I want to easily understand the purpose of the site.
@@ -214,7 +216,8 @@ View the live project [here](https://venture-press.herokuapp.com/)
 	    -   Miscellaneous - filtered services.html
 	    -   All Services - services.html
 	-   Clicking on the applicable category will filter the services by that category.
- - #### Implementation:- An indexing view will be expanded upon allowing users to filter the Services database by their categories. When a user clicks the applicable category in the Services dropdown menu, it will return a filtered list of services based upon the category clicked.
+ - #### Implementation:- 
+    An indexing view will be expanded upon allowing users to filter the Services database by their categories. When a user clicks the applicable category in the Services dropdown menu, it will return a filtered list of services based upon the category clicked.
 
 ### User Story:
 > As a user, I want to be able to customise my chosen service and then add it to my cart.
@@ -228,7 +231,8 @@ View the live project [here](https://venture-press.herokuapp.com/)
 	    - Select box for Print Process.
 	    - Add to Cart button at the bottom.
 	    - Clicking on the Add to Cart button will add this instance of the product with applicable choices to the session cart.
- - #### Implementation:- Each service will be mapped to their applicable service details page through a primary key. On each page the user will be able to customise their service and add an instance of their choices to the cart which can subsequently be purchased.
+ - #### Implementation:- 
+    Each service will be mapped to their applicable service details page through a primary key. On each page the user will be able to customise their service and add an instance of their choices to the cart which can subsequently be purchased.
 	•	
 
 ### User Story:
@@ -241,7 +245,8 @@ View the live project [here](https://venture-press.herokuapp.com/)
 	- It will be possible to completely remove the service from the cart.
 	- Proceed to Checkout button at bottom will direct user to payment.
 	- Back to Services button will direct user back to Services page.
- - #### Implementation:- This page will output the session cart to the template, listing all services added and including all the details necessary before the user makes the choice of whether to checkout or not. Removal of services and quantity adjustments will be made possible on this page itself via javascript. Once a user is happy to proceed, there will be a Checkout button or if not, a Back to Services button.
+ - #### Implementation:- 
+    This page will output the session cart to the template, listing all services added and including all the details necessary before the user makes the choice of whether to checkout or not. Removal of services and quantity adjustments will be made possible on this page itself via javascript. Once a user is happy to proceed, there will be a Checkout button or if not, a Back to Services button.
 
 ### User Story:
 > As a user, I want to be able to proceed to purchasing the contents of my cart, input my card details and make the purchase.
@@ -254,7 +259,8 @@ View the live project [here](https://venture-press.herokuapp.com/)
 	- Process Payment button will be created to initiate the order submission.
 	- Back to Cart button will be created to return to the Cart page.
 	- Upon successful payment, the user will be directed to an Order Summary page containing the reference details of the order.
- - #### Implementation:- The Cart page will be linked to the Checkout page via a Proceed to Checkout button, at which point the details/quantities of the services are no longer editable. The same service details are displayed on this page as the Cart page, so the user will know the exact breakdown of the order before initiating payment. Two forms, one for delivery information and the other for Stripe payments will require input from the user. There will also be a Save Delivery Details button which will save the user time inputting delivery information again for the next order. Once the Process Payment button is clicked, the Stripe integration will process the payment intent with webhooks for redundancy, and if successful, direct to an order summary page referencing the details of the order. If there are errors with the payment, they will be displayed via the toast messages. An email confirmation containing this same information will be sent to the user’s email address.
+ - #### Implementation:- 
+    The Cart page will be linked to the Checkout page via a Proceed to Checkout button, at which point the details/quantities of the services are no longer editable. The same service details are displayed on this page as the Cart page, so the user will know the exact breakdown of the order before initiating payment. Two forms, one for delivery information and the other for Stripe payments will require input from the user. There will also be a Save Delivery Details button which will save the user time inputting delivery information again for the next order. Once the Process Payment button is clicked, the Stripe integration will process the payment intent with webhooks for redundancy, and if successful, direct to an order summary page referencing the details of the order. If there are errors with the payment, they will be displayed via the toast messages. An email confirmation containing this same information will be sent to the user’s email address.
 
 ### User Story:
 > As a user, I want to be able to contact the company about any queries or custom quotations I might need.
@@ -265,7 +271,8 @@ View the live project [here](https://venture-press.herokuapp.com/)
 	- Submit Query button will be positioned below the form for users to click on when ready.
 	- When the form is submitted a toast success message will show.
 	- When the form is submitted an email will be sent indicated predicted response time.
- - #### Implementation:- The Contact page will be accessed by navigation link inside the fixed navigation bar at the top of every page. The page itself will consist of a contact form requiring input from the user before submission of the query by clicking on a Submit Query button. Both a toast success message and a confirmation email will be initiated when the form is submitted by the user. The email will be sent to the email address in the required email input field.
+ - #### Implementation:- 
+    The Contact page will be accessed by navigation link inside the fixed navigation bar at the top of every page. The page itself will consist of a contact form requiring input from the user before submission of the query by clicking on a Submit Query button. Both a toast success message and a confirmation email will be initiated when the form is submitted by the user. The email will be sent to the email address in the required email input field.
 
 ### User Story:
 > As a user, I want to be able to easily return to the website if I encounter a page error
@@ -273,7 +280,8 @@ View the live project [here](https://venture-press.herokuapp.com/)
 	- 404 page will be created.
 	- 500 page will be created.
 	- Both pages will provide error information and a way back to the website.
- - #### Implementation:- Error handling will be used to catch both 404 and 500 page errors and direct the user to the respective page. This will inform them in detail of the error in question and a link will be provided directing back to the home page.
+ - #### Implementation:- 
+    Error handling will be used to catch both 404 and 500 page errors and direct the user to the respective page. This will inform them in detail of the error in question and a link will be provided directing back to the home page.
 
 ### User Story:
 > As a user, I want to be able to register on the website.
@@ -285,7 +293,8 @@ View the live project [here](https://venture-press.herokuapp.com/)
 	- An information toast will show indicating an email has been sent to the email address.
 	- When a user visits the link in the sent email, they will be directed to a page with a Confirm email address button.
 	- When a user clicks on the Confirm button, they will directed back to the login page and a toast success message will show.
- - #### Implementation:- Using Django allauth, the Signup form will capture the username, password and email which when submitted will add a user account to the Users database assuming one does not already exist using an identical email and/or username. Each input field will have its own validation including but not limited to; minimum and maximum character limits, character requirements and regular expressions. There will also be confirm email and confirm password fields as extra validation for the user's protection. When a successful form is submitted, a toast message will show and an email will be sent requiring email verification. When the link in the email is clicked, user is directed to the a unique confirm-email page where they can confirm their account by clicking on the Confirm button. Upon a successful verification a toast success message will appear and the the user will be directed back to the login page.
+ - #### Implementation:- 
+    Using Django allauth, the Signup form will capture the username, password and email which when submitted will add a user account to the Users database assuming one does not already exist using an identical email and/or username. Each input field will have its own validation including but not limited to; minimum and maximum character limits, character requirements and regular expressions. There will also be confirm email and confirm password fields as extra validation for the user's protection. When a successful form is submitted, a toast message will show and an email will be sent requiring email verification. When the link in the email is clicked, user is directed to the a unique confirm-email page where they can confirm their account by clicking on the Confirm button. Upon a successful verification a toast success message will appear and the the user will be directed back to the login page.
 
 ### User Story:
 > As a registered user, I want to be able to log in to my account on the website.
@@ -294,7 +303,8 @@ View the live project [here](https://venture-press.herokuapp.com/)
 	- An email address OR username, and password inputs will be required by the user.
 	- Password will be checked against the email OR username input for an account in the Users database.
 	- If the details input match those of a valid user account, then a user session is initiated.
- - #### Implementation:- Using Django allauth, the Login form will capture the username, password and email which when submitted will search for a user account in the Users database matching both inputs. Each input field will have its own validation including but not limited to; minimum and maximum character limits, character requirements and regular expressions. When a successful form is submitted, a user session will be initiated and a toast message will show a successful login and the user will be directed to the home page.
+ - #### Implementation:- 
+    Using Django allauth, the Login form will capture the username, password and email which when submitted will search for a user account in the Users database matching both inputs. Each input field will have its own validation including but not limited to; minimum and maximum character limits, character requirements and regular expressions. When a successful form is submitted, a user session will be initiated and a toast message will show a successful login and the user will be directed to the home page.
 
 ### User Story:
 > As a registered user, I want to be able to log out of my account on the website.
@@ -304,7 +314,8 @@ View the live project [here](https://venture-press.herokuapp.com/)
 	- Cancel button will be created for cancelling log out.
 	- Sign Out button will be created to log out of account.
 	- A toast success message will be displayed on successful log out.
- - #### Implementation:- Using Django allauth, the Logout form will check whether the user wants to log out of their account or not. If they click on the Cancel button then they will be directed back to the home page. If they click on the Sign Out button then the user session will be deleted, a toast success message will appear and they will be subsequently directed back to the home page.
+ - #### Implementation:- 
+    Using Django allauth, the Logout form will check whether the user wants to log out of their account or not. If they click on the Cancel button then they will be directed back to the home page. If they click on the Sign Out button then the user session will be deleted, a toast success message will appear and they will be subsequently directed back to the home page.
 
 ### User Story:
 > As a registered user, I want to be able to view my profile, edit my details and change my password.
@@ -314,7 +325,8 @@ View the live project [here](https://venture-press.herokuapp.com/)
 	- Change password page will be created.
 	- Buttons on the profile page will be displayed to edit profile and/or change password which will link to their respective pages.
 	- An Order History and Sign Out button will be underneath the form.
- - #### Implementation:- A Profile page containing a form with new fields including First and Last name as well as delivery details will be shown. These fields will be empty by default as they were not required upon registration. The Edit Profile button will link to the respective page where the user can edit First Name, Last Name and Delivery information. Username changes are not permitted. The Change Password button will direct to the respective page where the user can edit their password. This will have the same validation and confirmation field as the registration page. Upon successful edits of profile or password, a toast message will let the user know if it was successful. A cancel button will also be included on each form to return to the profile page. An Order History button will be displayed which will direct the user to the Order History page. Finally, a Sign Out button will be displayed on the profile page which will terminate the session and return the user to the login page with a successful log out toast message.
+ - #### Implementation:- 
+    A Profile page containing a form with new fields including First and Last name as well as delivery details will be shown. These fields will be empty by default as they were not required upon registration. The Edit Profile button will link to the respective page where the user can edit First Name, Last Name and Delivery information. Username changes are not permitted. The Change Password button will direct to the respective page where the user can edit their password. This will have the same validation and confirmation field as the registration page. Upon successful edits of profile or password, a toast message will let the user know if it was successful. A cancel button will also be included on each form to return to the profile page. An Order History button will be displayed which will direct the user to the Order History page. Finally, a Sign Out button will be displayed on the profile page which will terminate the session and return the user to the login page with a successful log out toast message.
 
 
 ### User Story:
@@ -325,7 +337,8 @@ View the live project [here](https://venture-press.herokuapp.com/)
 	- Order Number, Date, Line Items and Total will be shown in the table.
 	- Order Number will be an anchor linking to an Order Details page specific to that order.
 	- A Back to Profile button will be underneath the table.
- - #### Implementation:- The order history page will contain an iterated list of all past order submissions from the user in tabular format. The table will show the Order Number, Date, Line Items and the Total for every past order. The Order number itself in each table row will be an anchor linking to the pertaining Order Details page which will outline the order in more detail including Delivery and Billing information and charges. A Back to Profile button will be created beneath this table which when clicked, will direct the user back to their Profile page.
+ - #### Implementation:- 
+    The order history page will contain an iterated list of all past order submissions from the user in tabular format. The table will show the Order Number, Date, Line Items and the Total for every past order. The Order number itself in each table row will be an anchor linking to the pertaining Order Details page which will outline the order in more detail including Delivery and Billing information and charges. A Back to Profile button will be created beneath this table which when clicked, will direct the user back to their Profile page.
 
 ### User Story:
 > As an admin user, I want to be able to create, edit and delete print services. 
@@ -352,7 +365,8 @@ View the live project [here](https://venture-press.herokuapp.com/)
 	- Delete Service button using Django’s built-in administration.
 	- Delete Category checkbox and Delete selected categories option for batch deletion.
 	- Delete Service checkbox and Delete selected services option for batch deletion.
- - #### Implementation:- Utilising built-in Django administration’s user interface, a superuser can create, update and delete Categories and Services within the database with the applicable fields designated in the model.
+ - #### Implementation:- 
+    Utilising built-in Django administration’s user interface, a superuser can create, update and delete Categories and Services within the database with the applicable fields designated in the model.
 
 ### User Story:
 > As the superuser, I want to be able to create, edit and delete user details and emails.
@@ -373,3 +387,25 @@ View the live project [here](https://venture-press.herokuapp.com/)
 	- Delete Orders checkbox and Delete selected orders option for batch deletion.
  - #### Implementation:
     Utilising built-in Django administration’s user interface, a superuser can create, update and delete Orders within the database with the applicable fields designated in the model.
+
+## UX SKELETON
+
+- ### Database Design
+
+![ER Diagram](media/readme/er-diagram.png)
+
+- ### Security
+
+    Database connection details are set up securely in the IDE for development, and securely in Heroku for production. 
+    They are not uploaded to GitHub for security reasons.
+
+- ### Wireframes
+
+    - Home (mobile & desktop)
+    ![Home]()
+
+    - 404 (mobile & desktop)
+    ![404]()
+
+**Original Design Wireframes**
+* [Home]()
