@@ -617,10 +617,27 @@ View the live project [here](https://venture-press.herokuapp.com/)
     - Click on 'Check'
     ![W3C CSS Validation Input](media/readme/css-files-validated.png)
 
-- WAVE, a Web Accessibility Evaluation Tool was used for contrast testing.
+- WAVE, a Web Accessibility Evaluation Tool was used for contrast, labelling semantic design testing.
     - No contrast errors found.
-    ![WAVE Error](docs/readmeimages/WAVE-error.png)
-    ![WAVE Error Code](docs/readmeimages/WAVE-errorcode.png)
+    - All labels present.
+    - Semantically structured with only 2 warnings returned for intentional repeated anchor links.
+
+    ![WAVE Diagnostic](media/readme/wave-eval.png)
+
+- Lighthouse was used for performance, accessibility and SEO testing.<br>
+    - Each page returned a score of **90-100** for each page.
+    ![Lighthouse Desktop](media/readme/lighthouse-desktop.png)
+    - The reason for the score of 67 for Best Practices on mobile is due to vulnerabilities detected with the latest version of jQuery
+    ![Lighthouse Mobile](media/readme/lighthouse-mobile.png)
+
+- JSHint, a JavaScript Static Code Analysis Tool was used to check all .js files for the coherence and quality of my code, making sure it is error free and that no potential problems exist. All files returned clear of any errors or warnings.
+    ![All Scripts](media/readme/jshint-validator.png)
+
+- PEP8 online is a tool to check the conformity of my code to the PEP8 python coding convention.
+    - All Python files returned full PEP8 comformity as below.
+    ![PEP8 Online](media/readme/pep8-validator.png)
+
+- I ran the website locally and tested on the deployed version. No differences found.
 
 ## Test Strategy
  - The testing will be done on four web browsers:-
