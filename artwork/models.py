@@ -18,9 +18,6 @@ class Artwork(models.Model):
     models, and an upload file field which passes uploaded files to the artwork
     directory function.
     """
-    class Meta:
-        # Change plural in admin
-        verbose_name_plural = 'Artwork Files'
 
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE)
     order = models.ForeignKey(Order, on_delete=models.CASCADE)
