@@ -16,11 +16,11 @@ class ArtworkUpload(forms.ModelForm):
             'order': forms.HiddenInput(),
         }
         fields = ('user', 'order', 'upload')
-
+    
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-
+        
         self.fields['upload'].label = False
-
+    
     upload = forms.FileField(
         label='Upload Artwork', widget=CustomClearableFileInput)

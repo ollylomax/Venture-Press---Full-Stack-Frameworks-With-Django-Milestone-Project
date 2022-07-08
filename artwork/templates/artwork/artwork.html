@@ -57,7 +57,7 @@
                         </td>
                         <td>
                             <!-- Form with encoding posting to view and passing order_number -->
-                            <form id="form-{{ forloop.counter }}" action="{% url 'upload_artwork' order.order_number %}" method="post"
+                            <form action="{% url 'upload_artwork' order.order_number %}" method="post"
                                 enctype="multipart/form-data">
                                 <!-- Django csrf token -->
                                 {% csrf_token %}
@@ -114,10 +114,11 @@
         <!-- Add but don't overwrite -->
         {{ block.super }}
         <!-- Custom script to change layout and styling in clearablefileinput widget -->
+        {{ block.super }}
         <script>
-            $('.new-file.{{ file.id }}').change(function () {
-                var file = $('.new-file.{{ file.id }}')[0].files[0];
-                $('.filename{{ file.id }}').text(file.name);
+            $('#new-file').change(function () {
+                var file = $('#new-file')[0].files[0];
+                $('#filename').text(file.name);
             });
         </script>
         {% endblock %}
