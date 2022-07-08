@@ -592,6 +592,18 @@ View the live project [here](https://venture-press.herokuapp.com/)
 
 ## Testing
 
+- The W3C Markup Validator Service was used to validate every page in the project to ensure there were no syntax errors or warnings.
+    - All pages with one exception cleared with no errors or warnings as below.
+        ![W3C Markup Validation - All Pages](media/readme/html-validator.png)
+    - The Artwork page I created, despite being functional, is returning duplicate id errors. I have been debugging this but ran out of time, so I included the additional app regardless with notation.
+        ![W3C Markup Validation - Products](media/readme/artwork-app-html-errors.png)
+    - Pages requiring a a login session or admin/superuser status returned no errors or warnings. They were tested by the following approach:
+        - Copy full HTML in developer tools from the desired page.
+        - Go to the [W3C Markup Validator Page](https://validator.w3.org/nu/).
+        - Click on the 'Check by' dropdown option.
+        - Select 'text input'.
+        - Paste HTML into the text area provided.
+
 - The W3C CSS Validator was used to validate my project css files to ensure there were no errors or warnings.    
     - This returned 22 warnings which all came from frameworks or external libraries.
         - 16 from Bootstrap Parse errors

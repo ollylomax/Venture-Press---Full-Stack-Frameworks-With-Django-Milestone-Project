@@ -1,4 +1,10 @@
-from django.shortcuts import get_object_or_404, render, redirect, reverse, HttpResponse
+from django.shortcuts import (
+    get_object_or_404,
+    render, redirect,
+    reverse,
+    HttpResponse
+)
+
 from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.conf import settings
@@ -43,10 +49,10 @@ def checkout(request):
     assign to a variable, update with payment id and cart instance then save.
     Iterate through the cart items, getting the service by item id and
     assigning order, service and quantity to OrderLineItem model and save.
-    
+
     If request is GET then calculate the stripe total and create payment
     intent. Instantiate OrderForm with profile information if it exists,
-    else instantiate empty OrderForm. Pass the form and stripe keys to the 
+    else instantiate empty OrderForm. Pass the form and stripe keys to the
     template.
     """
 
@@ -112,7 +118,8 @@ def checkout(request):
             currency=settings.STRIPE_CURRENCY,
         )
 
-        # Attempt to prefill the form with any info the user maintains in their profile
+        # Attempt to prefill the form with any info the user maintains
+        #   in their profile
         if request.user.is_authenticated:
             try:
                 profile = UserProfile.objects.get(user=request.user)
@@ -144,7 +151,7 @@ def checkout(request):
 
 def checked_out(request, order_number):
     """
-    Successful checkout view receiving order_number as parameter, getting the 
+    Successful checkout view receiving order_number as parameter, getting the
     corresponding object from Order model and assigning to variable. If user
     is authenticated then assign profile variable by finding UserProfile object
     by current user session. Link the order to the user profile and save. If

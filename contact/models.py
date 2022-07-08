@@ -20,11 +20,12 @@ class Messages(models.Model):
         # Change plural in admin
         verbose_name_plural = 'Messages'
 
-    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
+    user = models.ForeignKey(
+        User, on_delete=models.CASCADE, null=True, blank=True)
     date = models.DateTimeField(auto_now_add=True)
     first_name = models.CharField(max_length=15, null=False, blank=False)
     last_name = models.CharField(max_length=15, null=False, blank=False)
     email = models.EmailField(max_length=254, null=False, blank=False)
-    subject = models.CharField(max_length=10, choices=SUBJECTS, default='GENERAL')
-    message = models.TextField(max_length=200, null=False, blank=False) 
-
+    subject = models.CharField(
+        max_length=10, choices=SUBJECTS, default='GENERAL')
+    message = models.TextField(max_length=200, null=False, blank=False)

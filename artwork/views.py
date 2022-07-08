@@ -32,13 +32,13 @@ def orders_requiring_artwork(request):
     # Init empty form
     form = ArtworkUpload()
     order_form = OrderForm()
-    
+
     profile = get_object_or_404(UserProfile, user=request.user)
     orders = Order.objects.filter(user_profile=profile, has_artwork=False)
 
     form['user'].initial = request.user
 
-    for order in orders:  
+    for order in orders:
         form['order'].initial = order
 
     # File urls rendered to template
@@ -59,7 +59,7 @@ def orders_requiring_artwork(request):
 @login_required
 def upload_artwork(request, order_number):
     """
-    View to upload artwork by receiving order_number from the template, get the 
+    View to upload artwork by receiving order_number from the template, get the
     order from the order Object by order_number and save it to a variable used
     to instantiate an OrderForm. If request is POST then instantiate an
     ArtworkUpload form with submitted fields and file into a variable and save
@@ -77,21 +77,22 @@ def upload_artwork(request, order_number):
         form['order'].initial = order
 
         # Upload file and change has_artwork boolean in corresponding order
-        if form.is_valid():           
+        if form.is_valid():
             artworks = form.save()
             artworks.order = order
             artworks.save()
             update_order = order_form.save(commit=False)
             update_order.has_artwork = True
             update_order.save()
-            messages.success(request, 'Your Artwork has been Successfully Received')
+            messages.success(
+                request, 'Your Artwork has been Successfully Received')
 
             return redirect(reverse('orders_requiring_artwork'))
 
         else:
             messages.error(request, 'Issue when Uploading Artwork')
             print(form.errors.as_data())
-        
+
         context = {
             'files': files,
             'form': form,
@@ -99,4 +100,3 @@ def upload_artwork(request, order_number):
             'order_form': order_form}
 
         return render(request, "artwork/artwork.html", context)
-

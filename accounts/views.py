@@ -42,7 +42,7 @@ def edit_profile(request):
     profile."""
 
     profile = get_object_or_404(UserProfile, user=request.user)
-    
+
     if request.method == 'POST':
         form = UserProfileForm(request.POST, instance=profile)
         if form.is_valid():
@@ -112,7 +112,7 @@ def message_centre(request):
     if there are messages in the Message object filtered by current user
     session. Conditionally save filtered list of objects to a variable if
     messages exist then pass it to template."""
-    
+
     if not Messages.objects.filter(user=request.user).exists():
         user_messages = None
     else:

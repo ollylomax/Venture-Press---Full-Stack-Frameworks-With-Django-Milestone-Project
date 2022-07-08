@@ -29,13 +29,14 @@ class main_handler:
         body = render_to_string(
             'checkout/order_confirmation_email/order_confirmation_body.txt',
             {'order': order, 'vp_email': settings.VENTURE_PRESS_EMAIL})
-        # Takes four parameters, email subject, email body, from email and to email.
+        # Takes four parameters, email subject, email body, from
+        #   email and to email.
         send_mail(
             subject,
             body,
             settings.VENTURE_PRESS_EMAIL,
             [order.email]
-        )   
+        )
 
     def generic_handler(self, event):
         """
@@ -75,8 +76,10 @@ class main_handler:
                 profile.default_country = shipping_details.address.country
                 profile.default_postcode = shipping_details.address.postal_code
                 profile.default_town_or_city = shipping_details.address.city
-                profile.default_street_address1 = shipping_details.address.line1
-                profile.default_street_address2 = shipping_details.address.line2
+                line1 = profile.default_street_address1
+                shipping_details.address.line1 = line1
+                line2 = profile.default_street_address2
+                shipping_details.address.line2 = line2
                 profile.default_county = shipping_details.address.state
                 profile.save()
 
@@ -111,10 +114,11 @@ class main_handler:
         if order_exists:
             self._send_order_confirmation_email(order)
             return HttpResponse(
-                content=f'Webhook: {event["type"]} | SUCCESS: Order exists in database',
+                content=f'Webhook: {event["type"]} | SUCCESS: Order exists',
                 status=200)
         else:
-            # Create the order in database using the stripe payment intent information
+            # Create the order in database using the stripe payment
+            #   intent information
             order = None
             try:
                 order = Order.objects.create(
@@ -139,7 +143,7 @@ class main_handler:
                         quantity=quantity,
                     )
                     order_line_item.save()
-                    
+
             except Exception as e:
                 if order:
                     order.delete()
@@ -148,7 +152,7 @@ class main_handler:
                     status=500)
         self._send_order_confirmation_email(order)
         return HttpResponse(
-            content=f'Webhook: {event["type"]} | SUCCESS: Webhook order creation',
+            content=f'Webhook: {event["type"]} | SUCCESS: Webhook order',
             status=200)
 
     def pi_payment_failed_handler(self, event):

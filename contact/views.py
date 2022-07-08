@@ -38,9 +38,17 @@ def contact(request):
 
         if form.is_valid():
             form.save()
-            subject = render_to_string('contact/contact_email/contact_email_subject.txt', {'form': form})
-            customer_email_body = render_to_string('contact/contact_email/contact_confirmation_email_body.txt', {'form': form})
-            company_email_body = render_to_string('contact/contact_email/contact_from_email_body.txt', {'form': form})
+
+            context = {
+                'form': form,
+            }
+            subject = render_to_string(
+                'contact/contact_email/contact_email_subject.txt', context)
+            customer_email_body = render_to_string(
+                'contact/contact_email/contact_confirmation_email_body.txt', context)
+            company_email_body = render_to_string(
+                'contact/contact_email/contact_from_email_body.txt', context)
+
             customer_email = (
                 subject,
                 customer_email_body,
@@ -54,12 +62,13 @@ def contact(request):
                 [settings.VENTURE_PRESS_EMAIL]
             )
             try:
-                send_mass_mail((customer_email, company_email), fail_silently=False)
+                send_mass_mail(
+                    (customer_email, company_email), fail_silently=False)
             except Exception as e:
                 messages.error(request, f'Error: {e}')
                 return HttpResponse(status=500)
             return redirect('success')
- 
+
     return render(request, "contact/contact.html", {'form': form})
 
 

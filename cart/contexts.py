@@ -32,14 +32,15 @@ def cart_contents(request):
 
     if cart_items:
         if total < settings.DELIVERY_THRESHOLD:
-            delivery = total * Decimal(settings.DELIVERY_PERCENT / 100) + settings.DELIVERY_CHARGE
+            delivery = total * Decimal(
+                settings.DELIVERY_PERCENT / 100) + settings.DELIVERY_CHARGE
             delivery_dearth = settings.DELIVERY_THRESHOLD - total
         else:
             delivery = 0
             delivery_dearth = 0
-    
+
     grand_total = delivery + total
-    
+
     context = {
         'cart_items': cart_items,
         'total': total,

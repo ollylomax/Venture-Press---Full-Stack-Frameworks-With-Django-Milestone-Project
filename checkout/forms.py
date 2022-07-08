@@ -37,7 +37,7 @@ class OrderForm(forms.ModelForm):
         }
 
         self.fields['full_name'].widget.attrs['autofocus'] = True
-        
+
         for field in self.fields:
             if field != 'country':
                 if field != 'has_artwork':
@@ -45,6 +45,8 @@ class OrderForm(forms.ModelForm):
                         placeholder = f'{placeholders[field]} *'
                     else:
                         placeholder = placeholders[field]
-                    self.fields[field].widget.attrs['placeholder'] = placeholder
-                    self.fields[field].widget.attrs['class'] = 'stripe-style-input'
+                    self.fields[
+                        field].widget.attrs['placeholder'] = placeholder
+                    self.fields[
+                        field].widget.attrs['class'] = 'stripe-style-input'
                     self.fields[field].label = False

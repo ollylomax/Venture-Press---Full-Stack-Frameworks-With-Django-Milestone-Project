@@ -33,7 +33,7 @@ def all_services(request):
                 messages.error(
                     request, "You must type something in the Search field")
                 return redirect(reverse('services'))
-            
+
             queries = Q(
                 name__icontains=query) | Q(description__icontains=query)
             services = services.filter(queries)
@@ -103,7 +103,7 @@ def edit_service(request, service_id):
     searching Service model using the service id and returning the service to a
     variable. Instantiate a ServiceForm with the variable set above and pass
     both the form and the variable to the template.
-    
+
     If request is POST then check form for validity and if valid then save,
     sending a toast success message and reversing to service detail template
     passing the service id back as an argument. If invalid then send toast

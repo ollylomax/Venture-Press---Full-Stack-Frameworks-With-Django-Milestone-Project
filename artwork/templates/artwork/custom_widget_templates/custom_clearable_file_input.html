@@ -13,7 +13,7 @@
 {% endif %}
 <!-- Custom file selector button linking to custom javascript injected from artwork template -->
 <span class="btn mt-2 mb-2 btn-file">
-    Choose File <input id="new-file.{{ file.id }}" type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
+    Choose File <input class="new-file.{{ file.id }}" type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
 </span>
 <!-- Custom filename display linking to custom javascript injected from artwork template -->
-<p><strong id="filename{{ file.id }}"></strong></p>
+<p><strong class="filename{{ file.id }}"></strong></p>

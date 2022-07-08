@@ -14,8 +14,8 @@ def add_to_cart(request, item_id):
     """ View to add or update the quantity of chosen services to cart by receiving
     item id from the template, using it to get the corresponding service and
     adding or updating their quantity to the cart variable then updating the
-    session. Set a variable for the path from POST and redirect to previous path
-    after adding/updating.
+    session. Set a variable for the path from POST and redirect to previous
+    path after adding/updating.
     """
 
     service = Service.objects.get(pk=item_id)
@@ -25,10 +25,12 @@ def add_to_cart(request, item_id):
 
     if item_id in list(cart.keys()):
         cart[item_id] += quantity
-        messages.success(request, f'Updated {service.name} quantity to {cart[item_id]}x')
+        messages.success(
+            request, f'Updated {service.name} quantity to {cart[item_id]}x')
     else:
         cart[item_id] = quantity
-        messages.success(request, f'Added {quantity}x {service.name} to your bag')
+        messages.success(
+            request, f'Added {quantity}x {service.name} to your bag')
 
     request.session['cart'] = cart
     return redirect(path)
@@ -48,7 +50,8 @@ def quantity_amend(request, item_id):
 
     if quantity > 0:
         cart[item_id] = quantity
-        messages.success(request, f'Updated {service.name} quantity to {cart[item_id]}x')
+        messages.success(
+            request, f'Updated {service.name} quantity to {cart[item_id]}x')
     else:
         cart.pop(item_id)
         messages.success(request, f'Removed all {service.name} from your bag')
@@ -66,7 +69,7 @@ def delete_from_cart(request, item_id):
 
     cart = request.session.get('cart', {})
     service = Service.objects.get(pk=item_id)
-    
+
     try:
         cart.pop(item_id)
         messages.success(request, f'Removed all {service.name} from your bag')

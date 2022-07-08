@@ -53,7 +53,7 @@ class CustomRegisterForm(SignupForm):
             'password1': 'Enter Password',
             'password2': 'Confirm Password',
         }
-        
+
         # Set field as autofocus on page load.
         self.fields['email'].widget.attrs['autofocus'] = True
 
@@ -106,7 +106,7 @@ class CustomLoginForm(LoginForm):
                 # Remove all labels.
                 self.fields[field].label = False
 
-        
+
 class UserProfileForm(forms.ModelForm):
     """
     Form class importing the UserProfile model, excluding user field then
