@@ -20,6 +20,13 @@ class CustomChangePasswordForm(ChangePasswordForm):
             'password2': 'Confirm New Password',
         }
 
+        # Add aria labels
+        self.fields[
+            'oldpassword'].widget.attrs['aria-label'] = 'Current Password'
+        self.fields['password1'].widget.attrs['aria-label'] = 'New Password'
+        self.fields[
+            'password2'].widget.attrs['aria-label'] = 'Repeat New Password'
+
         # Iterate through every field.
         for field in self.fields:
             if self.fields[field].required:
@@ -53,6 +60,14 @@ class CustomRegisterForm(SignupForm):
             'password1': 'Enter Password',
             'password2': 'Confirm Password',
         }
+
+        # Set aria labels
+        self.fields['email'].widget.attrs['aria-label'] = 'Enter Email'
+        self.fields['email2'].widget.attrs['aria-label'] = 'Confirm Email'
+        self.fields['username'].widget.attrs['aria-label'] = 'Enter Username'
+        self.fields['password1'].widget.attrs['aria-label'] = 'Enter Password'
+        self.fields[
+            'password2'].widget.attrs['aria-label'] = 'Confirm Password'
 
         # Set field as autofocus on page load.
         self.fields['email'].widget.attrs['autofocus'] = True
@@ -88,6 +103,10 @@ class CustomLoginForm(LoginForm):
             'login': 'Enter Username or Email',
             'password': 'Enter Password',
         }
+
+        self.fields[
+            'login'].widget.attrs['aria-label'] = 'Enter Username Or Email'
+        self.fields['password'].widget.attrs['aria-label'] = 'Enter Password'
 
         # Iterate through every field.
         for field in self.fields:
