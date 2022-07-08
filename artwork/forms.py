@@ -22,5 +22,4 @@ class ArtworkUpload(forms.ModelForm):
         
         self.fields['upload'].label = False
     
-    upload = forms.FileField(
-        label='Upload Artwork', widget=CustomClearableFileInput)
+    upload = forms.FileField(label='Upload Artwork', widget=CustomClearableFileInput)
