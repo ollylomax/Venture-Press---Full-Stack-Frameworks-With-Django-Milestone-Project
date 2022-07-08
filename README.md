@@ -432,8 +432,7 @@ View the live project [here](https://venture-press.herokuapp.com/)
     - 404 (mobile & desktop) 
     ![404](media/readme/wireframes/404.png)
 
-**Original Design Wireframes**
-* [Home]()
+As referenced in the notable amendments to design, I created two additional models.
 
 ## UX SURFACE
 
@@ -453,7 +452,43 @@ View the live project [here](https://venture-press.herokuapp.com/)
 
 - ### Notable amendments to Design
 
-   **********
+    Instead of repeating content by inserting some random services onto the home page as planned, after building the Services, Categories, Orders and Accounts models I decided to make another two models for Contact and Artwork.
+
+   ### Contact App
+    This app is designed to receive contact requests from both unregistered and registered users. If a user is registered, then fields will be pre-filled and when message is submitted it will be saved to a Message Centre page where all previous messages can be seen. The functionality is also present to view previous messages, update them and delete them altogether.
+
+    When a contact request is submitted, it also sends a confirmation of the contact to the user's email with corresponding message content as well as the admin email to alert site owners.
+    - Contact Model
+    - ContactForm
+    - Additional templates:
+        - contact.html
+        - success.html
+        - edit_message.html
+        - messages.html
+        - past_message.html
+        - contact_confirmation_email_body.txt
+        - contact_from_email_body.txt
+        - contact_email_subject.txt
+    - Additional views:
+        - contact
+        - success
+        - edit message
+        - delete message
+
+    ### Artwork App
+    This app is designed for registered users who have purchased a print service. The print order will subsequently appear in a new page called Artwork Uploads with corresponding file upload buttons. When a file is uploaded for the pertaining order, the file is submitted to the AWS database with relevant file info, and the order will disappear from the user's Message Centre.
+    - Artwork Model
+    - ArtworkUpload Form
+    - Additional templates:
+        - artwork.html
+        - custom_clearable_file_input.html
+    - Additional views:
+        - orders_requiring_artwork
+        - upload_artwork
+
+    ### General changes
+
+    I had planned to add another user permission of admin, but since there is a built-in django option in the django administration backend for this I decided against and focused my time elsewhere, including but not limited to making custom allauth classes and customising the inherited forms.
 
 ## Features
 
@@ -638,6 +673,20 @@ View the live project [here](https://venture-press.herokuapp.com/)
     ![PEP8 Online](media/readme/pep8-validator.png)
 
 - I ran the website locally and tested on the deployed version. No differences found.
+
+## Unit Testing
+- Unit testing was done using python unittest.
+
+    The testing included:
+
+    - Routing to all pages available prior to registration.
+    ![Unit Test](media/readme/unit-tests.png)
+
+    **Note**
+    Further tests will include:
+    - Routing to all session secured views
+    - CRUD functionalty
+    - Form submission
 
 ## Test Strategy
  - The testing will be done on four web browsers:-
