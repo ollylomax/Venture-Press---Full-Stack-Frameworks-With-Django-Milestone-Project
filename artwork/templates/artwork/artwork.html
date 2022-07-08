@@ -51,7 +51,6 @@
                             <!-- Button passing order number to view -->
                             <a href="{% url 'past_order' order.order_number %}"
                                 class="btn">{{ order|truncatechars:15 }}</a>
-                            </a>
                         </td>
                         <td class="align-middle">
                             {{ order.date }}
@@ -93,8 +92,10 @@
                         <!-- Iterate through files object -->
                         {% for file in files %}
                         <!-- List item with anchor link to uplaoded file -->
-                        <li class="d-none d-sm-block"><a href="{{ file.upload.url }}">{{ file.upload.name|truncatechars:50 }}</a></li>
-                        <li class="d-sm-none"><a href="{{ file.upload.url }}">{{ file.upload.name|truncatechars:28 }}</a></li>
+                        <li class="d-none d-sm-block"><a
+                                href="{{ file.upload.url }}">{{ file.upload.name|truncatechars:50 }}</a></li>
+                        <li class="d-sm-none"><a
+                                href="{{ file.upload.url }}">{{ file.upload.name|truncatechars:28 }}</a></li>
                         {% endfor %}
                     </ul>
                     <!-- If no files exist in filtered object -->
@@ -104,6 +105,8 @@
                 </div>
             </div>
         </div>
+    </div>
+</div>
         {% endblock %}
 
         <!-- Inject additional javascript -->
@@ -111,10 +114,10 @@
         <!-- Add but don't overwrite -->
         {{ block.super }}
         <!-- Custom script to change layout and styling in clearablefileinput widget -->
-        <script type="text/javascript">
-            $('#new-file').change(function () {
-                var file = $('#new-file')[0].files[0];
-                $('#filename').text(file.name);
+        <script>
+            $('#new-file.{{ file.id }}').change(function () {
+                var file = $('#new-file.{{ file.id }}')[0].files[0];
+                $('#filename{{ file.id }}').text(file.name);
             });
         </script>
         {% endblock %}

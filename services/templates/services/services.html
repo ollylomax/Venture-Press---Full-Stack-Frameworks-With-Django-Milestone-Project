@@ -45,9 +45,9 @@
                 Filtered by <strong>"{{ categories.0 }}"</strong>'
                 {% endif %}
             </p>
+            {% endif %}
         </div>
     </div>
-    {% endif %}
     <!-- Services block -->
     <div class="row justify-content-center">
         <!-- Iterate through services -->
@@ -128,22 +128,23 @@
             </a>
         </div>
     </div>
-    {% endblock %}
+</div>
+{% endblock %}
 
-    <!-- Custom javascript injection -->
-    {% block postjs %}
-    <!-- Add but don't overwrite -->
-    {{ block.super }}
-    <!-- Bootstrap tooltips -->
-    <script>
-        $(function () {
-            $('[data-toggle="tooltip"]').tooltip()
-        })
-    </script>
-    <!-- Script targetting back to top button which scrolls window to fixed position -->
-    <script>
-        $('.btt-link').click(function (e) {
-            window.scrollTo(0, 0)
-        })
-    </script>
-    {% endblock %}
+<!-- Custom javascript injection -->
+{% block postjs %}
+<!-- Add but don't overwrite -->
+{{ block.super }}
+<!-- Bootstrap tooltips -->
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+<!-- Script targetting back to top button which scrolls window to fixed position -->
+<script>
+    $('.btt-link').click(function (e) {
+        window.scrollTo(0, 0)
+    })
+</script>
+{% endblock %}

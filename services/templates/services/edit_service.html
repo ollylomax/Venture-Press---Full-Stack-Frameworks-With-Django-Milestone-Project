@@ -59,7 +59,7 @@
 <!-- Add but don't overwrite -->
 {{ block.super }}
 <!-- Custom script to change layout and styling in clearablefileinput widget -->
-<script type="text/javascript">
+<script>
     $('#new-image').change(function () {
         var file = $('#new-image')[0].files[0];
         $('#filename').text(file.name);

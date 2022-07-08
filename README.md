@@ -590,6 +590,22 @@ View the live project [here](https://venture-press.herokuapp.com/)
     - [PEP8Online](http://pep8online.com/)<br>
         Python related tool to check for PEP8 compliance.
 
+## Testing
+
+- The W3C CSS Validator was used to validate my project css files to ensure there were no errors or warnings.    
+    - This returned 22 warnings which all came from frameworks or external libraries.
+        - 16 from Bootstrap Parse errors
+        - 6 from FontAwesome animation delays.
+    ![W3C CSS Validation](media/readme/css-errors.png)
+- To make sure that all my css files are error free, I used the following approach:
+    - Copy my css code from each css file file.
+    - Go to [W3C CSS Validation Page](https://jigsaw.w3.org/css-validator/).
+    - Click on the 'By direct input' tab at the top of the window.
+    - Paste my css code into the supplied text area.
+    - Click on 'Check'
+    ![W3C CSS Validation Input](media/readme/css-files-validated.png)
+
+
 ## Test Strategy
  - The testing will be done on four web browsers:-
     - Chrome

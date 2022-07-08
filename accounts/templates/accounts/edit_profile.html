@@ -49,11 +49,12 @@
                 {{ form.default_postcode | as_crispy_field }}
                 {{ form.default_country | as_crispy_field }}
                 {{ form.default_phone_number | as_crispy_field }}
-                <row>
+                <div>
                     <button class="btn col-12 mt-2">Confirm Update</button>
                     <a href="{% url 'profile' %}" class="col-12 btn mt-2">Back to Profile</a>
-                </row>
+                </div>
             </form>
         </div>
     </div>
-    {% endblock %}
+</div>
+{% endblock %}

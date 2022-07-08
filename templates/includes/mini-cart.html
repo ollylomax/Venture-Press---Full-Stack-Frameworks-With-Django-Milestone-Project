@@ -15,7 +15,7 @@
                 <div class="col-3 my-1">
                     <!-- Service image served from media directory -->
                     <img width='48' height='48' class="border border-secondary"
-                        src="{{ MEDIA_URL }}{{ item.service.image }}">
+                        src="{{ MEDIA_URL }}{{ item.service.image }} " alt="{{ MEDIA_URL }}{{ item.service }}">
                 </div>
                 <!-- If service has no image -->
                 {% else %}
@@ -23,7 +23,7 @@
                     <div class="col-3 my-1">
                         <!-- Placeholder image served from media directory -->
                         <img width='48' height='48' class="border border-secondary"
-                            src="{{ MEDIA_URL }}placeholder.jpg">
+                            src="{{ MEDIA_URL }}placeholder.jpg" alt="No image available">
                     </div>
                     {% endif %}
                     <div class="col-9">
@@ -35,14 +35,12 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <strong>
                         <p class="mt-3 mb-1 text-white">
                             <!-- Add delivery disclaimer if free delivery threshold not met -->
                             Total{% if delivery_dearth > 0 %} (Exc. delivery){% endif %}:
                             <!-- Round to two decimal places -->
-                            <span class="float-right">£{{ total|floatformat:2 }}</span>
+                            <span class="float-right"><strong>£{{ total|floatformat:2 }}</strong></span>
                         </p>
-                    </strong>
                     <p class="text-white">
                         <!-- Conditional to check if free delivery threshold is met -->
                         {% if delivery_dearth %}

@@ -77,37 +77,41 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <!-- Search query form directing to services view -->
-                        <form method="GET" action="{% url 'services' %}">
-                            <div class="input-group w-100 nav-index">
-                                <!-- Search input field with placeholder -->
-                                <input class="search-input form-control border border-black rounded-0" type="text"
-                                    name="query" placeholder="Search">
-                                <div class="input-group-append">
-                                    <!-- Search button which submits the form -->
-                                    <button class="form-control btn btn-black border border-black rounded-0"
-                                        type="submit">
-                                        <span class="icon text-white">
-                                            <i class="fas fa-search"></i>
-                                        </span>
-                                    </button>
+                        <li>
+                            <form method="GET" action="{% url 'services' %}">
+                                <div class="input-group w-100 nav-index">
+                                    <!-- Search input field with placeholder -->
+                                    <input class="search-input form-control border border-black rounded-0" type="text"
+                                        name="query" placeholder="Search">
+                                    <div class="input-group-append">
+                                        <!-- Search button which submits the form -->
+                                        <button class="form-control btn btn-black border border-black rounded-0"
+                                            type="submit">
+                                            <span class="icon text-white">
+                                                <i class="fas fa-search"></i>
+                                            </span>
+                                        </button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
+                            </form>
+                        </li>
                         <!-- Home nav link and icon -->
                         <li class="nav-item">
-                            <div class="d-none d-lg-block text-center text-white"><i class="fa-solid fa-house-crack"></i></div>
+                            <div class="d-none d-lg-block text-center text-white"><i
+                                    class="fa-solid fa-house-crack"></i></div>
                             <!-- Home button directing to home view -->
                             <a class="text-white nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
                         </li>
                         <!-- Print Services nav dropdown link and icon -->
                         <li class="nav-item dropdown">
-                            <div class="d-none d-lg-block text-center text-white"><i class="dd-icon fa-solid fa-scroll"></i></div>
-                            <a class="text-white nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="d-none d-lg-block text-center text-white"><i
+                                    class="dd-icon fa-solid fa-scroll"></i></div>
+                            <a class="text-white nav-link dropdown-toggle" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 Print Services
                             </a>
                             <!-- Unordered list of dropdown menu choices -->
-                            <ul class="dropdown-menu text-white" aria-labelledby="navbarDropdownMenuLink">
+                            <ul class="dropdown-menu text-white" aria-labelledby="PrintServices" id="PrintServices">
                                 <!-- Stationery link directing to services view with category query -->
                                 <li><a class="dropdown-item"
                                         href="{% url 'services' %}?category=stationery">Stationery</a></li>
@@ -123,7 +127,8 @@
                         </li>
                         <!-- Contact nav link and icon -->
                         <li class="nav-item">
-                            <div class="d-none d-lg-block text-center text-white"><i class="fa-solid fa-marker"></i></div>
+                            <div class="d-none d-lg-block text-center text-white"><i class="fa-solid fa-marker"></i>
+                            </div>
                             <!-- Contact button directing to contact view -->
                             <a class="text-white nav-link" href="{% url 'contact' %}">Contact</a>
                         </li>
@@ -133,13 +138,14 @@
                         {% if request.user.is_authenticated %}
                         <!-- Account(username) nav dropdown link and icon -->
                         <li class="nav-item dropdown">
-                            <div class="d-none d-lg-block text-center text-white"><i class="dd-icon fa-solid fa-user"></i></div>
-                            <a class="nav-link dropdown-toggle text-white" href="#" id="navbarDropdownMenuLink"
-                                role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <div class="d-none d-lg-block text-center text-white"><i
+                                    class="dd-icon fa-solid fa-user"></i></div>
+                            <a class="nav-link dropdown-toggle text-white" href="#" role="button"
+                                data-bs-toggle="dropdown" aria-expanded="false">
                                 {{ request.user }}
                             </a>
                             <!-- Unordered list of dropdown menu choices -->
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                            <ul class="dropdown-menu" aria-labelledby="UserProfile" id="UserProfile">
                                 <!-- Profile link directing to profile view -->
                                 <li><a class="dropdown-item" href="{% url 'profile' %}">Profile</a></li>
                                 <!-- Order History link directing to order history view -->
@@ -240,8 +246,10 @@
     {% block header %}
     {% endblock %}
 
-    {% block content %}
-    {% endblock %}
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
 
     <!-- Custom javascript injection -->
     {% block postjs %}

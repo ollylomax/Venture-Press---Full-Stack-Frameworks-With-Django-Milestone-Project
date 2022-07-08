@@ -2,7 +2,7 @@
     <p>{{ widget.initial_text }}:</p>
     <!-- Custom image preview -->
     <a href="{{ widget.value.url }}">
-        <img width="96" height="96" class="rounded shadow-sm" src="{{ widget.value.url }}">
+        <img width="96" height="96" class="rounded shadow-sm" src="{{ widget.value.url }}" alt ="{{ widget.value }}">
     </a>
     {% if not widget.required %}
         <div class="custom-control custom-checkbox mt-2">
@@ -14,7 +14,7 @@
 {% endif %}
 <!-- Custom image selector button with id linking to custom javascript injected from edit/add service templates -->
 <span class="btn float-end mt-2 mb-2 btn-file">
-    Select Image <input id="new-image" type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
+    Select Image <input class="new-image" type="{{ widget.type }}" name="{{ widget.name }}"{% include "django/forms/widgets/attrs.html" %}>
 </span>
 <!-- Custom image name display with id linking to custom javascript injected from edit/add service templates -->
-<p><strong id="filename"></strong></p>
+<p><strong class="filename"></strong></p>
