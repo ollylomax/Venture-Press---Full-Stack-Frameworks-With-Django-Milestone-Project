@@ -36,7 +36,7 @@ def orders_requiring_artwork(request):
     profile = get_object_or_404(UserProfile, user=request.user)
     orders = Order.objects.filter(user_profile=profile, has_artwork=False)
 
-    form['user'].initial = request.user
+    form['user'].initial = profile
 
     for order in orders:
         form['order'].initial = order
