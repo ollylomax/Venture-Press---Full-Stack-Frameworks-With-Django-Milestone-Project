@@ -8,7 +8,7 @@
 
 <!-- Page header -->
 {% block content %}
-<div class="hero container h-100">
+<div class="hero container h-100 mt-5">
     <div class="row h-100">
         <div class="col-12 col-md-6 my-auto">
             <div class="hero-wrapper">
@@ -33,12 +33,10 @@
             </div>
             <!-- Mobile buttons -->
             <div class="d-block d-lg-none">
-                <h4>
                     <!-- Print Services button directing to services view -->
                     <a href="{% url 'services' %}" class="btn">Print Services</a>
                     <!-- Contact Us button directing to contact view -->
                     <a href="{% url 'contact' %}" class="btn">Contact Us</a>
-                </h4>
             </div>
         </div>
     </div>

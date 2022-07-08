@@ -54,7 +54,7 @@
         {% for service in services %}
         <div class="col-sm-12 col-md-6 col-lg-4">
             <!-- Bootstrap card directing to service detail page passing the service id -->
-            <div class="card"><a href="{% url 'service_detail' service.id %}">
+            <div class="card">
                     <!-- If service has image uploaded -->
                     {% if service.image %}
                     <!-- Service image served from media directory -->
@@ -64,10 +64,9 @@
                     <!-- Placeholder image served from media directory -->
                     <img class="card-img-top" src="{{ MEDIA_URL }}placeholder.jpg" alt="{{ service.name }}">
                     {% endif %}
-                </a>
                 <div class="card-body">
                     <!-- Bootstrap stretched link anchor passing service id to service detail view -->
-                    <a href="{% url 'service_detail' service.id %}" class="stretched-link"></a>
+                    <a href="{% url 'service_detail' service.id %}" class="stretched-link" aria-label="{{ service.name }}"></a>
                     <h5 class="card-title">{{ service.name }}</h5>
                     <!-- Truncate text after 200 characters -->
                     <p class="card-text">{{ service.description|truncatechars:200 }}</p>

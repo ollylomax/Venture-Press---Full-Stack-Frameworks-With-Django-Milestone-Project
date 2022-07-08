@@ -617,6 +617,10 @@ View the live project [here](https://venture-press.herokuapp.com/)
     - Click on 'Check'
     ![W3C CSS Validation Input](media/readme/css-files-validated.png)
 
+- WAVE, a Web Accessibility Evaluation Tool was used for contrast testing.
+    - No contrast errors found.
+    ![WAVE Error](docs/readmeimages/WAVE-error.png)
+    ![WAVE Error Code](docs/readmeimages/WAVE-errorcode.png)
 
 ## Test Strategy
  - The testing will be done on four web browsers:-
