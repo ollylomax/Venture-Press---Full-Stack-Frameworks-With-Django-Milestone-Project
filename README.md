@@ -432,8 +432,6 @@ View the live project [here](https://venture-press.herokuapp.com/)
     - 404 Error Response (mobile & desktop) 
     ![404](media/readme/wireframes/404.png)
 
-As referenced in the notable amendments to design, I created two additional models.
-
 ## UX SURFACE
 
 - ### Colour Scheme
@@ -518,8 +516,10 @@ As referenced in the notable amendments to design, I created two additional mode
     - Log In / Log Out functionality.
     - Navigation menu that will change based on whether user is logged in and/or has certain privileges.
     - Services page with a list of all services in the PostgresSQL database with corresponding name, description and price. Edit and Delete buttons available on each service for admin users.
-    - Service Details page with customisable options, quantity input and Add to Cart functionality.
-    - Contact page with form submission and email response.
+    - Service Details page with quantity input and Add to Cart functionality.
+    - Contact page with form submission and email response and email to website owner.
+    - If registered, the contact messages are saved by subject into Message Centre where all previous messages are displayed.
+    - Messages can be updated and deleted by the author and/or admin users.
     - Add New Service page with Create functionality for admin users.
     - Edit Service page with Update functionality for admin users.
     - Profile page for registered users with profile info.
@@ -531,13 +531,19 @@ As referenced in the notable amendments to design, I created two additional mode
     - Checkout page showing cart details and forms to submit delivery information and card payment.
     - Stripe webhooks in place for redundancy.
     - Order Confirmation page showing order details once successfully processed.
+    - Artwork upload page which shows all orders requiring artwork to be uploaded.
+    - Artwork files for corresponding orders can be uploaded to the AWS bucket.
+    - List of all previously uploaded files displayed on page.
     - Django administration backend.
     - Error handling to direct user to 404 and 500 error pages and provide a direct path back to the website.
 
-
 - ### Prospective
 
+    - Add more customisations to the services model, including CharField aesthetic choices as orginally scoped.
     - Add pagination for Services page for future scoping the website when services are expanded upon.
+    - Add file previews for uploaded artwork, with a confirmation before file is uploaded and use this event to trigger an artwork uploaded email to the user.
+    - Add functionality for users to instantiate previous orders into the Order model for repeat orders, and assign applicable previous artwork to it.
+    - Add admin response functionality to grow the previous message page into a ticketing/chat terminal for realtime feedback.
 
 ## Technologies Used
 
