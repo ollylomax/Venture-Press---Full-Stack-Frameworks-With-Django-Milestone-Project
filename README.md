@@ -429,7 +429,7 @@ View the live project [here](https://venture-press.herokuapp.com/)
     ![Edit Profile](media/readme/wireframes/edit-profile.png)
     - Order History (mobile & desktop) 
     ![Order History](media/readme/wireframes/orders.png)
-    - 404 (mobile & desktop) 
+    - 404 Error Response (mobile & desktop) 
     ![404](media/readme/wireframes/404.png)
 
 As referenced in the notable amendments to design, I created two additional models.
@@ -474,6 +474,14 @@ As referenced in the notable amendments to design, I created two additional mode
         - success
         - edit message
         - delete message
+    
+    ## New Wireframes
+    -   Message Centre (mobile & desktop) 
+    -   ![Messages](media/readme/wireframes/new/message-centre.png)
+    -   View Message (mobile & desktop) 
+    -   ![View Message](media/readme/wireframes/new/view-message.png)
+    -   Edit Message (mobile & desktop) 
+    -   ![Edit Message](media/readme/wireframes/new/edit-message.png)
 
     ### Artwork App
     This app is designed for registered users who have purchased a print service. The print order will subsequently appear in a new page called Artwork Uploads with corresponding file upload buttons. When a file is uploaded for the pertaining order, the file is submitted to the AWS database with relevant file info, and the order will disappear from the user's Message Centre.
@@ -486,9 +494,18 @@ As referenced in the notable amendments to design, I created two additional mode
         - orders_requiring_artwork
         - upload_artwork
 
+    ## New Wireframes
+    -   Upload Artwork (mobile & desktop) 
+    -   ![Artwork](media/readme/wireframes/new/artwork-uploads.png)
+
     ### General changes
 
     I had planned to add another user permission of admin, but since there is a built-in django option in the django administration backend for this I decided against and focused my time elsewhere, including but not limited to making custom allauth classes and customising the inherited forms.
+
+    Added a 500 Internal error page.
+    ## New Wireframes
+    -   500 Error Response(mobile & desktop) 
+    -   ![500](media/readme/wireframes/new/500.png)
 
 ## Features
 
@@ -630,7 +647,7 @@ As referenced in the notable amendments to design, I created two additional mode
 - The W3C Markup Validator Service was used to validate every page in the project to ensure there were no syntax errors or warnings.
     - All pages with one exception cleared with no errors or warnings as below.
         ![W3C Markup Validation - All Pages](media/readme/html-validator.png)
-    - The Artwork page I created, despite being functional, is returning duplicate id errors. I have been debugging this but ran out of time, so I included the additional app regardless with notation.
+    - The Artwork page I created, despite being functional, is returning duplicate id errors. I have been debugging this but ran out of time, so I included the additional app regardless with notation. They are django auto generated fields from the inserted forms.
         ![W3C Markup Validation - Products](media/readme/artwork-app-html-errors.png)
     - Pages requiring a a login session or admin/superuser status returned no errors or warnings. They were tested by the following approach:
         - Copy full HTML in developer tools from the desired page.
