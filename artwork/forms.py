@@ -11,15 +11,11 @@ class ArtworkUpload(forms.ModelForm):
     """
     class Meta:
         model = Artwork
-        widgets = {
-            'user': forms.HiddenInput(),
-            'order': forms.HiddenInput(),
-        }
-        fields = ('user', 'order', 'upload')
+        fields = ('upload',)
     
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         
-        self.fields['upload'].label = False
+        # self.fields['upload'].label = False
     
     upload = forms.FileField(label='Upload Artwork', widget=CustomClearableFileInput)

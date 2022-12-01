@@ -30,6 +30,7 @@
             <!-- Page title -->
             <hr>
             <h2>Upload Centre</h2>
+            {{ orders_forjson }}
             <hr>
             <!-- Conditional to check if orders exist from the filter -->
             {% if orders %}
@@ -49,8 +50,8 @@
                     <tr>
                         <td class="align-middle">
                             <!-- Button passing order number to view -->
-                            <a href="{% url 'past_order' order.order_number %}"
-                                class="btn">{{ order|truncatechars:15 }}</a>
+                            <a href="{% url 'past_order' order.order_number %}" class="btn"><span
+                                    class="user-order">{{ order }}</span></a>
                         </td>
                         <td class="align-middle">
                             {{ order.date }}
@@ -62,13 +63,22 @@
                                 <!-- Django csrf token -->
                                 {% csrf_token %}
                                 <!-- Form from view rendered as a crispy form -->
-                                {{ form|crispy }}
-
+                                {{ form.upload }}
+                                <!-- <input type="file" name="upload" class="customClearablefileinput form-control-file" required id="{{ order.order_number}}"> -->
                                 <!-- <input type="select" value="{{ order }}"> -->
                                 <p><input class="btn" type="submit" value="Upload" /></p>
+                                <script>
+                                    // $('#new-file').prop('id', 'new-file-{{ order }}');
+
+                                    // $('#new-file-{{ order.order_number }}').change(function () {
+                                    //     var file = $('#new-file-{{ order.order_number }}')[0].files[0];
+                                    //     $('#filename-{{ order.order_number }}').text(file.name);
+                                    // });
+                                </script>
                             </form>
                         </td>
                     </tr>
+
                     {% endfor %}
                 </tbody>
             </table>
@@ -107,18 +117,65 @@
         </div>
     </div>
 </div>
-        {% endblock %}
 
-        <!-- Inject additional javascript -->
-        {% block postjs %}
-        <!-- Add but don't overwrite -->
-        {{ block.super }}
-        <!-- Custom script to change layout and styling in clearablefileinput widget -->
-        {{ block.super }}
-        <script>
-            $('#new-file').change(function () {
-                var file = $('#new-file')[0].files[0];
-                $('#filename').text(file.name);
-            });
-        </script>
-        {% endblock %}
+{% endblock %}
+
+<!-- Inject additional javascript -->
+{% block postjs %}
+<!-- Add but don't overwrite -->
+<!-- Custom script to change layout and styling in clearablefileinput widget -->
+{{ block.super }}
+
+<script>
+    orders_in_spans = $('.user-order')
+    filenames_in_spans = $('.filename')
+    newfiles_in_spans = $('.new-file')
+
+    Array.from(filenames_in_spans).forEach((file_id, index) => {
+        const order_number = orders_in_spans[index];
+        file_id.setAttribute('id', 'filename-' + order_number.innerHTML);
+    });
+    Array.from(newfiles_in_spans).forEach((newfile_id, index) => {
+        const order_number = orders_in_spans[index];
+        newfile_id.setAttribute('id', 'new-file-' + order_number.innerHTML);
+    });
+
+    Array.from(newfiles_in_spans).forEach((newfile_id, index) => {
+        const order_number = orders_in_spans[index];
+        var new_file = '#new-file-' + order_number.innerHTML
+        var filename = '#filename-' + order_number.innerHTML
+
+        $(new_file).change(function () {
+            var file = $(new_file)[0].files[0];
+            $(filename).text(file.name);
+        });
+
+    });
+
+    // for (i of orders_in_spans) {
+    //     var new_file = '#new-file-' + i.innerHTML
+    //     var filename = '#filename-' + i.innerHTML
+    //     console.log(new_file)
+    //     $(new_file).change(function () {
+    //         console.log(new_file)
+    //         var file = $(new_file)[0].files[0];
+    //         $(filename).text(file.name);
+    //     });
+    // }
+
+    // $(document).ready(function () {
+
+    //     $('.filename').each(function (i) {
+    //         $(this).prop('id', 'filename-{{ order }}' + i);
+    //     });
+    //     $('.new-file').each(function (i) {
+    //         $(this).prop('id', 'new-file-{{ order }}' + i);
+    //     });
+    //     $('#new-file-{{ order }}').change(function () {
+    //         var file = $('#new-file-{{ order }}')[0].files[0];
+    //         $('#filename-{{ order }}').text(file.name);
+    //     });
+    // });
+</script>
+
+{% endblock %}

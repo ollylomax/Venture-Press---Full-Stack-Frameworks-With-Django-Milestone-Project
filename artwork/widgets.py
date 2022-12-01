@@ -10,4 +10,3 @@ class CustomClearableFileInput(ClearableFileInput):
     template_name = (
         'artwork/custom_widget_templates/custom_clearable_file_input.html'
     )
-    

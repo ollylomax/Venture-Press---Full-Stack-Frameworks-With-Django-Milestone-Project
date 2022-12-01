@@ -15,6 +15,8 @@ from accounts.models import UserProfile
 from .models import Artwork
 from .forms import ArtworkUpload
 
+import json
+from django.core import serializers
 
 # Require session decorator from django decorators.
 @login_required
@@ -36,13 +38,12 @@ def orders_requiring_artwork(request):
     profile = get_object_or_404(UserProfile, user=request.user)
     orders = Order.objects.filter(user_profile=profile, has_artwork=False)
 
-    form['user'].initial = profile
-
-    for order in orders:
-        form['order'].initial = order
 
     # File urls rendered to template
     files = Artwork.objects.filter(user=profile)
+
+    data = serializers.serialize("json", orders.only("order_number"))
+    data2 = json.dumps(data)
 
     # Render the artwork template with context
     context = {
@@ -50,6 +51,7 @@ def orders_requiring_artwork(request):
         'form': form,
         'orders': orders,
         'order_form': order_form,
+        'data2': data2,
         }
 
     return render(request, "artwork/artwork.html", context)
@@ -67,6 +69,7 @@ def upload_artwork(request, order_number):
     has_artwork field to true and save. Pass both forms and order variable back
     to the template.
     """
+    profile = get_object_or_404(UserProfile, user=request.user)
     order = get_object_or_404(Order, order_number=order_number)
     order_form = OrderForm(instance=order)
 
@@ -74,12 +77,12 @@ def upload_artwork(request, order_number):
     if request.method == 'POST':
         files = Artwork.objects.all()
         form = ArtworkUpload(request.POST, request.FILES)
-        form['order'].initial = order
 
         # Upload file and change has_artwork boolean in corresponding order
         if form.is_valid():
-            artworks = form.save()
+            artworks = form.save(commit=False)
             artworks.order = order
+            artworks.user = profile
             artworks.save()
             update_order = order_form.save(commit=False)
             update_order.has_artwork = True
